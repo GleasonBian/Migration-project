@@ -1,20 +1,20 @@
 <template>
     <div class="box_login">
         <div class="login_page clearfix">
-            <img class="pull-left" src="/static/img/login_img.png" width="607"/>
+            <img class="pull-left" src="../static/img/login_img.png" width="607"/>
             <div class="pull-right login_right">
-                <img src="static/img/header_logo.png" width="110"/>
+                <img src="../static/img/header_logo.png" width="110"/>
                 <div class="login_title">欢迎进入中台系统</div>
                 <form-group :data="loginData" :data-but="dataBut" :custom=true :class-name="loginDataClass" @on-ok="login" :refs="loginFrom">
                     <template slot-scope="scope" slot="userid">
                         <div class="clearfix">
-                            <img class="pull-left" src="/static/img/icon_user.png" alt="" height="36"/>
+                            <img class="pull-left" src="../static/img/icon_user.png" alt="" height="36"/>
                             <el-input v-model="scope.rows.value" placeholder="请输入账号" class="pull-left"></el-input>
                         </div>
                     </template>
                     <template slot-scope="scope" slot="password">
                         <div class="clearfix">
-                            <img class="pull-left" src="/static/img/icon_password.png" alt="" height="36"/>
+                            <img class="pull-left" src="../static/img/icon_password.png" alt="" height="36"/>
                             <el-input ref="password" v-focus="$refs" v-model="scope.rows.value" type="password" placeholder="请输入密码" class="pull-left" @keyup.enter.native="loginEnter"></el-input>
                         </div>
                     </template>
@@ -36,7 +36,6 @@
 
 <script>
   import base from 'base'
-
   export default {
     data () {
       return {
@@ -196,7 +195,10 @@
           res.value.password.focus()
         }
       }
-    }
+    },
+    mounted() {
+      console.log(process.env)
+    },
   }
 </script>
 <style>
