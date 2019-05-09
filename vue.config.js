@@ -18,7 +18,7 @@ module.exports = {
         .set('store', resolve('src/store'))
         .set('view', resolve('src/view'))
         .set('vue$', 'vue/dist/vue.esm.js')
-        .set('static', resolve('src/static'))
+        .set('static', resolve('src/components/static'))
         .set('common', resolve('src/common'))
         .set('customtemp', resolve('src/components/customtemp'))
         .set('bizcomponents', resolve('src/bizcomponents'))

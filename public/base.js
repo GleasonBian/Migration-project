@@ -4,7 +4,6 @@
  */
 'use strict'
 
-
 // 本地
 let local = {
   type: 1,
@@ -27,6 +26,7 @@ let development = {
   proxyTableNameVersionAdmin: '/admin',
   proxyTableNameImgVersion: 'http://192.168.1.210'
 }
+
 // demo
 let demo = {
   type: 1,
@@ -37,6 +37,7 @@ let demo = {
   proxyTableNameVersionAdmin: '/admin',
   proxyTableNameImgVersion: 'http://192.168.1.210'
 }
+
 // 生产
 let production = {
   type: 1,
@@ -48,4 +49,15 @@ let production = {
   proxyTableNameImgVersion: 'http://192.168.1.210'
 }
 
-module.exports = local;
+let defaultConfig = null;
+switch (process.env.NODE_ENV) {
+  case 'development': defaultConfig = development;
+    break;
+  case 'demo': defaultConfig = demo;
+    break;
+  case 'production': defaultConfig = production;
+    break;
+  default:  defaultConfig = local;
+    break;
+}
+module.exports = defaultConfig;
