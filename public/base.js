@@ -4,7 +4,9 @@
  */
 'use strict'
 
-// 本地
+/**
+ * 本地
+ */
 let local = {
   type: 1,
   assetsPublicPath: '/',
@@ -16,7 +18,9 @@ let local = {
   isLocalMeun: true
 }
 
-// 开发
+/**
+ * 开发
+ */
 let development = {
   type: 1,
   assetsPublicPath: '/bmalladminpresent/',
@@ -24,10 +28,12 @@ let development = {
   defaultRouterPath: 'home',
   proxyTableNameVersionBaseApi: '/bmalladmin',
   proxyTableNameVersionAdmin: '/admin',
-  proxyTableNameImgVersion: 'http://192.168.1.210'
+  proxyTableNameImgVersion: 'http://192.168.1.242:88'
 }
 
-// demo
+/**
+ * demo
+ */
 let demo = {
   type: 1,
   assetsPublicPath: '/bmalladminpresent/',
@@ -35,10 +41,12 @@ let demo = {
   defaultRouterPath: 'home',
   proxyTableNameVersionBaseApi: '/bmalladmin',
   proxyTableNameVersionAdmin: '/admin',
-  proxyTableNameImgVersion: 'http://192.168.1.210'
+  proxyTableNameImgVersion: 'http://work.demo.sjgtw.com'
 }
 
-// 生产
+/**
+ * 生产
+ */
 let production = {
   type: 1,
   assetsPublicPath: '/bmalladminpresent/',
@@ -46,7 +54,7 @@ let production = {
   defaultRouterPath: 'home',
   proxyTableNameVersionBaseApi: '/bmalladmin',
   proxyTableNameVersionAdmin: '/admin',
-  proxyTableNameImgVersion: 'http://192.168.1.210'
+  proxyTableNameImgVersion: 'http://work.sjgtw.com'
 }
 
 let defaultConfig = null;
