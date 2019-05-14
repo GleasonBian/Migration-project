@@ -745,6 +745,7 @@
     color: #008aff;
     cursor:pointer;
     text-decoration: none;
+    margin: 0px 1px;
   }
   .handle:hover{
     text-decoration: underline;

@@ -16,7 +16,7 @@
                 :params="page"
                 :refs="tablePerformance">
       <template slot-scope="scope" slot="handle">
-        <span class="handle" @click="editInvoice(scope.row)">编辑</span>
+        <span class="handle" @click="editInvoice(scope.row)">编辑</span>&nbsp;
         <span class="handle" @click="delInvoice(scope.row, true)">删除</span>
       </template>
     </table-list>

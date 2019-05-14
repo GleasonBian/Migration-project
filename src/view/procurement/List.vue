@@ -43,11 +43,6 @@
     data () {
       return {
         searchData: [{
-          key: 'buyUserName',
-          label: '采购员:',
-          value: '',
-          placeholder: '请输入采购员'
-        }, {
           key: 'projectId',
           label: '梁场名称：',
           value: '',
