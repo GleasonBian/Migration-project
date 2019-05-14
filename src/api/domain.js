@@ -10,9 +10,15 @@
  */
 import base from 'base'
 
-const baseApi = (process.env.NODE_ENV === 'production') ? base.proxyTableNameVersionBaseApi ? base.proxyTableNameVersionBaseApi : '' : base.proxyTableNameVersionBaseApi ? base.proxyTableNameVersionBaseApi : ''
-const adminApi = (process.env.NODE_ENV === 'production') ? base.proxyTableNameVersionAdmin ? base.proxyTableNameVersionAdmin : '' : base.proxyTableNameVersionAdmin ? base.proxyTableNameVersionAdmin : ''
-const imgApi = (process.env.NODE_ENV === 'production') ? base.proxyTableNameImgVersion ? base.proxyTableNameImgVersion : '' : base.proxyTableNameImgVersion ? base.proxyTableNameImgVersion : base.proxyTableNameImgVersion
+// const baseApi = (process.env.NODE_ENV === 'demo') ? base.proxyTableNameVersionBaseApi ? base.proxyTableNameVersionBaseApi : '' : base.proxyTableNameVersionBaseApi ? base.proxyTableNameVersionBaseApi : ''
+
+// const adminApi = (process.env.NODE_ENV === 'development') ? base.proxyTableNameVersionAdmin ? base.proxyTableNameVersionAdmin : '' : base.proxyTableNameVersionAdmin ? base.proxyTableNameVersionAdmin : ''
+
+// const imgApi = (process.env.NODE_ENV === 'production') ? base.proxyTableNameImgVersion ? base.proxyTableNameImgVersion : '' : base.proxyTableNameImgVersion ? base.proxyTableNameImgVersion : base.proxyTableNameImgVersion
+
+const baseApi = base.proxyTableNameVersionBaseApi
+const adminApi = base.proxyTableNameVersionAdmin
+const imgApi = base.proxyTableNameImgVersion
 export default {
   baseApi,
   adminApi,

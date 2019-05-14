@@ -3,7 +3,16 @@
 </template>
 
 <script>
+import base from 'base'
   export default {
+    data(){
+        return {
+
+        }
+    },
+    created() {
+        console.log(base)
+    },
   }
 </script>
 

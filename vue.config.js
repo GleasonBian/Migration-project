@@ -2,10 +2,10 @@ const path = require('path');
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
-
+const baseConfig = require('./public/base.js')
 module.exports = {
   // 基本路径
-  publicPath: '/',
+  publicPath: './',
   // 输出文件目录
   outputDir: 'dist',
   // eslint-loader 是否在保存的时候检查
@@ -55,14 +55,14 @@ module.exports = {
     // 设置代理
     proxy: {
       '/adminApi': {
-        target: 'http://192.168.1.242:88',
+        target: baseConfig.proxyTableNameImgVersion,
         changeOrigin: true,
         pathRewrite: {
           '^/adminApi': ''
         }
       },
       '/api': {
-        target: 'http://192.168.1.242:88',
+        target:baseConfig.proxyTableNameImgVersion,
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

@@ -7,6 +7,7 @@
 /**
  * 本地
  */
+
 let local = {
   type: 1,
   assetsPublicPath: '/',
@@ -14,7 +15,7 @@ let local = {
   defaultRouterPath: 'home',
   proxyTableNameVersionBaseApi: '/api/bmalladmin',
   proxyTableNameVersionAdmin: '/adminApi/admin',
-  proxyTableNameImgVersion: 'http://192.168.1.210',
+  proxyTableNameImgVersion:'http://work.demo.sjgtw.com',
   isLocalMeun: true
 }
 

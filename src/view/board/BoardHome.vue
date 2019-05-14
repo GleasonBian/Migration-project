@@ -55,7 +55,7 @@
         {{formatData(scope.row.grossProfit)}}
       </template>
       <template slot-scope="scope" slot="handle">
-        <a class="handle" @click="toProfitDetails(scope.row)">月份排名</a>
+        <a class="handle" @click="toProfitDetails(scope.row)">月份排名</a>&nbsp;
         <a class="handle" @click="toGoodsDetails(scope.row)">物资明细</a>
       </template>
     </table-list>

@@ -14,7 +14,7 @@
  * 获取  getMiddleTable
  * ImagePre 接口配置类
  * */
-import {adminApi, baseApi} from './domain'
+import { adminApi, baseApi } from './domain'
 export default {
   common: {
     uploadImage: baseApi + '/customPackage/uploadLogo' // 上传图片

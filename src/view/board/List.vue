@@ -60,9 +60,7 @@
   .box_board .tr_right{ width: 100%;display: flex;justify-content: space-between;height: 26px}
   .box_board .tr_right .tr_list{width: 130px;display: flex;align-items: center;}
   .box_board .tr_list_2{display: flex;justify-content: center}
-
-  .board_title{ display: flex;justify-content: flex-start;}
+  .board_title{width:100%; display: flex;justify-content: flex-start;}
   .board_title div{ width: 30%; padding-left: 1%; font-size: 14px; padding: 6px 12px;}
-
   .board_collapse .el-collapse-item__content{ padding-bottom: 0;}
 </style>
