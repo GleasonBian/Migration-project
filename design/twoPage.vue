@@ -82,6 +82,8 @@
           this.page.offset = 0
           this.page.currentPage = 1
         }
+        this.page.offset = 0
+        this.page.currentPage = 1
         this.$Utils.pageUpdateTable([this.dataSearch, this.page], this.tablePerformance, this)
         this.$Utils.pageUpdateTable([this.dataSearch, this.page], this.tablePerformance1, this)
       }

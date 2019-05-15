@@ -155,6 +155,8 @@
           this.page.offset = 0
           this.page.currentPage = 1
         }
+        this.page.offset = 0
+        this.page.currentPage = 1
         this.pageUpdateTable([this.dataSearch, this.page], this.tablePerformance, this)
       },
       getTableData (data) {
