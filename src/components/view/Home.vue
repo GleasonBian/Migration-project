@@ -10,9 +10,6 @@ import base from 'base'
 
         }
     },
-    created() {
-        console.log(base)
-    },
   }
 </script>
 

@@ -5,21 +5,6 @@
 'use strict'
 
 /**
- * 本地
- */
-
-let local = {
-  type: 1,
-  assetsPublicPath: '/',
-  loginPath: 'login',
-  defaultRouterPath: 'home',
-  proxyTableNameVersionBaseApi: '/api/bmalladmin',
-  proxyTableNameVersionAdmin: '/adminApi/admin',
-  proxyTableNameImgVersion:'http://work.demo.sjgtw.com',
-  isLocalMeun: true
-}
-
-/**
  * 开发
  */
 let development = {
@@ -27,9 +12,9 @@ let development = {
   assetsPublicPath: '/bmalladminpresent/',
   loginPath: 'login',
   defaultRouterPath: 'home',
-  proxyTableNameVersionBaseApi: '/bmalladmin',
-  proxyTableNameVersionAdmin: '/admin',
-  proxyTableNameImgVersion: 'http://192.168.1.242:88'
+  proxyTableNameVersionBaseApi: process.env.VUE_APP_BASE_API,
+  proxyTableNameVersionAdmin: process.env.VUE_APP_ADMIN,
+  proxyTableNameImgVersion: process.env.VUE_APP_URL
 }
 
 /**
@@ -40,9 +25,9 @@ let demo = {
   assetsPublicPath: '/bmalladminpresent/',
   loginPath: 'login',
   defaultRouterPath: 'home',
-  proxyTableNameVersionBaseApi: '/bmalladmin',
-  proxyTableNameVersionAdmin: '/admin',
-  proxyTableNameImgVersion: 'http://work.demo.sjgtw.com'
+  proxyTableNameVersionBaseApi:  process.env.VUE_APP_BASE_API,
+  proxyTableNameVersionAdmin: process.env.VUE_APP_ADMIN,
+  proxyTableNameImgVersion: process.env.VUE_APP_URL
 }
 
 /**
@@ -53,9 +38,9 @@ let production = {
   assetsPublicPath: '/bmalladminpresent/',
   loginPath: 'login',
   defaultRouterPath: 'home',
-  proxyTableNameVersionBaseApi: '/bmalladmin',
-  proxyTableNameVersionAdmin: '/admin',
-  proxyTableNameImgVersion: 'http://work.sjgtw.com'
+  proxyTableNameVersionBaseApi:  process.env.VUE_APP_BASE_API,
+  proxyTableNameVersionAdmin: process.env.VUE_APP_ADMIN,
+  proxyTableNameImgVersion: process.env.VUE_APP_URL
 }
 
 let defaultConfig = null;
@@ -66,7 +51,6 @@ switch (process.env.NODE_ENV) {
     break;
   case 'production': defaultConfig = production;
     break;
-  default:  defaultConfig = local;
-    break;
 }
+console.log(defaultConfig)
 module.exports = defaultConfig;

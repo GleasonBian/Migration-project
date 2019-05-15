@@ -197,7 +197,7 @@
       }
     },
     mounted() {
-      console.log(process.env)
+      // console.log(process.env)
     },
   }
 </script>
