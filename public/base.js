@@ -1,6 +1,6 @@
 /**
- * Created by tim on 2017/10/23.
- * author: wangjialiang
+ * Created by tim on 2019/5/8.
+ * author: Gleason
  */
 'use strict'
 
@@ -52,5 +52,7 @@ switch (process.env.NODE_ENV) {
   case 'production': defaultConfig = production;
     break;
 }
+
 console.log(defaultConfig)
+
 module.exports = defaultConfig;
