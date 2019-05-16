@@ -160,7 +160,6 @@
               this.searchData.map(item => {
                 if (item.key === 'purchasePlanGoodsCode') {
                   item.select = arrData
-                  console.log(arrData)
                 }
               })
             }
@@ -176,7 +175,6 @@
               let arrData = res.data.data
               this.searchData.map(item => {
                 if (item.key === 'listPurchaseGoodsCode') {
-                  console.log(arrData)
                   item.select = arrData
                 }
               })
