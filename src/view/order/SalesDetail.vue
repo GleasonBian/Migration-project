@@ -146,51 +146,51 @@
           {prop: 'orderAccount', label: '下单账号'},
           {prop: 'createTimeStr', label: '创建时间'},
           {prop: 'userName', label: '创建人'},
-//          {prop: 'phoneNum', label: '创建人手机号码'},
-          {prop: 'expectedTime', label: '期望到货时间'}
-        ],
-        dataList: {},
-        listStyle: {
-          class: ['pannel']
-        },
-        dataRemark: [
-          {prop: 'remark', label: '备注'}
-        ],
-        dataListRemark: {},
-        listStyleRemark: {
-          class: ['width_100%'],
-          listwidth: '42px'
-        },
-        tablePerformance: '',
-        tableStatic: true,
-        dataStatic: [],
-        dataHeader: [
-          {prop: 'skuId', label: '商品编号'},
-          {prop: 'goodsName', label: '商品名称'},
-          {prop: 'model', label: '规格型号'},
-          {prop: 'brand', label: '品牌'},
-          {prop: 'count', label: '数量'},
-          {prop: 'unit', label: '单位'},
-          {prop: 'purpose', label: '用途'},
-          {prop: 'pricingAnalysis', label: '定价说明'},
-          {prop: 'remarkForPrice', label: '其他要求'},
-          {prop: 'purchaseRemark', label: '采购备注'},
-          {prop: 'contractGoodsFlag', label: '是否为合同物资', slot: true},
-          {prop: 'quotationEnumDisplay', label: '报价类型'},
-          {prop: 'returnTypeDisplay', label: '售后情况', slot: true},
-          {prop: 'marketPrice', label: '项目调查价'},
-//          {prop: 'pricingAnalysis', label: '第三方报价'},
-//          { prop: 'relatedFileVOList', label: '定价分析依据图片', width: '150', slot: true },
-          {prop: 'recommendGoodsPrice', label: '世界高铁网价'},
-          {prop: 'stockPrice', label: '进货价格'},
-          {prop: 'materialState', label: '物资状态', slot: true},
-          {prop: 'totalGoodsPrice', label: '采购金额'},
-          {prop: 'saleGuidancePrice', label: '销售指导价'},
-          {prop: 'matchDegree', label: '匹配度', slot: true},
-//          {prop: 'remark', label: '销售备注'},
+        // {prop: 'phoneNum', label: '创建人手机号码'},
+                  {prop: 'expectedTime', label: '期望到货时间'}
+                ],
+                dataList: {},
+                listStyle: {
+                  class: ['pannel']
+                },
+                dataRemark: [
+                  {prop: 'remark', label: '备注'}
+                ],
+                dataListRemark: {},
+                listStyleRemark: {
+                  class: ['width_100%'],
+                  listwidth: '42px'
+                },
+                tablePerformance: '',
+                tableStatic: true,
+                dataStatic: [],
+                dataHeader: [
+                  {prop: 'skuId', label: '商品编号'},
+                  {prop: 'goodsName', label: '商品名称'},
+                  {prop: 'model', label: '规格型号'},
+                  {prop: 'brand', label: '品牌'},
+                  {prop: 'count', label: '数量'},
+                  {prop: 'unit', label: '单位'},
+                  {prop: 'purpose', label: '用途'},
+                  {prop: 'pricingAnalysis', label: '定价说明'},
+                  {prop: 'remarkForPrice', label: '其他要求'},
+                  {prop: 'purchaseRemark', label: '采购备注'},
+                  {prop: 'contractGoodsFlag', label: '是否为合同物资', slot: true},
+                  {prop: 'quotationEnumDisplay', label: '报价类型'},
+                  {prop: 'returnTypeDisplay', label: '售后情况', slot: true},
+                  {prop: 'marketPrice', label: '项目调查价'},
+        // {prop: 'pricingAnalysis', label: '第三方报价'},
+        // { prop: 'relatedFileVOList', label: '定价分析依据图片', width: '150', slot: true },
+                  {prop: 'recommendGoodsPrice', label: '世界高铁网价'},
+                  {prop: 'stockPrice', label: '进货价格'},
+                  {prop: 'materialState', label: '物资状态', slot: true},
+                  {prop: 'totalGoodsPrice', label: '采购金额'},
+                  {prop: 'saleGuidancePrice', label: '销售指导价'},
+                  {prop: 'matchDegree', label: '匹配度', slot: true},
+        // {prop: 'remark', label: '销售备注'},
           {prop: 'examine', label: '审批记录', slot: true},
           {prop: 'historyPrice', label: '操作', slot: true}
-//          { prop: 'priceCompost', label: '价格组成' }
+        // { prop: 'priceCompost', label: '价格组成' }
         ],
         imgPath: this.$Api.imgApi,
         popoverImgPath: 'https://gw.alicdn.com/tfs/TB1KF_ybRTH8KJjy0FiXXcRsXXa-890-1186.png',
@@ -413,6 +413,7 @@
         let flag = true
         for (let i in this.dataStatic) {
           let obj = this.dataStatic[i]
+          console.log(obj.pricingAnalysis)
           if (!obj.pricingAnalysis || obj.recommendGoodsPrice <= 0) {
             flag = false
             break
@@ -515,6 +516,9 @@
               if (this.dataList.state === 10) {
                 this.showOpinion = true
               }
+              res.data.data.listPurchaseGoodsList.map(item=>{
+                item.pricingAnalysis==='undefined' ? item.pricingAnalysis = ' ': ""
+              })
               this.dataStatic = res.data.data.listPurchaseGoodsList ? res.data.data.listPurchaseGoodsList : []
               this.goodsPriceTotle = res.data.data.goodsPriceTotle
               this.totalNum = res.data.data.listPurchaseGoodsList.length ? res.data.data.listPurchaseGoodsList.length : 0
