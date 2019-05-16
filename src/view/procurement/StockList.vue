@@ -3,7 +3,7 @@
     <v-search :data="searchData" @on-click="search"></v-search>
     <tab-but :data="btnData" @on-add="addData" v-show="$Utils.getPageElement($Consts.PERMISSION.buyGoods.code)"></tab-but>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData" :refs="tableSalesPurchase">
-      <template slot-scope="scope" slot="operation">
+      <template slot-scope="scope" slot="operation" class='opation-flex'>
         <a class="handle" @click="toPurchaseDetails(scope.row)">查看</a>
         <a class="handle" @click="toPurchaseAndDeliveryDetails(scope.row)">收货明细</a>
         <a class="handle" @click="exportDeliver(scope.row)" v-show="$Utils.getPageElement($Consts.PERMISSION.exportPurchase.code)">导出</a>
@@ -259,13 +259,14 @@
 
 <style>
   .box_purchase .el-table td.is-center:last-child{
-    text-align: left;
+    text-align: center;
   }
   .handle {
     font-size: 12px;
     color: #008aff;
     cursor: pointer;
     text-decoration: none;
+    margin:0px 2px;
   }
 
   .handle:hover {
@@ -273,4 +274,7 @@
   }
 
   table{ width: 100%;}
+  .opation-flex{
+    text-align: center;
+  }
 </style>
