@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="clearfix">
-      <el-button class="pull-left" type="primary" @click="toPageBoard">梁场概述</el-button>
+      <!-- <el-button class="pull-left" type="primary" @click="toPageBoard">梁场概述</el-button> -->
+      <el-button class="pull-left" type="primary" @click="toPageBoard1">梁场概述</el-button>
     </div>
     <el-row>
       <el-col :span="14">
@@ -177,6 +178,12 @@
       toPageBoard () {
         let routeData = this.$router.resolve({
           name: 'wisdomBeamBoard'
+        })
+        window.open(routeData.href, '_blank')
+      },
+      toPageBoard1 () {
+        let routeData = this.$router.resolve({
+          name: 'HomeButton'
         })
         window.open(routeData.href, '_blank')
       },

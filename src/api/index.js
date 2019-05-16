@@ -14,7 +14,7 @@
  * 获取  getMiddleTable
  * ImagePre 接口配置类
  * */
-import { adminApi, baseApi } from './domain'
+import {adminApi, baseApi} from './domain'
 export default {
   common: {
     uploadImage: baseApi + '/customPackage/uploadLogo' // 上传图片
@@ -452,6 +452,7 @@ export default {
     findProjectPlanGoodsVOList: baseApi + '/purchasePlan/findProjectPlanGoodsVOList', // 导出梁场供应商采购金额
     findPurchaseAndSalesByRegion: baseApi + '/purchasePlan/findPurchaseAndSalesByRegion', // 导出各地区采购销售总金额
     exportPurchaseGoods: baseApi + '/listPurchase/exportPurchaseGoods', // 导出采购单物资明细
+    exportPurchaseQuotationUserInfo: baseApi + '/purchasePlan/exportPurchaseQuotationUserInfo', // 导出采购报价人信息
     ExportSceneNoDeliveryGoodsList: baseApi + '/listPurchase/ExportSceneNoDeliveryGoodsList', // 现场未收货物资导出
     findPagePurchasePlanGoodsUpdateRecordList: baseApi + '/goodsUpdateRecord/findPagePurchasePlanGoodsUpdateRecordList', // 分页查询采购计划物资修改记录列表
     findPageListPurchaseGoodsUpdateRecordList: baseApi + '/goodsUpdateRecord/findPageListPurchaseGoodsUpdateRecordList', // 分页查询采购清单物资修改记录列表
@@ -489,6 +490,7 @@ export default {
     purchaseOverview: baseApi + '/visualization/purchaseOverview', // 可视化看板=>采购概览柱状图
     projectOverview: baseApi + '/visualization/projectOverview', // 可视化看板=>梁场概览柱状图
     grossProfitRate: baseApi + '/visualization/grossProfitRate', // 可视化看板=>毛利率排名柱状图
-    supplierTypeRate: baseApi + '/visualization/supplierTypeRate' // 可视化看板=>毛利率排名柱状图
+    supplierTypeRate: baseApi + '/visualization/supplierTypeRate', // 可视化看板=>毛利率排名柱状图
+    materialRank: baseApi + '/visualization/materialRank' // 中台经营看板经营概况=>物资明细
   }
 }

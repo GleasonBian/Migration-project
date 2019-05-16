@@ -136,7 +136,9 @@ const ProfitGoodsDetails = resolve => require(['view/board/ProfitGoodsDetails'],
 const ProfitGoodsDetailsElse = resolve => require(['view/board/ProfitGoodsDetailsElse'], resolve) // 经营看板=>物资明细
 const PerformanceDetails = resolve => require(['view/board/DetailsPerformance'], resolve) // 经营看板=>经营概况=>物资明细
 const WisdomBeamBoardLeader = resolve => require(['view/board/WisdomBeamBoardLeader'], resolve) // 智慧梁场管理看板（领导）
+const HomeBtn = resolve => require(['view/board/HomeBtn'], resolve) // 智慧梁场管理看板（领导）
 const WisdomBeamBoard = resolve => require(['view/board/WisdomBeamBoard'], resolve) // 智慧梁场管理看板（员工）
+const HomeButton = resolve => require(['view/board/HomeButton'], resolve) // 智慧梁场管理看板（员工）
 
 // 批量签收单
 const BatchReceiptList = resolve => require(['view/batchReceipt/List'], resolve)
@@ -197,16 +199,28 @@ let router = new Router({
       }, {
         path: '',
         component: App,
-        children: [{
-          path: 'wisdomBeamBoardLeader',
-          name: 'wisdomBeamBoardLeader',
-          component: WisdomBeamBoardLeader,
-          meta: {
-            requirePath: true,
-            menu: false,
-            title: '智慧梁场管理看板(领导)'
+        children: [
+          {
+            path: 'wisdomBeamBoardLeader',
+            name: 'wisdomBeamBoardLeader',
+            component: WisdomBeamBoardLeader,
+            meta: {
+              requirePath: true,
+              menu: false,
+              title: '智慧梁场管理看板(领导)'
+            }
+          },
+          {
+            path: 'HomeBtn',
+            name: 'HomeBtn',
+            component: HomeBtn,
+            meta: {
+              requirePath: true,
+              menu: false,
+              title: '智慧梁场管理看板(领导)'
+            }
           }
-        }]
+        ]
       }, {
         path: '',
         component: App,
@@ -219,7 +233,18 @@ let router = new Router({
             menu: false,
             title: '智慧梁场管理看板(员工)'
           }
-        }]
+        },
+        {
+          path: 'HomeButton',
+          name: 'HomeButton',
+          component: HomeButton,
+          meta: {
+            requirePath: true,
+            menu: false,
+            title: '智慧梁场管理看板(员工)'
+          }
+        }
+        ]
       }]
     }, {
       path: '',
@@ -646,7 +671,7 @@ let router = new Router({
           meta: {
             requirePath: true,
             menu: true,
-            title: '订单管理(老)'
+            title: '订单管理'
           }
         }, {
           path: 'orderManangerDetail/:id',

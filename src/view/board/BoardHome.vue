@@ -1,7 +1,7 @@
 <template>
   <div>
     <h4>经营概述</h4>
-    <el-row style="" class="box_board">
+    <!-- <el-row style="" class="box_board">
       <el-col class="box_icon_bodrd_border" :span="8">
         <div class="">
           <div class="box_icon_bodrd_text">{{formatData(profitDetailsData.totalMoney)}}</div>
@@ -20,7 +20,7 @@
         </div>
         <div class="box_icon_bodrd_text text_other">毛利润</div>
       </el-col>
-    </el-row>
+    </el-row> -->
     <div class="contract_title">经营明细</div>
     <div class="clearfix">
       <div class="btn_search_time pull-left">
@@ -38,7 +38,8 @@
                         @change="changePicker">
         </el-date-picker>
       </div>
-      <el-button class="pull-right" type="primary" @click="toPageBoard">梁场概述</el-button>
+      <!-- <el-button class="pull-right" type="primary" @click="toPageBoard">梁场概述</el-button> -->
+      <el-button class="pull-right" type="primary" @click="toPageBoard1">梁场概述</el-button>
     </div>
     <table-list :data-header="profitDetailsHeader" :refs="profitDetailsRefs" :url="urlProfitDetails"
                 :params="pageProfitDetails" :tabStyle="tabStyle">
@@ -55,7 +56,7 @@
         {{formatData(scope.row.grossProfit)}}
       </template>
       <template slot-scope="scope" slot="handle">
-        <a class="handle" @click="toProfitDetails(scope.row)">月份排名</a>&nbsp;
+        <a class="handle" @click="toProfitDetails(scope.row)">月份排名</a>
         <a class="handle" @click="toGoodsDetails(scope.row)">物资明细</a>
       </template>
     </table-list>
@@ -90,9 +91,9 @@
           {prop: 'materialCount', label: '销售数量(种)'},
           {prop: 'supplierCount', label: '供应商数量（家）'},
           {prop: 'totalMoney', label: '销售金额', slot: true},
-          {prop: 'totalCost', label: '采购成本', slot: true},
-          {prop: 'grossProfit', label: '毛利润', slot: true},
-          {prop: 'grossProfitRate', label: '毛利率'},
+          // {prop: 'totalCost', label: '采购成本', slot: true},
+          // {prop: 'grossProfit', label: '毛利润', slot: true},
+          // {prop: 'grossProfitRate', label: '毛利率'},
           {prop: 'handle', label: '操作', slot: true}
         ],
         urlProfitDetails: this.$Api.board.profitPager,
@@ -126,6 +127,13 @@
         })
         window.open(routeData.href, '_blank')
       },
+      toPageBoard1 () {
+        let routeData = this.$router.resolve({
+          name: 'HomeBtn'
+        })
+        window.open(routeData.href, '_blank')
+      },
+  
       toProfitDetails (res) {
         let routeData = this.$router.resolve({
           name: 'profitDetailsElse',
