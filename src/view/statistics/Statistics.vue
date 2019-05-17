@@ -11,7 +11,7 @@
       </el-option>
     </el-select>
     <span style="margin-left: 40px;">创建时间：</span>
-    <el-date-picker style="padding-top: 1px;"
+    <el-date-picker  style="margin-right:5px"
                     v-model="valuePicker1"
                     type="daterange"
                     range-separator="至"
@@ -35,7 +35,7 @@
       </el-option>
     </el-select>
     <span style="margin-left: 40px;">创建时间：</span>
-    <el-date-picker style="padding-top: 1px;"
+    <el-date-picker  style="margin-right:5px"
                     v-model="valuePicker2"
                     type="daterange"
                     range-separator="至"
@@ -59,7 +59,7 @@
       </el-option>
     </el-select>
     <span style="margin-left: 40px;">创建时间：</span>
-    <el-date-picker style="padding-top: 1px;"
+    <el-date-picker style="margin-right:5px"
                     v-model="valuePicker3"
                     type="daterange"
                     range-separator="至"
@@ -73,7 +73,7 @@
     </div>
     <h4>各地区采购销售总金额</h4>
     <span style="margin-left: 40px;">创建时间：</span>
-    <el-date-picker style="padding-top: 1px;"
+    <el-date-picker  style="margin-right:5px"
                     v-model="valuePicker4"
                     type="daterange"
                     range-separator="至"
@@ -96,7 +96,7 @@
       </el-option>
     </el-select>
     <span style="margin-left: 40px;">创建时间：</span>
-    <el-date-picker style="padding-top: 1px;"
+    <el-date-picker  style="margin-right:5px"
                     v-model="valuePicker5"
                     type="daterange"
                     range-separator="至"
@@ -106,7 +106,7 @@
     </el-date-picker>
     <el-button type="" @click="cancel5">重置</el-button>
     <div class="big_btn">
-      <el-button type="primary" @click="exportListPurchaseGoods">导出</el-button>
+      <el-button type="primary" @click="exportListPurchaseGoods">导出采购单物资明细</el-button>
     </div>
     <h4>现场未收货物资</h4>
     <span>梁场名称：</span>
@@ -119,7 +119,7 @@
       </el-option>
     </el-select>
     <span style="margin-left: 40px;">创建时间：</span>
-    <el-date-picker style="padding-top: 1px;"
+    <el-date-picker  style="margin-right:5px"
                     v-model="valuePicker6"
                     type="daterange"
                     range-separator="至"
@@ -129,7 +129,7 @@
     </el-date-picker>
     <el-button type="" @click="cancel6">重置</el-button>
     <div class="big_btn">
-      <el-button type="primary" @click="exportSceneGoods">导出</el-button>
+      <el-button type="primary" @click="exportSceneGoods">导出现场未收货物资</el-button>
     </div>
   </div>
 </template>
@@ -375,4 +375,5 @@
   .big_btn {
     margin-top: 10px;
   }
+
 </style>
