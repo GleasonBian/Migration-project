@@ -100,7 +100,6 @@
       }
     },
     created () {
-      console.log(this.dataSourceCode, 'test')
       this.params.dataSourceCode = this.dataSourceCode
       this.getphases()
     },

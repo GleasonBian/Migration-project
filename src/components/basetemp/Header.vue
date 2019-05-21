@@ -9,7 +9,7 @@
             <em v-for="(meun, index) in othterMenu" @click="menus(meun, index)"
                 :class="activeFn(index)">{{meun.name}}</em>
             <span class="user_info clearfix" @click="editUser">
-              <img class="pull-left user_icon" src="static/img/user_icon.png"/>
+              <img class="pull-left user_icon" src="../static/img/user_icon.png"/>
               <span class="pull-left">{{name}}</span>
             </span>
             <span class="logout" @click="logout">退出</span>
