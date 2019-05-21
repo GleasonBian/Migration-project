@@ -247,6 +247,7 @@
     color: #008aff;
     cursor: pointer;
     text-decoration: none;
+    margin:0px 2px;
   }
 
   .handle:hover {
