@@ -311,6 +311,8 @@
             this.page.businessType = 2
             break
         }
+        this.page.offset = 0
+        this.page.currentPage = 1
         let _this = this
         Vue.nextTick().then(function () {
           _this.pageUpdateTable()

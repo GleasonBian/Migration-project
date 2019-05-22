@@ -137,6 +137,8 @@
         this.$Utils.pageUpdateTable(dataArr, tableRefs, self)
       },
       tabClick (res) {
+        this.page.offset = 0
+        this.page.currentPage = 1
         if (res.index === '0') {
           this.page.returnType = 1
           this.okReturn = true
