@@ -3,7 +3,7 @@
     <v-search :data="searchData" @on-click="searchDataClick">
     </v-search>
     <div class="base_btn_group">
-      <el-button type="primary" size="mini" @click="onAdd">新建</el-button>
+      <!-- <el-button type="primary" size="mini" @click="onAdd">新建</el-button> -->
     </div>
     <table-list :data-header="TableDataHeader" :url="DataUrl"
                 @selection-change="selectionChange"
@@ -44,7 +44,7 @@
           }
         ],
         TableDataHeader: [
-          {type: 'selection'},
+          // {type: 'selection'},
           {label: '电话', prop: 'userId'},
           {label: '姓名', prop: 'userName'},
           {label: '职位', prop: 'positionName'},
