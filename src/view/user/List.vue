@@ -96,6 +96,8 @@
   export default {
     data () {
       return {
+        addnum:0,
+        addBtnStyle:true,
         btnData: [{
           text: '新增用户',
           key: 'add'
@@ -271,7 +273,8 @@
         }, {
           text: '确定',
           key: 'ok',
-          type: 'primary'
+          type: 'primary',
+          disabled: false
         }],
         dialogDataEditUser: {show: false, title: '编辑梁场'},
         dataFormEditUser: {
@@ -651,6 +654,8 @@
         this.dialogDataAddUser.show = true
       },
       cancelDialogUser () {
+        this.addnum = 0
+        this.dataButAddUser[1].disabled = false
         this.dialogDataAddUser.show = false
         this.$bus.emit('form-clear')
       },
@@ -664,6 +669,8 @@
               this.cancelDialogUserEdit()
               this.pageUpdateTable([this.dataSearch, this.page], this.tablePerformance, this)
               this.$message(res.data.data)
+              this.dataButAddUser[1].disabled = false
+              this.addnum = 0
             }
           }
         })
@@ -684,16 +691,23 @@
         this.$bus.emit('form-clear')
       },
       okUser (data) {
-        let dialogArr = []
-        this.dataFormAddUser.from[6].checkbox.map(item => {
-          data.roleIds.map(ritem => {
-            if (ritem === item.label) {
-              dialogArr.push(item.value)
-            }
+        this.addnum ++
+        if (this.addnum == 1) {
+          this.dataButAddUser[1].disabled = true
+          let dialogArr = []
+          this.dataFormAddUser.from[6].checkbox.map(item => {
+            data.roleIds.map(ritem => {
+              if (ritem === item.label) {
+                dialogArr.push(item.value)
+              }
+            })
           })
-        })
-        data.roleIds = dialogArr
-        this.saveOrUpdateHttp(data)
+          data.roleIds = dialogArr
+          this.saveOrUpdateHttp(data)
+        }else{
+          this.dataButAddUser[1].disabled = false
+        }
+        
       },
       okEditUser (data) {
         let dialogArr = []
