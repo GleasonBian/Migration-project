@@ -4,17 +4,20 @@
       <div class='business-name'>经营业务</div>
       <div class="business" >
         <router-link v-for="(item,index) in overview" :key="index" :to="item.to" v-show="item.code" class="business-item">{{item.name}}</router-link>
-        <div @click="toZhang" class="business-item">张吉怀TV看板</div>
+        <div @click="toZhang" class="business-item suspension">张吉怀TV看板</div>
       </div>
     </div>
-     <v-dialog :dialog="goodsOffDialog" :dialogFooter="goodsOffFooterDialog" @on-ok="goodsOffOk">
-        <p>
-        <span>time：</span><el-input-number v-model="time" @change="timechange" :min="1" label="刷新时间"></el-input-number>（刷新时间,单位:分钟）
-       </p>
-       <p>
-        <span>day：</span><el-input-number v-model="day" @change="daychange" :min="1" label="展示数据"></el-input-number>（展示数据,单位:天）
-       </p>
-      </v-dialog>
+    <v-dialog :dialog="goodsOffDialog" :dialogFooter="goodsOffFooterDialog" @on-ok="goodsOffOk">
+      <p>
+         <span>prId：</span><el-input v-model="projectId" style='width:180px' readonly></el-input>（projectId:项目ID）
+      </p>
+      <p>
+        <span>time：</span><el-input-number v-model="time" @change="timechange" :min="5" controls-position="right" :step="5" step-strictly label="刷新时间"></el-input-number>（刷新时间,单位:分钟）
+      </p>
+      <p>
+        <span>day ：</span><el-input-number v-model="day" @change="daychange" :min="1" controls-position="right" :step="2" step-strictly label="展示数据"></el-input-number>（展示数据,单位:天）
+      </p>
+    </v-dialog>
   </div>
 </template>
 
@@ -56,8 +59,9 @@ export default {
           {text: '确定', key: 'ok', type: 'primary'},
           {text: '取消', key: 'cancel'}
       ],
-      day: 10,
-      time: 30
+      day: 10, // 默认天数
+      time: 10, // 默认时间
+      projectId: '108310742448000' // 默认id
     }
   },
   computed: {},
@@ -83,7 +87,8 @@ export default {
     },
     goodsOffOk () {
       this.goodsOffDialog.show = false
-      location.replace('http://tv.tiezong.sjgtw.com/?projectId=108310742448000&time=' + this.time + '&day=' + this.day)
+      let url = `http://tv.tiezong.sjgtw.com/?projectId=${this.projectId}&time=${this.time}&day=${this.day}`
+      location.replace(url);
     }
   },
   /**
@@ -140,5 +145,8 @@ export default {
   width: 100%;
   border-bottom: 1px solid #BCBCBC;
   padding-bottom: 5px;
+}
+.suspension:hover{
+  cursor:pointer;
 }
 </style>
