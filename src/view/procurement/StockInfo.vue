@@ -1,19 +1,17 @@
 <template>
   <div>
     <form-group :data="dataForm" :custom=true>
-      <template slot-scope="scope" slot="boxInfo">
+      <template v-slot:boxInfo="scope">
         <div class="contract_title">进货单详情</div>
         <v-list :data="purchaseData" :data-list="purchaseList" :list-style="listStyle"></v-list>
         <div class="contract_title mr_b10">进货单商品</div>
         <table-list :data-header="dataHeader" :static="true" :dataStatic="dataTable" @selection-change="selectionChange"
                     :refs="tableSalesPurchaseDelivery">
-          <template slot-scope="scope" slot="number">
-            {{scope.index + 1}}
+          <template v-slot:number="scope">
+            {{scope?scope.index + 1:"" }}
           </template>
-          <template slot-scope="scope" slot="stockGoodsCount">
-            <el-input v-if="scope.row.deliveryNum < scope.row.replenishStockNum" v-model="scope.row.stockGoodsCount" type="number" @wheel.native.prevent size="small"
-                      placeholder="0"
-                      style="width:180px"></el-input>
+          <template v-slot:stockGoodsCount="scope">
+            <input v-if="scope.row.deliveryNum < scope.row.replenishStockNum" v-model="scope.row.stockGoodsCount" type="number" min=0  @wheel.native.prevent/>
             <span v-else>{{scope.row.stockGoodsCount}}</span>
           </template>
         </table-list>
@@ -28,6 +26,7 @@
   export default {
     data () {
       return {
+        aaa: 0,
         dataForm: {
           from: [{
             prop: 'boxInfo',
@@ -129,6 +128,9 @@
       this.getData(id)
     },
     methods: {
+      changeAAA(inputVal,index){
+        this.dataTable[index].replenishStockNum =inputVal
+      },
       selectionChange (selection) {
         this.selection = selection
       },

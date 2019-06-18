@@ -9,6 +9,7 @@
         <el-collapse-item v-for="(item, index) in dataList.quotationVOList" :key="index">
           <template slot="title">
             <div class="collapse_title">
+              123123123
               <div class="collapse_title_item" v-if="item.supplierManagerProviderVO">
                 {{item.supplierManagerProviderVO.enterpriseName}}
               </div>
@@ -309,7 +310,7 @@
   }
 
   .collapse_title {
-    width: 100%;
+    /* width:100%; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;

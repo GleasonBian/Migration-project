@@ -44,7 +44,7 @@
             @current-chang="currentChange"
             @header-dragend="headerDragend"
             @expand-change="expandChange">
-    <template v-for="(header, i) in dataHeader">
+    <template v-for="(header, i) in dataHeader" >
       <el-table-column v-if="!header.slot && !header.children"
                        :fixed="header.fixed"
                        :prop="header.prop"

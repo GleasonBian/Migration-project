@@ -1,7 +1,5 @@
 <template>
   <div>
-    <div class="color_red">提示：梁场名称必选</div>
-    <br/>
     <v-search :data="searchData" @on-click="search"></v-search>
     <table-list :data-header="dataHeader" :data-static="dataStatic"
                 :refs="tablePerformance" :static="tableStatic"
@@ -76,6 +74,7 @@
     },
     created () {
       this.getBeamField()
+      this.getTableData()
     },
     methods: {
       ajaxPost (url, cb) {

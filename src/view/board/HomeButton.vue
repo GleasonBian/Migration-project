@@ -688,6 +688,7 @@
             name: '金额',
             type: 'bar',
             barWidth: 10,
+            color: '#28eefc',
             data: dataValue[0].dataMoney
             // data: [100, 200, 300, 400, 1000, 300]
           }]

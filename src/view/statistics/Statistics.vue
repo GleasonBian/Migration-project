@@ -11,7 +11,7 @@
       </el-option>
     </el-select>
     <span style="margin-left: 40px;">创建时间：</span>
-    <el-date-picker  style="margin-right:5px"
+    <el-date-picker style="padding-top: 1px;"
                     v-model="valuePicker1"
                     type="daterange"
                     range-separator="至"
@@ -35,7 +35,7 @@
       </el-option>
     </el-select>
     <span style="margin-left: 40px;">创建时间：</span>
-    <el-date-picker  style="margin-right:5px"
+    <el-date-picker style="padding-top: 1px;"
                     v-model="valuePicker2"
                     type="daterange"
                     range-separator="至"
@@ -59,7 +59,7 @@
       </el-option>
     </el-select>
     <span style="margin-left: 40px;">创建时间：</span>
-    <el-date-picker style="margin-right:5px"
+    <el-date-picker style="padding-top: 1px;"
                     v-model="valuePicker3"
                     type="daterange"
                     range-separator="至"
@@ -73,7 +73,7 @@
     </div>
     <h4>各地区采购销售总金额</h4>
     <span style="margin-left: 40px;">创建时间：</span>
-    <el-date-picker  style="margin-right:5px"
+    <el-date-picker style="padding-top: 1px;"
                     v-model="valuePicker4"
                     type="daterange"
                     range-separator="至"
@@ -96,7 +96,7 @@
       </el-option>
     </el-select>
     <span style="margin-left: 40px;">创建时间：</span>
-    <el-date-picker  style="margin-right:5px"
+    <el-date-picker style="padding-top: 1px;"
                     v-model="valuePicker5"
                     type="daterange"
                     range-separator="至"
@@ -106,7 +106,7 @@
     </el-date-picker>
     <el-button type="" @click="cancel5">重置</el-button>
     <div class="big_btn">
-      <el-button type="primary" @click="exportListPurchaseGoods">导出采购单物资明细</el-button>
+      <el-button type="primary" @click="exportListPurchaseGoods">导出</el-button>
     </div>
     <h4>现场未收货物资</h4>
     <span>梁场名称：</span>
@@ -119,7 +119,7 @@
       </el-option>
     </el-select>
     <span style="margin-left: 40px;">创建时间：</span>
-    <el-date-picker  style="margin-right:5px"
+    <el-date-picker style="padding-top: 1px;"
                     v-model="valuePicker6"
                     type="daterange"
                     range-separator="至"
@@ -129,7 +129,21 @@
     </el-date-picker>
     <el-button type="" @click="cancel6">重置</el-button>
     <div class="big_btn">
-      <el-button type="primary" @click="exportSceneGoods">导出现场未收货物资</el-button>
+      <el-button type="primary" @click="exportSceneGoods">导出</el-button>
+    </div>
+    <h4>采购报价人信息</h4>
+    <span style="margin-left: 40px;">创建时间：</span>
+    <el-date-picker style="padding-top: 1px;"
+                    v-model="valuePicker7"
+                    type="daterange"
+                    range-separator="至"
+                    start-placeholder="开始日期"
+                    end-placeholder="结束日期"
+                    @change="changePicker7">
+    </el-date-picker>
+    <el-button type="" @click="cancel7">重置</el-button>
+    <div class="big_btn">
+      <el-button type="primary" @click="exportPurchaseQuotationUserInfo">导出</el-button>
     </div>
   </div>
 </template>
@@ -156,6 +170,7 @@
         valuePicker4: '',
         valuePicker5: '',
         valuePicker6: '',
+        valuePicker7: '',
         startTime1: '',
         endTime1: '',
         startTime2: '',
@@ -168,6 +183,8 @@
         endTime5: '',
         startTime6: '',
         endTime6: '',
+        startTime7: '',
+        endTime7: '',
         tabBut: [
           {text: '导出销售历史价格', key: 'export-price'},
           {text: '导出梁场审批事项', key: 'export-examine'},
@@ -178,6 +195,7 @@
         urlSupplierPurchase: this.$Api.statistics.findProjectPlanGoodsVOList,
         urlAmountMoney: this.$Api.statistics.findPurchaseAndSalesByRegion,
         urlListPurchaseGoods: this.$Api.statistics.exportPurchaseGoods,
+        urlPurchaseQuotationUserInfo: this.$Api.statistics.exportPurchaseQuotationUserInfo,
         urlSceneGoods: this.$Api.statistics.ExportSceneNoDeliveryGoodsList
       }
     },
@@ -240,6 +258,10 @@
         this.projectId6 = ''
         this.startTime6 = ''
       },
+      cancel7 () {
+        this.valuePicker7 = ''
+        this.startTime7 = ''
+      },
       changePicker1 (res) {
         this.startTime1 = this.$Date.dateFormat(res[0], this.$Date.ISO8601_FORMAT_WITHOUT_TIME)
         this.endTime1 = this.$Date.dateFormat(res[1], this.$Date.ISO8601_FORMAT_WITHOUT_TIME)
@@ -263,6 +285,10 @@
       changePicker6 (res) {
         this.startTime6 = this.$Date.dateFormat(res[0], this.$Date.ISO8601_FORMAT_WITHOUT_TIME)
         this.endTime6 = this.$Date.dateFormat(res[1], this.$Date.ISO8601_FORMAT_WITHOUT_TIME)
+      },
+      changePicker7 (res) {
+        this.startTime7 = this.$Date.dateFormat(res[0], this.$Date.ISO8601_FORMAT_WITHOUT_TIME)
+        this.endTime7 = this.$Date.dateFormat(res[1], this.$Date.ISO8601_FORMAT_WITHOUT_TIME)
       },
       changeProject1 (res) {
         this.projectId1 = res
@@ -344,6 +370,15 @@
         }
         location.href = this.urlListPurchaseGoods + str
       },
+      exportPurchaseQuotationUserInfo () {
+        let str = ''
+        if (this.startTime7) {
+          str += '?startTime=' + this.startTime7 + '&endTime=' + this.endTime7
+        } else {
+          str += '?startTime=&endTime='
+        }
+        location.href = this.urlPurchaseQuotationUserInfo + str
+      },
       exportSceneGoods () {
         let str = ''
         if (this.startTime6) {
@@ -375,5 +410,4 @@
   .big_btn {
     margin-top: 10px;
   }
-
 </style>

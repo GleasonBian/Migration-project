@@ -108,8 +108,10 @@
       </template>
       <template slot-scope="scope" slot="handle">
         <!--<span class="handle" @click="openGoodsDialog(scope.row)">关联商品</span>-->
-        <span class="handle" @click="toEdit(scope.row)"
+        <span class="handle" v-if="scope.row.materialStateCode < 70" @click="toEdit(scope.row)"
         v-show="$Utils.getPageElement($Consts.PERMISSION.editPurchase.code)">编辑物资</span>
+        <span class="handle" @click="toEdit(scope.row)"
+              v-show="$Utils.getPageElement($Consts.PERMISSION.editPurchaseCW.code)">编辑物资</span>
         <span v-if="!scope.row.contractGoodsFlag" class="handle" @click="contractMaterials(scope.row)">合同物资</span>
       </template>
       <!--<template slot-scope="scope" slot="handle">-->

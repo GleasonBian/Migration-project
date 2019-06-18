@@ -274,7 +274,7 @@
 
           // 选项卡 翻页
           this.isFiveMultiply(this.index)
-        }, 5000)
+        }, 60000)
       },
       /**
        * 上一页
@@ -494,6 +494,17 @@
           },
           cb: res => {
             if (res.data.result) {
+              let iteme = []
+              res.data.data.supplierTypeMoney.map(item => {
+                iteme.push(item.toFixed(2))
+              })
+              let itemm = []
+              res.data.data.supplierTypeRate.map(item => {
+                itemm.push(item.toFixed(2))
+              })
+              res.data.data.supplierTypeMoney = iteme
+              res.data.data.supplierTypeRate = itemm
+  
               this.dataVendorsAll = res.data.data
               this.vendorsData = this.dataVendorsAll
               this.VendorsBar('chart_Vendors', this.vendorsData)
@@ -742,6 +753,7 @@
             name: '金额',
             type: 'bar',
             barWidth: 10,
+            color: '#28eefc',
             data: dataValue[0].dataMoney
             // data: [100, 200, 300, 400, 1000, 300]
           }]

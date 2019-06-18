@@ -75,6 +75,10 @@ const PERMISSION = {
     code: '06020304',
     desc: '编辑采购清单物资'
   },
+  editPurchaseCW: {
+    code: '06020308',
+    desc: '财务编辑采购清单物资'
+  },
   exportReceipt: {
     code: '06100302',
     desc: '收货单导出'
@@ -110,6 +114,26 @@ const PERMISSION = {
   beamSettlementSubmit: {
     code: '06020402',
     desc: '梁场结算单提交按钮'
+  },
+  supplyChainKanBan: {
+    code: '06110901',
+    desc: '供应链看板'
+  },
+  BusinessOverview: {
+    code: '06110902',
+    desc: '经营概览'
+  },
+  BeamFieldStatement: {
+    code: '06110903',
+    desc: '梁场结算单'
+  },
+  SupplierStatement: {
+    code: '06110904',
+    desc: '供应商结算单'
+  },
+  ZhangjhStatement: {
+    code: '06110905',
+    desc: '张吉怀TV看板'
   }
 }
 
