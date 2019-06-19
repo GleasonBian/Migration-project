@@ -51,7 +51,7 @@ export default {
         }
       ],
       goodsOffDialog: {
-        width: '30%',
+        width: '430px',
         show: false,
         title: '提示'
       },
