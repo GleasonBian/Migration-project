@@ -211,6 +211,7 @@
             this.pageProject.startTime = dateCurrentMonth
             break
         }
+        this.submit()
       },
       // 获取本季度开始日期
       getQuarterNow (date) {
