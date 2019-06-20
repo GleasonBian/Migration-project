@@ -6,7 +6,7 @@
     </table-list>
     <v-dialog :dialog="dialog" :dialogFooter="dialogFooter" @on-ok="ok"></v-dialog>
     <form-group :data="dataForm" :dataForm="dataFormsss" :rules="rules">
-      <template slot-scope="scope" slot="userName">
+      <template v-slot:userName="scope">
         bvzbd
       </template>
       <template slot="mn">

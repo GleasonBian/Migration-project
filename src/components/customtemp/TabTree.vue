@@ -3,7 +3,7 @@
        <template v-for="slotName in slotArr" slot-scope="scope" :slot="slotName">
             <slot :column="headerData" :rows="scope.rows" :row="scope.row" :index="scope.index" :name="slotName"></slot>
         </template>
-        <template slot-scope="scope" slot="expand">
+        <template v-slot:expand="scope">
             <div class="table_tree_sub">
                 <tab-tree-node :refs="'tab_name_' + scope.row.id" :header-data="headerData" :url="subUrl" :params="parentId" :no-expand="noExpand" :slot-arr="slotArr">
                     <template v-for="slotName in slotArr" slot-scope="scope" :slot="slotName">

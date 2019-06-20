@@ -14,7 +14,7 @@
     </v-search>
     <table-list :data-header="goodsDataHeader" @get-table-data="getTableData" :url="tableUrl" :refs="goodsListTable"
                 :params="params">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <div class="mCen1">
           <TabBut  v-if="scope.row.processingStateCode === 1 && type !== 2" :data="upTabButData"  @on-audit="onaudit(scope.row)"></TabBut>
           <TabBut  v-else :data="upTabButData1"  @on-view="onview(scope.row)" ></TabBut>

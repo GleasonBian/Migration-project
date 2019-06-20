@@ -4,7 +4,7 @@
     <tab-but :data="tabBut" @add-external="addExternal"></tab-but>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="handle">
+      <template v-slot:handle="scope">
         <a class="handle" style="margin-left: 10px;" @click="toDetails(scope.row.id)">查看</a>
       </template>
     </table-list>

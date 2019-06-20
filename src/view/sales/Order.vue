@@ -24,7 +24,7 @@
     </v-search>
     <table-list :dataHeader="tableHeader" @get-table-data="getTableData" :url="tableUrl" :refs="goodsMealListTable"
                 :params="params">
-      <template slot-scope="scope" slot="name">
+      <template v-slot:name="scope">
         <div class="mCen1">
           <div>订单编号:
             <el-button type="text" @click="onview(scope.row)">{{scope.row.orderNumber}}</el-button>
@@ -32,7 +32,7 @@
           <div>{{scope.row.userName}}:{{scope.row.userPhone}}</div>
         </div>
       </template>
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <div class="mCen1">
           <select-but :data="getSelectBtn(scope.row)" :ref="'select' + scope.row.id" :row="scope.row"
                       @change="selectChange"></select-but>
@@ -42,7 +42,7 @@
     <v-page :data="page" :dataArr="[params]"></v-page>
     <v-dialog :dialog="checkDialog">
       <form-group :data="checkForm" :custom=true>
-        <template slot-scope="scope" slot="btnGruop">
+        <template v-slot:btnGruop="scope">
           <div class="clearfix">
             <div class="pull-left" style="margin-right:20px;">
               <v-upload :data="uploadData" :customBeforeUpload=true @on-success="uploadSuccess">
@@ -56,10 +56,10 @@
             </div>
           </div>
         </template>
-        <template slot-scope="scope" slot="tableBox">
+        <template v-slot:tableBox="scope">
           <table-list :data-header="dataHeaderFile" :url="tabFileUrl" :refs="tablePurAndDeliveryFile"
                       :params="pageFile" @get-table-data="getTableDataFile" @selection-change="selectionChange">
-            <template slot-scope="scope" slot="fileOldName">
+            <template v-slot:fileOldName="scope">
               <a :href="getShowImgPath(scope.row.filePath)"
                  class="item_img" target="_blank">{{scope.row.fileOldName}}</a>
             </template>

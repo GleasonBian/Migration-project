@@ -2,16 +2,16 @@
   <div>
     <div style="width: 70%">
       <form-group :data="dataForm" class="box_pool" :dataBut="dataBut" @on-cancel="cancel" :custom=true @on-ok="save">
-        <template slot-scope="scope" slot="picture">
+        <template v-slot:picture="scope">
           <div class="box_nowrap">图片要求：宽高比300x300，小于等于1M，格式为JPG/PNG/GIF</div>
           <v-upload :data="logoData" @on-success-header="logoDataSuccess"></v-upload>
         </template>
-        <template slot-scope="scope" slot="mealGoodsClassifyVOList">
+        <template v-slot:mealGoodsClassifyVOList="scope">
           <div class="base_btn_group">
             <el-button type="primary" size="mini" @click="onAdd">新建类目</el-button>
           </div>
           <table-list :data-header="dataHeader" :dataStatic="dataTable1" :static="true">
-            <template slot-scope="scope" slot="operation">
+            <template v-slot:operation="scope">
               <tab-but :data="tabButTable" @on-del="tabTbDel(scope.row)" @on-edit="tabTbEdit(scope.row)"></tab-but>
             </template>
           </table-list>

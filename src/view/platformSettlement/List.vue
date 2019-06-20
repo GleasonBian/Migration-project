@@ -61,7 +61,7 @@
             <div class="board_box">
               <table-list :data-header="dataSupplier" :refs="dataSupplierRefs" :url="urlSupplier"
                           :params="pageSupplier">
-                <template slot-scope="scope" slot="number">
+                <template v-slot:number="scope">
                   {{scope.index + 1}}
                 </template>
               </table-list>
@@ -100,7 +100,7 @@
             <div class="board_box">
               <table-list :data-header="dataProject" :refs="dataProjectRefs" :url="urlSupplier"
                           :params="pageProject">
-                <template slot-scope="scope" slot="number">
+                <template v-slot:number="scope">
                   {{scope.index + 1}}
                 </template>
               </table-list>

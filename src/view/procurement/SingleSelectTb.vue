@@ -1,11 +1,11 @@
 <template>
   <div>
     <table-list :data-header="dataHeader" :data-static="dataLs" :static="tableStatic">
-      <!--<template slot-scope="scope" slot="singleChoice">-->
+      <!--<template v-slot:singleChoice="scope">-->
       <!--<el-radio v-model="radio" :label="scope.index" disabled v-if="scope.row.quotationStateCode == 0 || scope.row.quotationStateCode == 2"><span></span></el-radio>-->
       <!--<el-radio v-else v-model="radio" :label="scope.index"><span></span></el-radio>-->
       <!--</template>-->
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <!--<el-input v-model="scope.row.reason" @change="singleChange(scope.index, scope.row)" :disabled="scope.row.quotationStateCode == 0 || scope.row.quotationStateCode == 2"></el-input>-->
         <el-button type="text" @click="toShortlisted(scope.row)" v-show="scope.row.approveState !== '已中标'">入围
         </el-button>

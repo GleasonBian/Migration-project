@@ -49,7 +49,7 @@
           <el-col :span="12"><el-button type="text" style="font-size: 12px; float: right;" @click="toSceneMore">更多</el-button></el-col>
         </el-row>
         <table-list :data-header="sceneHeader" :refs="sceneRefs" :static="true" :dataStatic="sceneDataTable">
-          <template slot-scope="scope" slot="code">
+          <template v-slot:code="scope">
             <el-button type="text" @click="toDetScene(scope.row)">{{scope.row.code}}</el-button>
           </template>
         </table-list>
@@ -59,7 +59,7 @@
           <el-col :span="12"><el-button type="text" style="font-size: 12px; float: right;" @click="toTPurchaseMore">更多</el-button></el-col>
         </el-row>
         <table-list :data-header="tPurchaseHeader" :refs="tPurchaseRefs" :static="true" :dataStatic="tPurchaseDataTable">
-          <template slot-scope="scope" slot="number">
+          <template v-slot:number="scope">
             <el-button type="text" @click="toReplenish(scope.row)">{{scope.row.number}}</el-button>
           </template>
         </table-list>
@@ -72,7 +72,7 @@
       <!--<el-tab-pane label="销售定价" name="tab_sell">-->
         <!--<v-search :data="searchData_sell" @on-click="search_sell"></v-search>-->
         <!--<table-list :data-header="sellHeader" :url="sellUrl" :params="sellPage" :refs="sellRefs" @get-table-data="sellGetTableData">-->
-          <!--<template slot-scope="scope" slot="handle">-->
+          <!--<template v-slot:handle="scope">-->
             <!--&lt;!&ndash; <router-link class="handle" :to="{name: 'salesDetail', params:{id: scope.row.id, approve: 0}}" tag="a" target="_blank">查看</router-link>&nbsp;&nbsp;&nbsp; &ndash;&gt;-->
             <!--<router-link class="handle" :to="{name: 'salesDetailBoard', params:{id: scope.row.id, approve: 1}}" tag="a" target="_blank">审批</router-link>-->
           <!--</template>-->
@@ -83,7 +83,7 @@
       <!--<el-tab-pane label="采购定价" name="tab_purchase">-->
         <!--<v-search :data="searchData_purchase" @on-click="search_purchase"></v-search>-->
         <!--<table-list :data-header="purchaseHeader" :url="purchaseUrl" :params="purchasePage" :refs="purchaseRefs" @get-table-data="purchaseGetTableData">-->
-          <!--<template slot-scope="scope" slot="handle">-->
+          <!--<template v-slot:handle="scope">-->
             <!--&lt;!&ndash; <router-link class="handle" :to="{name: 'detailsProcurement', params:{id: scope.row.id}}" tag="a" target="_blank">查看</router-link>&nbsp;&nbsp;&nbsp; &ndash;&gt;-->
             <!--<router-link class="handle" :to="{name: 'procurementSearch', params:{id: scope.row.id, approve: 1}}" tag="a" target="_blank">审批</router-link>-->
           <!--</template>-->

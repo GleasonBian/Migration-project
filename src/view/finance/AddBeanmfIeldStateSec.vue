@@ -10,7 +10,7 @@
       <v-search :data="searchData" @on-click="search"></v-search>
       <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData"
                   :refs="tablePerformance">
-        <template slot-scope="scope" slot="cz">
+        <template v-slot:cz="scope">
           <span class="handle" @click="selInvoice(scope.row)">选择</span>
         </template>
       </table-list>

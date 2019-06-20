@@ -11,10 +11,10 @@
       </div>
     </div>
     <table-list :data-header="dataHeader" :data-static="quotationVO.quotationGoodsVOList"  :static="tableStatic">
-      <template slot-scope="scope" slot="unitGoodsPrice">
+      <template v-slot:unitGoodsPrice="scope">
         <el-input type="number" v-model="scope.row.unitGoodsPrice"></el-input>
       </template>
-      <template slot-scope="scope" slot="totalGoodsPrice">
+      <template v-slot:totalGoodsPrice="scope">
         <span>{{scope.row | itemTotal}}</span>
       </template>
     </table-list>
@@ -29,7 +29,7 @@
       <v-search :data="searchData" @on-click="search"></v-search>
       <table-list :data-header="pDataHeader" :url="pTabUrl" :params="page" @get-table-data="getTableData"
                   :refs="tablePerformance">
-        <template slot-scope="scope" slot="handle">
+        <template v-slot:handle="scope">
           <a class="add_item" @click="addPurchaseItem(scope.row.id)">添加</a>
         </template>
       </table-list>

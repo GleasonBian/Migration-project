@@ -28,42 +28,42 @@
     <el-button type="primary" @click="btnSave" class="distribution" :disabled="disabledSave">保存</el-button>
     <table-list :data-header="dataHeader" :data-static="dataStatic" :static="tableStatic" v-loading="loading"
                 @selection-change="gooodsSelection">
-      <template slot-scope="scope" slot="returnTypeDisplay">
+      <template v-slot:returnTypeDisplay="scope">
         <span :title="scope.row.returnChangeReason">{{scope.row.returnTypeDisplay}}</span>
       </template>
-      <template slot-scope="scope" slot="matchDegree">
+      <template v-slot:matchDegree="scope">
         <div v-if="scope.row.matchDegree">{{scope.row.matchDegree}}%</div>
         <div v-else>0%</div>
       </template>
-      <template slot-scope="scope" slot="ifAssociate">
+      <template v-slot:ifAssociate="scope">
         {{scope.row.ifAssociate ? '已关联' : '未关联'}}
       </template>
-      <template slot-scope="scope" slot="contractGoodsFlag">
+      <template v-slot:contractGoodsFlag="scope">
         {{scope.row.contractGoodsFlag ? '是' : '否'}}
       </template>
-      <template slot-scope="scope" slot="selection">
+      <template v-slot:selection="scope">
         <el-checkbox v-if="scope.row.materialStateCode === 20" v-model="checkedFalse"></el-checkbox>
         <el-checkbox v-else v-model="checkedFalse" disabled></el-checkbox>
       </template>
-      <template slot-scope="scope" slot="materialState">
+      <template v-slot:materialState="scope">
         <div class="color_red" v-if="scope.row.rejectFlag === 1">
           {{scope.row.materialStateDisplay}}({{scope.row.countReject}})
         </div>
         <div v-else>{{scope.row.materialStateDisplay}}</div>
       </template>
-      <template slot-scope="scope" slot="pricingAnalysis">
+      <template v-slot:pricingAnalysis="scope">
         <el-input type="number"
           v-if="(scope.row.contractGoodsFlag === 1 && scope.row.materialStateCode === 75) || (scope.row.materialStateCode === 10 || scope.row.materialStateCode === 20 || scope.row.materialStateCode === 50 || scope.row.materialStateCode === 65)"
           v-model="scope.row.pricingAnalysis"></el-input>
         <div v-else>{{scope.row.pricingAnalysis}}</div>
       </template>
-      <template slot-scope="scope" slot="remarkForPrice">
+      <template v-slot:remarkForPrice="scope">
         <el-input
           v-if="scope.row.materialStateCode === 10 || scope.row.materialStateCode === 20 || scope.row.materialStateCode === 50 || scope.row.materialStateCode === 65"
           v-model="scope.row.remarkForPrice"></el-input>
         <div v-else>{{scope.row.remarkForPrice}}</div>
       </template>
-      <template slot-scope="scope" slot="quotationEnumDisplay">
+      <template v-slot:quotationEnumDisplay="scope">
         <el-select
           v-if="scope.row.materialStateCode === 10 || scope.row.materialStateCode === 20 || scope.row.materialStateCode === 50 || scope.row.materialStateCode === 65"
           v-model="scope.row.saveQuotationEnumCode" placeholder="请选择">
@@ -76,7 +76,7 @@
         </el-select>
         <div v-else>{{scope.row.quotationEnumDisplay}}</div>
       </template>
-      <template slot-scope="scope" slot="relatedFileVOList">
+      <template v-slot:relatedFileVOList="scope">
         <div style="font-size: 12px;" v-if="scope.row.relatedFileVOList.length == 0">没有找到匹配的记录</div>
         <div v-if="scope.row.relatedFileVOList.length > 0">
           <div class="item_img" v-if="scope.row.relatedFileVOList.length > 0"
@@ -88,25 +88,25 @@
           </div>
         </div>
       </template>
-      <template slot-scope="scope" slot="recommendGoodsPrice">
+      <template v-slot:recommendGoodsPrice="scope">
         <el-input
           v-if="scope.row.materialStateCode === 10 || scope.row.materialStateCode === 20 || scope.row.materialStateCode === 50 || scope.row.materialStateCode === 65"
           type="number" v-model="scope.row.recommendGoodsPrice"></el-input>
         <div v-else>{{scope.row.recommendGoodsPrice}}</div>
       </template>
-      <template slot-scope="scope" slot="saleGuidancePrice">
+      <template v-slot:saleGuidancePrice="scope">
         <el-input
           v-if="scope.row.materialStateCode === 10 || scope.row.materialStateCode === 20 || scope.row.materialStateCode === 50 || scope.row.materialStateCode === 65"
           type="number" v-model="scope.row.saleGuidancePrice" @wheel.native.prevent></el-input>
         <div v-else>{{scope.row.saleGuidancePrice}}</div>
       </template>
-      <template slot-scope="scope" slot="stockPrice">
+      <template v-slot:stockPrice="scope">
         <el-input type="number" v-model="scope.row.stockPrice" @wheel.native.prevent></el-input>
       </template>
-      <template slot-scope="scope" slot="priceCompost">
+      <template v-slot:priceCompost="scope">
         <el-input v-model="scope.row.priceCompost" @wheel.native.prevent></el-input>
       </template>
-      <template slot-scope="scope" slot="handle">
+      <template v-slot:handle="scope">
         <!--<span class="handle" @click="openGoodsDialog(scope.row)">关联商品</span>-->
         <span class="handle" v-if="scope.row.materialStateCode < 70" @click="toEdit(scope.row)"
         v-show="$Utils.getPageElement($Consts.PERMISSION.editPurchase.code)">编辑物资</span>
@@ -114,14 +114,14 @@
               v-show="$Utils.getPageElement($Consts.PERMISSION.editPurchaseCW.code)">编辑物资</span>
         <span v-if="!scope.row.contractGoodsFlag" class="handle" @click="contractMaterials(scope.row)">合同物资</span>
       </template>
-      <!--<template slot-scope="scope" slot="handle">-->
+      <!--<template v-slot:handle="scope">-->
       <!--<div class="mCen1">-->
       <!--<select-but :data="getSelectBtn(scope.row)" :ref="'select' + scope.row.id" :row="scope.row"-->
       <!--@change="selectChange"></select-but>-->
       <!--</div>-->
       <!--</template>-->
 
-      <template slot-scope="scope" slot="historyPrice">
+      <template v-slot:historyPrice="scope">
         <span class="handle" @click="toDetail(scope.row.goodsName)">历史价</span>
         <span class="handle" @click="toDismissal(scope.row)">审批记录</span>
       </template>
@@ -131,10 +131,10 @@
     <div class="title" style="margin-top: 10px;">其他资料</div>
     <table-list :data-header="dataImgHeader" :url="imgTableUrl" :params="page" @get-table-data="getImgTableData"
                 :refs="tablePerformance" @selection-change="selectionChange">
-      <template slot-scope="scope" slot="fileOldName">
+      <template v-slot:fileOldName="scope">
         <div>{{scope.row.fileOldName}}</div>
       </template>
-      <template slot-scope="scope" slot="btnDownLoad">
+      <template v-slot:btnDownLoad="scope">
         <el-button size="mini" type="text" @click="getShowImgPath(scope.row)">下载</el-button>
       </template>
     </table-list>
@@ -148,7 +148,7 @@
       <v-search :data="searchData" @on-click="search"></v-search>
       <table-list :data-header="gDataHeader" :url="gTabUrl" :params="page1" @get-table-data="getTableData1"
                   :refs="tablePerformance1">
-        <template slot-scope="scope" slot="handle">
+        <template v-slot:handle="scope">
           <a class="add_item" @click="addGoodsItem(scope.row)">关联商品</a>
         </template>
       </table-list>
@@ -203,10 +203,10 @@
       <v-search :data="searchDataContractGoods" @on-click="searchContractGoods"></v-search>
       <table-list :data-header="dataHeaderContractGoods" :url="ContractGoodsTabUrl" :params="pageContractGoods" @get-table-data="getTableDataContractGoods"
                   :refs="tablePerformanceContract">
-        <template slot-scope="scope" slot="number">
+        <template v-slot:number="scope">
           <div>{{scope.index + 1}}</div>
         </template>
-        <template slot-scope="scope" slot="handle">
+        <template v-slot:handle="scope">
           <a class="add_item" @click="addPurchaseItem(scope.row.id)">添加</a>
         </template>
       </table-list>

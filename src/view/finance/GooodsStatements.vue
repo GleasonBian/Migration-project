@@ -10,11 +10,11 @@
                 @get-table-data="getTableData"
                 :params="page"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="number">
+      <template v-slot:number="scope">
         <span class="handle font_14" v-if="scope.row.numbers && scope.row.numbers.indexOf(',') != -1" @click="codeDetails(scope.row.numbers)">详情</span>
         <span v-else>{{scope.row.number}}</span>
       </template>
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <span class="handle" @click="onView(scope.row)">查看</span>
         <span class="handle" @click="onDerive(scope.row)">导出</span>
         <span class="handle" v-if="scope.row.processingStateCode === 3" @click="onEdit(scope.row)">编辑</span>

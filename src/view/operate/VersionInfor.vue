@@ -7,7 +7,7 @@
                 @get-table-data="getTableData"
                 :params="page"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <TabBut :data="tbBut" @on-edit="onEdit(scope.row)" @on-del="onDel(scope.row)" @resource="onResource(scope.row)"></TabBut>
       </template>
     </table-list>

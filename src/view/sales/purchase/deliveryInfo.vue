@@ -1,15 +1,15 @@
 <template>
   <div>
     <form-group :data="dataForm"  :custom=true >
-      <template slot-scope="scope" slot="boxInfo">
+      <template v-slot:boxInfo="scope">
         <div class="contract_title">进货单详情</div>
         <v-list :data="purchaseData" :data-list="purchaseList" :list-style="listStyle"></v-list>
         <div class="contract_title mr_b10">进货单商品</div>
         <table-list :data-header="dataHeader" :static="true" :dataStatic="dataTable" @selection-change="selectionChange" :refs="tableSalesPurchaseDelivery">
-          <template slot-scope="scope" slot="number">
+          <template v-slot:number="scope">
             {{scope.index+1}}
           </template>
-          <template slot-scope="scope" slot="stockGoodsCount">
+          <template v-slot:stockGoodsCount="scope">
             <el-input v-model="scope.row.stockGoodsCount" type="number" size="small" placeholder="0"
                       style="width:180px"></el-input>
           </template>

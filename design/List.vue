@@ -2,7 +2,7 @@
   <div>
     <v-search :data="searchData"></v-search>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="tabParams">
-      <template slot-scope="scope" slot="jname">
+      <template v-slot:jname="scope">
         <tab-but :data="tabData11" @on-del="tabDels(scope.row)" @on-edit="tabEdit(scope.row)"></tab-but>
       </template>
     </table-list>

@@ -4,20 +4,20 @@
     <tab-but :data="btnData" @push-order="pushOrder"></tab-but>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" :refs="tableDemandSceneList"
                 @get-table-data="getTableData" @selection-change="selectionChange">
-      <template slot-scope="scope" slot="code">
+      <template v-slot:code="scope">
         <span class="handle font_14" v-if="scope.row.codes && scope.row.codes.indexOf(',') != -1" @click="codeDetails(scope.row.codes)">详情</span>
         <span v-else>{{scope.row.code}}</span>
       </template>
-      <template slot-scope="scope" slot="lubanPlanCode">
+      <template v-slot:lubanPlanCode="scope">
         <span class="handle font_14" v-if="scope.row.lubanPlanCodes && scope.row.lubanPlanCodes.indexOf(',') != -1" @click="lubanCodeDetails(scope.row.lubanPlanCodes)">详情</span>
         <span v-else>{{scope.row.lubanPlanCode}}</span>
       </template>
-      <template slot-scope="scope" slot="pushState">
+      <template v-slot:pushState="scope">
         <span v-show="!scope.row.pushState">失败</span>
         <span v-show="scope.row.pushState === 1">成功</span>
         <span v-show="scope.row.pushState === 2">推送中</span>
       </template>
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <span class="handle" @click="onDetails(scope.row)">查看</span>
         <span class="handle" @click="pushGoods(scope.row)">推送商品</span>
         <span v-show="!scope.row.pushState" class="handle" @click="pushAgain(scope.row)">再次推送</span>

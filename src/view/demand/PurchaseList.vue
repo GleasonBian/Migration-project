@@ -3,7 +3,7 @@
     <v-search :data="searchData" @on-click="search"></v-search>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" :refs="tableDemandSceneList"
                 @get-table-data="getTableData" @selection-change="selectionChange">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <tab-but :data="getOperationBtn(scope.row.state)"
                  @on-detail="toDetails(scope.row)"
                  @to-export="toExport(scope.row)"

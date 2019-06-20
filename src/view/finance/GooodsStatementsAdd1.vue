@@ -7,7 +7,7 @@
     </div>
     <v-dialog :dialog="dialogCycle">
       <v-search :data="searchDataPur" @on-click="searchPur">
-        <template slot-scope="scope" slot="settlementType">
+        <template v-slot:settlementType="scope">
           <el-radio-group v-model="radioType">
             <el-radio :label="2">现结付款</el-radio>
             <el-radio :label="1">账期付款</el-radio>
@@ -17,7 +17,7 @@
       <br>
       <table-list :data-header="pDataHeader" :url="pTabUrl" :params="pagePur" @get-table-data="getTableDataPur"
                   :refs="refsPur">
-        <template slot-scope="scope" slot="handle">
+        <template v-slot:handle="scope">
           <a class="add_item" @click="addPurchaseItem(scope.row)">选择</a>
         </template>
       </table-list>

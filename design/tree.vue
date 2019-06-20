@@ -1,14 +1,14 @@
 <template>
   <div>
     <table-list :data-header="dataHeader" :url="tabUrl" :refs="tableRegionList">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <tab-but :data="operationBtn" @on-relatedArea="onRelatedArea(scope.row)"></tab-but>
       </template>
     </table-list>
     <v-dialog :dialog="dialogRelatedArea">
       <form-group :data="relatedArea" :clear=true :data-but="dataButArea" @on-cancel="cancelArea"
                   @close-dialog="cancelArea" @ok-area="okArea">
-        <template slot-scope="scope" slot="searchArea">
+        <template v-slot:searchArea="scope">
           <v-tree :data="treeData" :refs="treeDataObj" @get-checked-nodes="getCheckedNodes"></v-tree>
         </template>
       </form-group>

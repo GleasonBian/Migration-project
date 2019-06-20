@@ -7,10 +7,10 @@
                 @get-table-data="getTableData"
                 :params="page"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="download">
+      <template v-slot:download="scope">
         <el-button type="text" @click="toDownload(scope.row)" size="mini">资源包下载</el-button>
       </template>
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <TabBut :data="tbBut" @on-edit="onEdit(scope.row)" @on-del="onDel(scope.row)"></TabBut>
       </template>
     </table-list>
@@ -18,7 +18,7 @@
 
     <v-dialog :dialog="resourceDialog">
       <form-group :data="resourceForm" @on-cancel="resourceCancel" @on-ok="resourceOk" :custom=true :clear=true :data-but="resourceBut">
-        <template slot-scope="scope" slot="fileUrl">
+        <template v-slot:fileUrl="scope">
           <v-upload :data="uploadData" :customBeforeUpload="customBeforeUpload" @on-success="uploadSuccess">
             <div><el-button size="small" type="primary">上传资源附件</el-button></div>
           </v-upload>
@@ -28,7 +28,7 @@
 
     <v-dialog :dialog="resourceDialogEdit">
       <form-group :data="resourceFormEdit" @on-cancel="resourceCancelEdit" @on-ok="resourceOkEdit" :custom=true :data-but="resourceButEdit">
-        <template slot-scope="scope" slot="fileUrl">
+        <template v-slot:fileUrl="scope">
           <v-upload :data="uploadDataEdit" :customBeforeUpload="customBeforeUpload" @on-success="uploadSuccess">
             <div><el-button size="small" type="primary">上传资源附件</el-button></div>
           </v-upload>

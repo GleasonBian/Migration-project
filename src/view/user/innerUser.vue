@@ -9,7 +9,7 @@
                 @get-table-data="getTableData"
                 :params="page"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="handle">
+      <template v-slot:handle="scope">
         <span class="handle" @click="tableView(scope.row)">查看</span>
       </template>
     </table-list>

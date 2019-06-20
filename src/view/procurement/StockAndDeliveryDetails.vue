@@ -6,7 +6,7 @@
         <v-list :data="purchaseDeliverData" :data-list="item" :list-style="listStyle"></v-list>
         <div class="contract_title mr_b10">商品明细</div>
         <table-list :data-header="dataHeader" :static="true" :dataStatic="item.dataTable" :refs="item.refName">
-          <template slot-scope="scope" slot="number">
+          <template v-slot:number="scope">
             {{scope.index+1}}
           </template>
         </table-list>
@@ -19,7 +19,7 @@
     <div v-else>暂无收货单</div>
     <v-dialog :dialog="checkDialog">
       <form-group :data="checkForm" @on-cancel="checkCancel" :custom=true>
-        <template slot-scope="scope" slot="btnGruop">
+        <template v-slot:btnGruop="scope">
           <div class="clearfix">
             <div class="pull-left" style="margin-right:20px;">
               <v-upload :data="uploadData" :customBeforeUpload="customBeforeUpload" @on-success="uploadSuccess">
@@ -31,10 +31,10 @@
             </div>
           </div>
         </template>
-        <template slot-scope="scope" slot="tableBox">
+        <template v-slot:tableBox="scope">
           <table-list :data-header="dataHeaderFile" :url="tabFileUrl" :refs="tablePurAndDeliveryFile"
                       :params="page" @get-table-data="getTableData" @selection-change="selectionChange">
-            <template slot-scope="scope" slot="fileOldName">
+            <template v-slot:fileOldName="scope">
               <div class="item_img" @click="getShowImgPath(scope.row.filePath)">{{scope.row.fileOldName}}</div>
             </template>
           </table-list>

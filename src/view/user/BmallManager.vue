@@ -8,7 +8,7 @@
                 @get-table-data="getTableData"
                 :params="page"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <span class="handle" @click="tabAllocation(scope.row)">分配给用户</span>
         <span v-show="scope.row.stateCode == '1'" class="handle" @click="onDetails(scope.row)">查看</span>
         <span v-show="scope.row.stateCode == '1'" class="handle" @click="editProject(scope.row)">编辑</span>
@@ -39,7 +39,7 @@
     <v-dialog :dialog="dialogDataAddProject">
       <form-group :data="dataFormAddProject" style="width: 100%" :custom=true @on-cancel="cancelDialogProject" @on-ok="okProject"
                   :data-but="dataButAddProject">
-        <template slot-scope="scope" slot="areaId">
+        <template v-slot:areaId="scope">
           <v-cites @on-change="citesChange" :value="citesValues(scope.rows)"></v-cites>
         </template>
       </form-group>
@@ -53,34 +53,34 @@
     <!--梁场查看模态框-->
     <v-dialog :dialog="dialogDataDetailsProject">
       <form-group :data="dataFormDetailsProject" style="width: 100%" :custom=true @on-cancel="cancelDialogProjectDetails">
-        <template slot-scope="scope" slot="projectName">
+        <template v-slot:projectName="scope">
           <span>{{projectDataDetails.projectName}}</span>
         </template>
-        <template slot-scope="scope" slot="organizationName">
+        <template v-slot:organizationName="scope">
           <span>{{projectDataDetails.organizationName}}</span>
         </template>
-        <template slot-scope="scope" slot="companyName">
+        <template v-slot:companyName="scope">
           <span>{{projectDataDetails.companyName}}</span>
         </template>
-        <template slot-scope="scope" slot="userName">
+        <template v-slot:userName="scope">
           <span>{{projectDataDetails.userName}}</span>
         </template>
-        <template slot-scope="scope" slot="userPhone">
+        <template v-slot:userPhone="scope">
           <span>{{projectDataDetails.userPhone}}</span>
         </template>
-        <template slot-scope="scope" slot="wholeAddress">
+        <template v-slot:wholeAddress="scope">
           <span>{{projectDataDetails.wholeAddress}}</span>
         </template>
-        <template slot-scope="scope" slot="remark">
+        <template v-slot:remark="scope">
           <span>{{projectDataDetails.remark}}</span>
         </template>
-        <template slot-scope="scope" slot="stateDisplay">
+        <template v-slot:stateDisplay="scope">
           <span>{{projectDataDetails.stateDisplay}}</span>
         </template>
-        <template slot-scope="scope" slot="createTimeStr">
+        <template v-slot:createTimeStr="scope">
           <span>{{projectDataDetails.createTimeStr}}</span>
         </template>
-        <template slot-scope="scope" slot="createPerson">
+        <template v-slot:createPerson="scope">
           <span>{{projectDataDetails.createPerson}}</span>
         </template>
       </form-group>

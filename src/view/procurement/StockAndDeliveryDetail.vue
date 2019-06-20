@@ -5,16 +5,16 @@
     <div class="contract_title mr_b10">商品明细</div>
     <table-list :data-header="dataHeader" :static="true" :dataStatic="dataTable"
                 :refs="tableSalePurchaseAndDeliveryDetail" v-show="!isRead">
-      <template slot-scope="scope" slot="number">
+      <template v-slot:number="scope">
         {{scope.index + 1}}
       </template>
-      <template slot-scope="scope" slot="collectionQuantity">
+      <template v-slot:collectionQuantity="scope">
         <el-input type="number" v-model="scope.row.collectionQuantity" @wheel.native.prevent></el-input>
       </template>
     </table-list>
     <table-list :data-header="dataHeaderRead" :static="true" :dataStatic="dataTable"
                 :refs="tableSalePurchaseAndDeliveryDetail" v-show="isRead">
-      <template slot-scope="scope" slot="number">
+      <template v-slot:number="scope">
         {{scope.index + 1}}
       </template>
     </table-list>
@@ -22,7 +22,7 @@
     <div style="width:40%">
       <table-list :data-header="dataHeaderFile1" :url="tabFileUrl" :refs="tablePurAndDeliveryFile"
                   :params="page" @get-table-data="getTableData" @selection-change="selectionChange">
-        <template slot-scope="scope" slot="fileOldName">
+        <template v-slot:fileOldName="scope">
           <a :href="getShowImgPath(scope.row.filePath)"
              class="item_img" target="_blank">{{scope.row.fileOldName}}</a>
         </template>
@@ -39,7 +39,7 @@
     </div>
     <v-dialog :dialog="checkDialog">
       <form-group :data="checkForm" @on-cancel="checkCancel" :custom=true>
-        <template slot-scope="scope" slot="btnGruop">
+        <template v-slot:btnGruop="scope">
           <div class="clearfix">
             <div class="pull-left" style="margin-right:20px;">
               <v-upload :data="uploadData" :customBeforeUpload="customBeforeUpload" @on-success="uploadSuccess">
@@ -53,10 +53,10 @@
             </div>
           </div>
         </template>
-        <template slot-scope="scope" slot="tableBox">
+        <template v-slot:tableBox="scope">
           <table-list :data-header="dataHeaderFile" :url="tabFileUrl" :refs="tablePurAndDeliveryFile"
                       :params="page" @get-table-data="getTableData" @selection-change="selectionChange">
-            <template slot-scope="scope" slot="fileOldName">
+            <template v-slot:fileOldName="scope">
               <a :href="getShowImgPath(scope.row.filePath)"
                  class="item_img" target="_blank">{{scope.row.fileOldName}}</a>
             </template>

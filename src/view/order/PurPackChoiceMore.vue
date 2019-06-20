@@ -10,7 +10,7 @@
       <div class="collapse_title_item">报价总额:{{tbDataList.totalGoodsPrice}}</div>
     </div>
     <table-list :data-header="dataHeader" :data-static="tbDataList.quotationGoodsVOList"  :static="tableStatic">
-      <template slot-scope="scope" slot="reason">
+      <template v-slot:reason="scope">
         <el-input v-model="scope.row.reason" :disabled="scope.row.quotationStateCode == 0"></el-input>
       </template>
     </table-list>

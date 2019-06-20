@@ -10,13 +10,13 @@
                 @get-table-data="getTableData"
                 :params="page"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="number">
+      <template v-slot:number="scope">
         {{scope.index + 1}}
       </template>
-      <template slot-scope="scope" slot="moneyElse">
+      <template v-slot:moneyElse="scope">
         <span>{{((scope.row.applicationMoney !== null) && (scope.row.actualApplicationMoney !== null)) ? ((scope.row.applicationMoney * 1000) - (scope.row.actualApplicationMoney) * 1000) / 1000 : ''}}</span>
       </template>
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <span class="handle" @click="jumpDetailSetlement(scope.row.id)">查看</span>
       </template>
     </table-list>

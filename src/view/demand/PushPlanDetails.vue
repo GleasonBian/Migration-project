@@ -6,7 +6,7 @@
       </div>
       <div class="title" style="margin-top: 15px;">商品明细</div>
         <table-list :data-header="dataHeader" :data-static="dataStatic" :refs="tablePerformance" :static="tableStatic">
-          <template slot-scope="scope" slot="relatedFileVOList">
+          <template v-slot:relatedFileVOList="scope">
             <div style="font-size: 12px;" v-if="scope.row.relatedFileVOList.length == 0">没有找到匹配的记录</div>
             <div v-if="scope.row.relatedFileVOList.length > 0">
               <div class="item_img" v-if="scope.row.relatedFileVOList.length > 0"  v-for="(item, index) in scope.row.relatedFileVOList" :key="index" @click="getShowImgPath(item.filePath)">{{ item | itemImg }}</div>

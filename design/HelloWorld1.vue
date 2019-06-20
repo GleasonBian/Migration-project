@@ -4,7 +4,7 @@
     <table-list :data="tableData" :data-header="dataHeader" :tabStyle="tabStyle"></table-list>
     <v-dialog :dialog="dialog">
       <form-group :data="dataForm" :dataForm="dataFormsss" :rules="rules">
-        <template slot-scope="scope" slot="userName">
+        <template v-slot:userName="scope">
           bvzbd
         </template>
         <template slot="mn">
@@ -13,7 +13,7 @@
       </form-group>
     </v-dialog>
     <form-group :data="dataForm" :dataForm="dataFormsss" :rules="rules">
-      <template slot-scope="scope" slot="userName">
+      <template v-slot:userName="scope">
         bvzbd
       </template>
       <template slot="mn">

@@ -1,7 +1,7 @@
 <template>
   <div>
     <form-group :data="dataForm" class="box_pool" :dataBut="dataBut" @on-cancel="cancel" :clear=true :custom=true @on-ok="getValid">
-      <template slot-scope="scope" slot="imgUrl">
+      <template v-slot:imgUrl="scope">
         <v-upload :data="uploadData" :customBeforeUpload="customBeforeUpload" @on-success="uploadSuccess" @before-upload="beforeUpload">
           <div><el-button size="small" type="primary">上传标题图片</el-button></div>
         </v-upload>

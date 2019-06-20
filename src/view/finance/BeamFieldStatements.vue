@@ -18,11 +18,11 @@
     </div>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="number">
+      <template v-slot:number="scope">
         <span class="handle font_14" v-if="scope.row.numbers && scope.row.numbers.indexOf(',') != -1" @click="codeDetails(scope.row.numbers)">详情</span>
         <span v-else>{{scope.row.number}}</span>
       </template>
-      <template slot-scope="scope" slot="cz">
+      <template v-slot:cz="scope">
         <div>
           <span class="handle" @click="jumpDetailSetlement(scope.row.id)">查看</span>
           <span class="handle" v-if="scope.row.processingStateCode === 3" @click="editSettle(scope.row)">编辑</span>

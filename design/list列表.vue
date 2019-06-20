@@ -1,10 +1,10 @@
 <template>
     <div>
         <v-list :data="data" :data-list="dataList">
-            <template slot-scope="scope" slot="aa">
+            <template v-slot:aa="scope">
                 <div>asddjkladabdjl</div>
             </template>
-            <template slot-scope="scope" slot="bb">
+            <template v-slot:bb="scope">
                 <div>dfddd</div>
             </template>
         </v-list>

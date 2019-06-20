@@ -27,10 +27,10 @@
             <!--</template>-->
             <!--<div>-->
               <!--<table-list :data-header="dataHeader" :data-static="item.quotationGoodsVOList"  :static="tableStatic">-->
-                <!--<template slot-scope="scope" slot="unitGoodsPrice">-->
+                <!--<template ="scopeunitGoodsPrice="scope">-->
                   <!--<el-input type="number" v-model="scope.row.unitGoodsPrice"></el-input>-->
                 <!--</template>-->
-                <!--<template slot-scope="scope" slot="totalGoodsPrice">-->
+                <!--<template v-slot:totalGoodsPrice="scope">-->
                   <!--<span>{{scope.row | itemTotal($Utils)}}</span>-->
                 <!--</template>-->
               <!--</table-list>-->
@@ -52,7 +52,7 @@
         <v-search :data="searchData" @on-click="search"></v-search>
         <table-list :data-header="pDataHeader" :url="pTabUrl" :params="page" @get-table-data="getTableData"
                     :refs="tablePerformance">
-          <template slot-scope="scope" slot="handle">
+          <template v-slot:handle="scope">
             <a class="add_item" @click="addPurchaseItem(scope.row.id)">添加</a>
           </template>
         </table-list>
@@ -75,10 +75,10 @@
 
       <div class="title" style="margin-top: 10px;">其他资料</div>
       <table-list :data-header="dataImgHeader" :url="imgTableUrl" :params="pageInfo" @get-table-data="getImgTableData" :refs="tablePerformanceImg">
-        <template slot-scope="scope" slot="fileOldName">
+        <template v-slot:fileOldName="scope">
           <div>{{scope.row.fileOldName}}</div>
         </template>
-        <template slot-scope="scope" slot="btnDownLoad">
+        <template v-slot:btnDownLoad="scope">
           <el-button size="mini" type="text" @click="getShowImgPath(scope.row)">下载</el-button>
         </template>
       </table-list>

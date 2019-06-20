@@ -2,13 +2,13 @@
   <div>
     <div>新建采购计划</div>
     <form-group :data="dataFormAdd" @on-cancel="cancelAdd" @on-ok="okAdd" :custom=true :data-but="dataButAdd" class="txt_fr">
-      <template slot-scope="scope" slot="listPurchaserId">
+      <template v-slot:listPurchaserId="scope">
         <el-input v-model="scope.rows.value" placeholder="请选择" readonly @focus="toDialog"></el-input>
       </template>
-      <template slot-scope="scope" slot="projectName">
+      <template v-slot:projectName="scope">
         <el-input v-model="scope.rows.value" placeholder="请选择" readonly @focus="toDialog"></el-input>
       </template>
-      <template slot-scope="scope" slot="table">
+      <template v-slot:table="scope">
         <div v-show="isTrue">
           <br><br>
           <h5>选择配送出库单</h5>
@@ -24,7 +24,7 @@
     <v-dialog :dialog="dialogDataSetAdmin">
       <v-search :data="searchData" @on-click="searchClick"></v-search>
       <table-list :data-header="dataHeaderDialog" :url="tabUrlDialog" :params="pageDialog" @get-table-data="getTableDataDialog" :refs="tableDialog">
-        <template slot-scope="scope" slot="choose">
+        <template v-slot:choose="scope">
           <el-radio v-model="radioChoose" :label="scope.row.id" @change="radioChange(scope.row)">&nbsp;</el-radio>
         </template>
       </table-list>

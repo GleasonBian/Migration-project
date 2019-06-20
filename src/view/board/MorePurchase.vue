@@ -2,10 +2,10 @@
   <div>
     <v-search :data="searchData" @on-click="searchDataClick"></v-search>
     <table-list :data-header="sellHeader" :url="sellUrl" :params="page" :refs="sellRefs" @get-table-data="sellGetTableData">
-      <template slot-scope="scope" slot="number">
+      <template v-slot:number="scope">
         <el-button type="text" @click="toDet(scope.row)">{{scope.row.number}}</el-button>
       </template>
-      <template slot-scope="scope" slot="replenishStockCode">
+      <template v-slot:replenishStockCode="scope">
         <el-button type="text" @click="toReplenish(scope.row)">{{scope.row.replenishStockCode}}</el-button>
       </template>
     </table-list>

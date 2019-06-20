@@ -2,27 +2,27 @@
   <div>
     <div>
       <form-group :data="dataForm" :data-but="dataBut" @on-ok="saveAll" @return-page="returnListPage" :custom=true>
-        <template slot-scope="scope" slot="enterpriseName">
+        <template v-slot:enterpriseName="scope">
           <span ref="prise">{{enterpriseName ? enterpriseName : ''}}</span>
           <el-button type="text" @click="choiceCompany"><i class="el-icon-plus"></i>选择企业</el-button>
         </template>
-        <template slot-scope="scope" slot="warehouseName">
+        <template v-slot:warehouseName="scope">
           <span ref="house">{{warehouseName ? warehouseName : ''}}</span>
           <el-button type="text" @click="choiceWarehouse"><i class="el-icon-plus"></i>选择仓库</el-button>
         </template>
-        <template slot-scope="scope" slot="boxTable">
+        <template v-slot:boxTable="scope">
           <tab-but :data="btnAddGoodsData" @on-add="addGoods"></tab-but>
           <table-list :data-header="dataHeaderGoodsAll" :static=true :dataStatic="dataTableGoodsAll" :refs="tableSalesGoodsAll">
-            <template slot-scope="scope" slot="unitGoodsPrice">
+            <template v-slot:unitGoodsPrice="scope">
               <el-input v-model="scope.row.unitGoodsPrice" type="number" size="small" placeholder="0"
                         min="0" style="width:150px"></el-input>
             </template>
-            <template slot-scope="scope" slot="replenishStockNum">
+            <template v-slot:replenishStockNum="scope">
               <el-input v-model="scope.row.replenishStockNum" type="number" size="small" placeholder="0"
                         min="0" style="width:150px"></el-input>
             </template>
-            <template slot-scope="scope" slot="subtotal"><div>{{scope.row | getSubtotal($Utils)}}</div></template>
-            <template slot-scope="scope" slot="deleteBtn">
+            <template v-slot:subtotal="scope"><div>{{scope.row | getSubtotal($Utils)}}</div></template>
+            <template v-slot:deleteBtn="scope">
               <el-button type="text" @click="deleteGood(scope.index, scope.row)">删除</el-button>
             </template>
           </table-list>
@@ -31,13 +31,13 @@
       <v-dialog :dialog="dialogCompany">
         <form-group :data="companyDialogData" :dataBut="dataCompanyBut" :custom=true
                     @on-ok="saveCompanyData" @on-cancel="cancelCompany" @close-dialog="closeDialogCompany">
-          <template slot-scope="scope" slot="searchData">
+          <template v-slot:searchData="scope">
             <v-search :data="searchCompanyData" @on-click="searchCompany"></v-search>
           </template>
-          <template slot-scope="scope" slot="selectedCompany">
+          <template v-slot:selectedCompany="scope">
             <table-list :data-header="dataHeaderCompany" :url="tabCompanyUrl" :params="pageCompany"
                         @get-table-data="getTableCompanyData" :refs="tableContractCompany">
-              <template slot-scope="scope" slot="radioSelect">
+              <template v-slot:radioSelect="scope">
                 <el-radio v-model="radioChoose" :label="scope.row">&nbsp;</el-radio>
               </template>
             </table-list>
@@ -48,13 +48,13 @@
       <v-dialog :dialog="dialogWarehouse">
         <form-group :data="warehouseDialogData" :dataBut="dataWarehouseBut" :custom=true
                     @on-ok="saveWarehouseData" @on-cancel="cancelWarehouse" @close-dialog="closeDialogWarehouse">
-          <template slot-scope="scope" slot="searchWarehouseData">
+          <template v-slot:searchWarehouseData="scope">
             <v-search :data="searchWarehouseData" @on-click="searchWarehouse"></v-search>
           </template>
-          <template slot-scope="scope" slot="selectedWarehouse">
+          <template v-slot:selectedWarehouse="scope">
             <table-list :data-header="dataHeaderWarehouse" :url="tabWarehouseUrl" :params="pageWarehouse"
                         @get-table-data="getTableWarehouseData" :refs="tableContractWarehouse">
-              <template slot-scope="scope" slot="radioSelect">
+              <template v-slot:radioSelect="scope">
                 <el-radio v-model="radioChooseWarehouse" :label="scope.row">&nbsp;</el-radio>
               </template>
             </table-list>
@@ -65,10 +65,10 @@
       <v-dialog :dialog="dialogGoods">
         <form-group :data="goodsDialogData" :dataBut="dataGoodsBut" :custom=true
                     @on-ok="saveGoodsData" @on-cancel="cancelGoods" @close-dialog="closeDialogGoods">
-          <template slot-scope="scope" slot="searchGoodsData">
+          <template v-slot:searchGoodsData="scope">
             <v-search :data="searchGoodsData" @on-click="searchGoods"></v-search>
           </template>
-          <template slot-scope="scope" slot="selectedGoods">
+          <template v-slot:selectedGoods="scope">
             <table-list :data-header="dataHeaderGoods" :url="tabGoodsUrl" :params="pageGoods"
                         @selection-change="selectionChange" @get-table-data="getTableGoodsData" :refs="tableContractGoods">
             </table-list>

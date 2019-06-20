@@ -19,14 +19,14 @@
     </table>
     <div class="contract_title">商品明细</div>
     <table-list :data-header="dataHeader" :dataStatic="goodsDetailList" :static="true">
-      <template slot-scope="scope" slot="picturePath">
+      <template v-slot:picturePath="scope">
         <img :src="scope.row.picturePath" style="max-height:40px;"/>
       </template>
     </table-list>
 
     <div class="contract_title">供应验收单列表</div>
     <table-list :dataHeader="tableHeader" @get-table-data="getTableData" :url="tableUrl" :refs="goodsMealListTable" :params="page">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <div>
           <router-link class="handle" :to="{name: 'demandLibraryView', params:{id: scope.row.id}}" tag="a" target="_blank">查看</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
@@ -36,7 +36,7 @@
 
     <v-dialog :dialog="checkDialog">
       <form-group :data="checkForm"  :custom=true>
-        <template slot-scope="scope" slot="btnGruop">
+        <template v-slot:btnGruop="scope">
           <div class="clearfix">
             <div class="pull-left" style="margin-right:20px;">
               <v-upload :data="uploadData" :customBeforeUpload=true @on-success="uploadSuccess">
@@ -48,10 +48,10 @@
             </div>
           </div>
         </template>
-        <template slot-scope="scope" slot="tableBox">
+        <template v-slot:tableBox="scope">
           <table-list :data-header="dataHeaderFile" :url="tabFileUrl" :refs="tablePurAndDeliveryFile"
                       :params="pageFile" @get-table-data="getTableDataFile" @selection-change="selectionChange">
-            <template slot-scope="scope" slot="fileOldName">
+            <template v-slot:fileOldName="scope">
               <a :href="getShowImgPath(scope.row.filePath)"
                  class="item_img" target="_blank">{{scope.row.fileOldName}}</a>
             </template>

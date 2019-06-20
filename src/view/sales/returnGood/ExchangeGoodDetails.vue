@@ -15,7 +15,7 @@
     </table>
     <div class="contract_title">商品明细</div>
     <table-list :data-header="dataHeader" :dataStatic="goodsDetailList" :static="true">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <el-button type="text" @click="toGoodsDetails(scope.row)">查看</el-button>
       </template>
     </table-list>

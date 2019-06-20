@@ -2,9 +2,9 @@
   <div class="">
     <v-list :data="demandDetaildData" :data-list="demandDetailList" :list-style="listStyle"></v-list>
     <v-list :data="demandRemarkData" :data-list="demandDetailList" :list-style="listStyleRemark">
-      <template slot-scope="scope" slot="enclosure">
+      <template v-slot:enclosure="scope">
         <table-list :data-header="dataHeaderEnclosure" :static="true" :dataStatic="dataTableEnclosure" :refs="tableDemandEnclosure">
-          <template slot-scope="scope" slot="downFile">
+          <template v-slot:downFile="scope">
             <a :href="getHrefFile(scope.row.filePath)">下载</a>
           </template>
         </table-list>
@@ -12,11 +12,11 @@
     </v-list>
     <div style="margin: 10px 0">商品明细</div>
     <table-list :data-header="dataHeaderGoods" :tabStyle="TabStyle" :static=true :dataStatic="dataTableGoodsAll" :refs="tableDemandGoodsDetail">
-      <template slot-scope="scope" slot="expand">
+      <template v-slot:expand="scope">
         <table-list :data-header="dataHeaderGoods1" :tabStyle="TabStyle1" :static=true :dataStatic="getDataGoodsRelation(scope.row)" :refs="tableDemandGoodsDetail">\
         </table-list>
       </template>
-      <template slot-scope="scope" slot="goodsCode">
+      <template v-slot:goodsCode="scope">
         <div v-if="scope.row.type === 1">{{scope.row.goodsId}}</div>
         <div v-else>
           <div v-if="scope.row.goodsProviderVO">
@@ -25,7 +25,7 @@
           <el-button v-else type="text" class="el-table__expand-column" ref="aaa">未关联商品</el-button>
         </div>
       </template>
-      <template slot-scope="scope" slot="totalGoodsPrice">
+      <template v-slot:totalGoodsPrice="scope">
         <div v-if="scope.row.type === 1">{{scope.row.unitPrice * scope.row.goodsCount}}</div>
         <div v-else>-</div>
       </template>

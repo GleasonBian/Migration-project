@@ -6,19 +6,19 @@
                 <img src="../static/img/header_logo.png" width="110"/>
                 <div class="login_title">欢迎进入中台系统</div>
                 <form-group :data="loginData" :data-but="dataBut" :custom=true :class-name="loginDataClass" @on-ok="login" :refs="loginFrom">
-                    <template slot-scope="scope" slot="userid">
+                    <template v-slot:userid="scope">
                         <div class="clearfix">
                             <img class="pull-left" src="../static/img/icon_user.png" alt="" height="36"/>
                             <el-input v-model="scope.rows.value" placeholder="请输入账号" class="pull-left"></el-input>
                         </div>
                     </template>
-                    <template slot-scope="scope" slot="password">
+                    <template v-slot:password="scope">
                         <div class="clearfix">
                             <img class="pull-left" src="../static/img/icon_password.png" alt="" height="36"/>
                             <el-input ref="password" v-focus="$refs" v-model="scope.rows.value" type="password" placeholder="请输入密码" class="pull-left" @keyup.enter.native="loginEnter"></el-input>
                         </div>
                     </template>
-                    <template slot-scope="scope" slot="custom">
+                    <template v-slot:custom="scope">
                         <div class="prompt">{{message}}</div>
                     </template>
                 </form-group>
@@ -26,7 +26,7 @@
         </div>
         <v-dialog :dialog="editUserData">
             <form-group :data="editUserForm" :dataBut="dataBut2" @on-cancel="cancel" @close-dialog="closeDialog">
-               <template slot-scope="scope" slot="loginMessage">
+               <template v-slot:loginMessage="scope">
                  <div class="login-message-box">您的密码过于简单,请修改密码!</div>
               </template>
             </form-group>

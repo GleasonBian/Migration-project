@@ -9,7 +9,7 @@
       <div v-for="quotationVO in dataTable1">
         <div style="margin:20px;text-align: center">{{quotationVO[0].quotationVO.companyName}}</div>
         <table-list :data-header="dataHeader" :dataStatic="quotationVO" :static="true">
-          <template slot-scope="scope" slot="operation">
+          <template v-slot:operation="scope">
             <el-form :model="scope.row" refs="rulesForm" >
               <el-form-item prop="stockNum">
                 <el-input type="number" v-model="scope.row.stockNum" size="small" :min="0" placeholder="0" style="width:150px" :class="{mInput: scope.row.classFlag}"></el-input>

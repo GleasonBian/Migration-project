@@ -31,13 +31,13 @@
           </template>
           <table-list :data-header="dataHeader" :data-static="item.quotationGoodsVOList" :static="tableStatic"
                       @selection-change="selectionChange">
-            <template slot-scope="scope" slot="unitGoodsPrice">
+            <template v-slot:unitGoodsPrice="scope">
               <el-input
                 v-if="scope.row.stateCode === 10 || scope.row.stateCode === 20 || scope.row.stateCode === 60"
                 v-model.lazy="scope.row.unitGoodsPrice" type="number" @blur="savePrice(scope.row)"></el-input>
               <span v-else>{{scope.row.unitGoodsPrice}}</span>
             </template>
-            <template slot-scope="scope" slot="taxPoint">
+            <template v-slot:taxPoint="scope">
               <el-input
                 v-if="scope.row.stateCode === 10 || scope.row.stateCode === 20 || scope.row.stateCode === 60"
                 v-model.lazy="scope.row.taxPoint" type="number" @blur="saveTaxPoint(scope.row)"></el-input>
@@ -46,16 +46,16 @@
               <!--&gt;{{scope.row.taxPoint}}</span>-->
               <span v-else>{{scope.row.taxPoint}}</span>
             </template>
-            <template slot-scope="scope" slot="reason">
+            <template v-slot:reason="scope">
               <el-input v-if="scope.row.stateCode === 10 || scope.row.stateCode === 20 || scope.row.stateCode === 60"
                         v-model="scope.row.reason" :disabled="scope.row.quotationStateCode == 0"
                         @blur="saveReason(scope.row)"></el-input>
               <span v-else>{{scope.row.reason}}</span>
             </template>
-            <template slot-scope="scope" slot="stateDisplay">
+            <template v-slot:stateDisplay="scope">
               <span :class="[scope.row.stateCode === 60 ? 'color_red' : '']">{{scope.row.stateDisplay}}</span>
             </template>
-            <template slot-scope="scope" slot="operation">
+            <template v-slot:operation="scope">
               <el-button
                 v-if="((scope.row.stateCode === 10 || scope.row.stateCode === 20) && scope.row.approveState !== '已中标') || (scope.row.approveState === '已中标' && scope.row.stateCode === 60)"
                 type="text"

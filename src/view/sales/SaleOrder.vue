@@ -4,11 +4,11 @@
     </v-search>
     <table-list :dataHeader="tableHeader"  :url="tableUrl" :params="page" :refs="goodsMealListTable"
         @get-table-data="getTableData"  @selection-change="selectionChange">
-      <template slot-scope="scope" slot="code">
+      <template v-slot:code="scope">
         <span class="handle font_14" v-if="scope.row.codes && scope.row.codes.indexOf(',') != -1" @click="codeDetails(scope.row.codes)">详情</span>
         <span v-else>{{scope.row.code}}</span>
       </template>
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <div class="selectbtn">
           <span @click="onview(scope.row)">查看</span>
           <!-- <span @click="getShowImgPath()" >确认价格</span> -->

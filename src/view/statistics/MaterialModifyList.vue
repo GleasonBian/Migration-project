@@ -17,7 +17,7 @@
       <table-list :data-header="dataHeaderPurchase" :url="tabUrlPurchase" :params="pagePurchase"
                   @get-table-data="getTableDataPurchase"
                   :refs="tableRefPurchase">
-        <template slot-scope="scope" slot="record">
+        <template v-slot:record="scope">
           <a class="handle" @click="toRecordPurchase(scope.row)">查看</a>
         </template>
       </table-list>
@@ -27,7 +27,7 @@
       <v-search :data="searchDataSale" @on-click="searchSale"></v-search>
       <table-list :data-header="dataHeaderSale" :url="tabUrlSale" :params="pageSale" @get-table-data="getTableDataSale"
                   :refs="tableRefSale">
-        <template slot-scope="scope" slot="record">
+        <template v-slot:record="scope">
           <a class="handle" @click="toRecordSale(scope.row)">查看</a>
         </template>
       </table-list>
@@ -37,10 +37,10 @@
       <v-search :data="searchDataDel" @on-click="searchDel"></v-search>
       <table-list :data-header="dataHeaderDel" :url="tabUrlDel" :params="pageDel" @get-table-data="getTableDataDel"
                   :refs="tableRefDel">
-        <template slot-scope="scope" slot="deletedReason">
+        <template v-slot:deletedReason="scope">
           <div :title="scope.row.deletedReason" style="width: 100px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{scope.row.deletedReason}}</div>
         </template>
-        <template slot-scope="scope" slot="record">
+        <template v-slot:record="scope">
           <a class="handle" @click="toRecordDel(scope.row)">查看</a>
         </template>
       </table-list>

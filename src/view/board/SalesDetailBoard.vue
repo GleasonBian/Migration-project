@@ -10,25 +10,25 @@
     <br>
     <div class="title" style="margin-top: 15px;">商品明细</div>
     <table-list :data-header="dataHeader" :data-static="dataStatic" :refs="tablePerformance" :static="tableStatic" v-show="isSalesShow">
-      <template slot-scope="scope" slot="relatedFileVOList">
+      <template v-slot:relatedFileVOList="scope">
         <div style="font-size: 12px;" v-if="scope.row.relatedFileVOList.length == 0">没有找到匹配的记录</div>
         <div v-if="scope.row.relatedFileVOList.length > 0">
           <div class="item_img" v-if="scope.row.relatedFileVOList.length > 0"  v-for="(item, index) in scope.row.relatedFileVOList" :key="index" @click="getShowImgPath(item.filePath)">{{ item | itemImg }}</div>
         </div>
       </template>
-      <template slot-scope="scope" slot="historyPrice">
+      <template v-slot:historyPrice="scope">
         <span class="handle" @click="toDetail(scope.row.goodsName, 'sa')">销售交易明细</span>
         <span class="handle" @click="toDetail(scope.row.goodsName, 'pu')">采购交易明细</span>
       </template>
     </table-list>
     <table-list :data-header="dataHeaderPur" :data-static="dataStatic" :refs="tablePerformance" :static="tableStatic" v-show="!isSalesShow">
-      <template slot-scope="scope" slot="relatedFileVOList">
+      <template v-slot:relatedFileVOList="scope">
         <div style="font-size: 12px;" v-if="scope.row.relatedFileVOList.length == 0">没有找到匹配的记录</div>
         <div v-if="scope.row.relatedFileVOList.length > 0">
           <div class="item_img" v-if="scope.row.relatedFileVOList.length > 0"  v-for="(item, index) in scope.row.relatedFileVOList" :key="index" @click="getShowImgPath(item.filePath)">{{ item | itemImg }}</div>
         </div>
       </template>
-      <template slot-scope="scope" slot="historyPrice">
+      <template v-slot:historyPrice="scope">
         <span class="handle" @click="toDetail(scope.row.goodsName, 'sa')">销售交易明细</span>
         <span class="handle" @click="toDetail(scope.row.goodsName, 'pu')">采购交易明细</span>
       </template>
@@ -36,10 +36,10 @@
     <div class="text_total_right">共&nbsp;{{totalNum}}&nbsp;类物资，合计采购金额：￥{{goodsPriceTotle}}</div>
     <div class="title" style="margin-top: 10px;">其他资料</div>
     <table-list :data-header="dataImgHeader" :url="imgTableUrl" :params="page" @get-table-data="getImgTableData" :refs="tablePerformanceImg">
-      <template slot-scope="scope" slot="fileOldName">
+      <template v-slot:fileOldName="scope">
         <div>{{scope.row.fileOldName}}</div>
       </template>
-      <template slot-scope="scope" slot="btnDownLoad">
+      <template v-slot:btnDownLoad="scope">
         <el-button size="mini" type="text" @click="getShowImgPath(scope.row)">下载</el-button>
       </template>
     </table-list>

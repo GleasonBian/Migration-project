@@ -2,10 +2,10 @@
   <div class="">
     <v-list :data="demandDetaildData" :data-list="demandDetailList" :list-style="listStyle"></v-list>
     <v-list :data="demandRemarkData" :data-list="demandDetailList" :list-style="listStyleRemark">
-      <template slot-scope="scope" slot="enclosure">
+      <template v-slot:enclosure="scope">
         <table-list :data-header="dataHeaderEnclosure" :static="true" :dataStatic="dataTableEnclosure"
                     :refs="tableDemandEnclosure">
-          <template slot-scope="scope" slot="downFile">
+          <template v-slot:downFile="scope">
             <a :href="getHrefFile(scope.row.filePath)">下载</a>
           </template>
         </table-list>
@@ -33,14 +33,14 @@
     <div style="margin-bottom: 10px;">商品明细</div>
     <table-list :data-header="dataHeaderGoods" :static=true :dataStatic="dataTableGoodsAll"
                 :refs="tableDemandGoodsDetail">
-      <!--<template slot-scope="scope" slot="expand">-->
+      <!--<template v-slot:expand="scope">-->
       <!--<table-list :data-header="dataHeaderGoods1" :tabStyle="TabStyle1" :static=true :dataStatic="getDataGoodsRelation(scope.row)" :refs="tableDemandGoodsDetail">-->
       <!--</table-list>-->
       <!--</template>-->
-      <template slot-scope="scope" slot="returnTypeDisplay">
+      <template v-slot:returnTypeDisplay="scope">
         <span :title="scope.row.returnChangeReason">{{scope.row.returnTypeDisplay}}</span>
       </template>
-      <template slot-scope="scope" slot="goodsCode">
+      <template v-slot:goodsCode="scope">
         <div v-if="scope.row.type === 1">{{scope.row.goodsId}}</div>
         <div v-else>
           <div v-if="scope.row.goodsProviderVO">
@@ -49,11 +49,11 @@
           <el-button v-else type="text" class="el-table__expand-column" ref="aaa">未关联商品</el-button>
         </div>
       </template>
-      <template slot-scope="scope" slot="totalGoodsPrice">
+      <template v-slot:totalGoodsPrice="scope">
         <div v-if="scope.row.type === 1">{{scope.row.unitPrice * scope.row.goodsCount}}</div>
         <div v-else>-</div>
       </template>
-      <template slot-scope="scope" slot="historyPrice">
+      <template v-slot:historyPrice="scope">
         <span class="handle" @click="toDetail(scope.row.goodsName)">历史价</span>
         <span v-if="$Utils.getPageElement($Consts.PERMISSION.purchasePlanEdit.code)" class="handle"
               @click="toEdit(scope.row)">编辑物资</span>
@@ -62,10 +62,10 @@
         <span v-if="$Utils.getPageElement($Consts.PERMISSION.editPurchasePlanPoint.code)" class="handle"
               @click="editPoint(scope.row)">修改税点</span>
       </template>
-      <template slot-scope="scope" slot="examine">
+      <template v-slot:examine="scope">
         <a class="handle" :class="[!scope.row.rejectFlag ? '' : 'text_red']" @click="toDismissal(scope.row)">审批记录</a>
       </template>
-      <template slot-scope="scope" slot="matchDegree">
+      <template v-slot:matchDegree="scope">
         <div v-if="scope.row.matchDegree">{{scope.row.matchDegree}}%</div>
         <div v-else>0%</div>
       </template>
@@ -76,10 +76,10 @@
     <div class="title" style="margin-top: 10px;">其他资料</div>
     <table-list :data-header="dataImgHeader" :url="imgTableUrl" :params="pageInfo" @get-table-data="getImgTableData"
                 :refs="tablePerformanceImg">
-      <template slot-scope="scope" slot="fileOldName">
+      <template v-slot:fileOldName="scope">
         <div>{{scope.row.fileOldName}}</div>
       </template>
-      <template slot-scope="scope" slot="btnDownLoad">
+      <template v-slot:btnDownLoad="scope">
         <el-button size="mini" type="text" @click="getShowImgPath(scope.row)">下载</el-button>
       </template>
     </table-list>
@@ -132,19 +132,19 @@
       <table-list style="margin: 20px 0" :dataHeader="tableHeaderExchangeGoods" :url="tableUrlReturnGoods"
                   :refs="tablePerformanceExchangeGoods"
                   :params="pageExchangeGoods" @selection-change="selectionChangeExchangeGoods">
-        <template slot-scope="scope" slot="typeModel">
+        <template v-slot:typeModel="scope">
           <el-input v-model="scope.row.typeModel" size="small" placeholder="请输入规格型号"></el-input>
         </template>
-        <template slot-scope="scope" slot="brandName">
+        <template v-slot:brandName="scope">
           <el-input v-model="scope.row.brandName" size="small" placeholder="请输入品牌"></el-input>
         </template>
-        <template slot-scope="scope" slot="unit">
+        <template v-slot:unit="scope">
           <el-input v-model="scope.row.unit" size="small" placeholder="请输入单位"></el-input>
         </template>
-        <template slot-scope="scope" slot="totalGoodsPrice">
+        <template v-slot:totalGoodsPrice="scope">
           {{accMul(scope.row.goodsCount, scope.row.unitPrice)}}
         </template>
-        <template slot-scope="scope" slot="remark">
+        <template v-slot:remark="scope">
           <el-input v-model="scope.row.remark" size="small" placeholder="请输入其他要求"></el-input>
         </template>
       </table-list>

@@ -43,19 +43,19 @@
     </div>
     <table-list :data-header="profitDetailsHeader" :refs="profitDetailsRefs" :url="urlProfitDetails"
                 :params="pageProfitDetails" :tabStyle="tabStyle">
-      <template slot-scope="scope" slot="number">
+      <template v-slot:number="scope">
         {{scope.index + 1}}
       </template>
-      <template slot-scope="scope" slot="totalMoney">
+      <template v-slot:totalMoney="scope">
         {{formatData(scope.row.totalMoney)}}
       </template>
-      <template slot-scope="scope" slot="totalCost">
+      <template v-slot:totalCost="scope">
         {{formatData(scope.row.totalCost)}}
       </template>
-      <template slot-scope="scope" slot="grossProfit">
+      <template v-slot:grossProfit="scope">
         {{formatData(scope.row.grossProfit)}}
       </template>
-      <template slot-scope="scope" slot="handle">
+      <template v-slot:handle="scope">
         <a class="handle" @click="toProfitDetails(scope.row)">月份排名</a>
         <a class="handle" @click="toGoodsDetails(scope.row)">物资明细</a>
       </template>

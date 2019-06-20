@@ -7,10 +7,10 @@
                 @get-table-data="getTableData"
                 :params="page"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="imgUrl">
+      <template v-slot:imgUrl="scope">
         <img :src="scope.row.imgUrl" />
       </template>
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <TabBut :data="tbBut" @on-edit="onEdit(scope.row)" @on-del="onDel(scope.row)" @publish="onPublish(scope.row)"  v-show="scope.row.state !== '发布中'"></TabBut>
         <TabBut :data="tbButDown" @on-edit="onDown(scope.row)" v-show="scope.row.state === '发布中'"></TabBut>
       </template>

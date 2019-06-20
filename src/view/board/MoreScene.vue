@@ -2,7 +2,7 @@
   <div>
     <v-search :data="searchData" @on-click="searchDataClick"></v-search>
     <table-list :data-header="sellHeader" :url="sellUrl" :params="page" :refs="sellRefs" @get-table-data="sellGetTableData">
-      <template slot-scope="scope" slot="code">
+      <template v-slot:code="scope">
         <el-button type="text" @click="toDet(scope.row)">{{scope.row.code}}</el-button>
       </template>
     </table-list>

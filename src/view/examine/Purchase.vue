@@ -22,19 +22,19 @@
     <!--<tab-but :data="btnDataExport" @to-pass="toExport"></tab-but>-->
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData"
                 :refs="tablePerformance" @selection-change="selectionChange">
-      <template slot-scope="scope" slot="returnTypeDisplay">
+      <template v-slot:returnTypeDisplay="scope">
         <span :title="scope.row.returnChangeReason">{{scope.row.returnTypeDisplay}}</span>
       </template>
-      <template slot-scope="scope" slot="code">
+      <template v-slot:code="scope">
         <a class="handle" @click="toSalesDetails(scope.row)">{{scope.row.purchasePlanNumber}}</a>
       </template>
-      <template slot-scope="scope" slot="codeElse">
+      <template v-slot:codeElse="scope">
         <a class="handle" @click="toSalesDetailsElse(scope.row)">{{scope.row.code}}</a>
       </template>
-      <template slot-scope="scope" slot="examine">
+      <template v-slot:examine="scope">
         <a class="handle" :class="[!scope.row.rejectFlag ? '' : 'text_red']" @click="toDismissal(scope.row)">审批记录</a>
       </template>
-      <template slot-scope="scope" slot="handle">
+      <template v-slot:handle="scope">
         <a class="handle" style="margin-left: 10px;" @click="toDetail(scope.row.goodsName)">历史价</a>
         <a v-if="indexCode === '0' || indexCode === '1'" class="handle" style="margin-left: 10px;"
            @click="writePriceMark(scope.row.purchasePlanId)">报价</a>

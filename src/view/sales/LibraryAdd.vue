@@ -8,7 +8,7 @@
                 @get-table-data="getTableData"
                 :params="page"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="outgoingNum">
+      <template v-slot:outgoingNum="scope">
         <el-input v-model="scope.row.outgoingNum" type="number" min="0"></el-input>
       </template>
     </table-list>
@@ -20,12 +20,12 @@
 
     <v-dialog :dialog="addAreaDialog">
       <form-group :data="addAreaDialogData" :custom=true :clear=true>
-        <template slot-scope="scope" slot="searchData">
+        <template v-slot:searchData="scope">
           <v-search :data="searchAddAreaData" @on-click="searchAddAreaClick"></v-search>
         </template>
-        <template slot-scope="scope" slot="selectedAddArea">
+        <template v-slot:selectedAddArea="scope">
           <table-list :data-header="addAreaHeader" :url="addAreaTableUrl" :params="addAreaPage" @get-table-data="getTableAddAreaData" :refs="tableRefsAddArea">
-            <template slot-scope="scope" slot="operation">
+            <template v-slot:operation="scope">
               <tab-but :data="addAreaAddBut" @add-push="addAreaAddData(scope.row)"></tab-but>
             </template>
           </table-list>

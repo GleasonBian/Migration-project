@@ -1,9 +1,10 @@
 <template>
   <div>
     <v-search :data="Searchdata"></v-search>
+
     <TabBut  :data="TabButData"></TabBut>
     <table-list :dataHeader="TableDataHeader"  :url="DataUrl"  @selection-change="selectionChange">
-      <template slot-scope="scope" slot="view">
+      <template v-slot:view="scope">
         <TabBut :data="ViewTabButData"></TabBut>
       </template>
     </table-list>

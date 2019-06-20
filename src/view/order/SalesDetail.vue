@@ -18,23 +18,23 @@
     </div>
     <div class="title" style="margin-top: 15px;">商品明细</div>
     <table-list :data-header="dataHeader" :data-static="dataStatic" :refs="tablePerformance" :static="tableStatic">
-      <template slot-scope="scope" slot="returnTypeDisplay">
+      <template v-slot:returnTypeDisplay="scope">
         <span :title="scope.row.returnChangeReason">{{scope.row.returnTypeDisplay}}</span>
       </template>
-      <template slot-scope="scope" slot="matchDegree">
+      <template v-slot:matchDegree="scope">
         <div v-if="scope.row.matchDegree">{{scope.row.matchDegree}}%</div>
         <div v-else>0%</div>
       </template>
-      <template slot-scope="scope" slot="contractGoodsFlag">
+      <template v-slot:contractGoodsFlag="scope">
         {{scope.row.contractGoodsFlag ? '是' : '否'}}
       </template>
-      <template slot-scope="scope" slot="materialState">
+      <template v-slot:materialState="scope">
         <div class="color_red" v-if="scope.row.rejectFlag === 1">
           {{scope.row.materialStateDisplay}}({{scope.row.countReject}})
         </div>
         <div v-else>{{scope.row.materialStateDisplay}}</div>
       </template>
-      <template slot-scope="scope" slot="relatedFileVOList">
+      <template v-slot:relatedFileVOList="scope">
         <div style="font-size: 12px;" v-if="scope.row.relatedFileVOList.length == 0">没有找到匹配的记录</div>
         <div v-if="scope.row.relatedFileVOList.length > 0">
           <div class="item_img" v-if="scope.row.relatedFileVOList.length > 0"
@@ -43,10 +43,10 @@
           </div>
         </div>
       </template>
-      <template slot-scope="scope" slot="examine">
+      <template v-slot:examine="scope">
         <span class="handle" @click="toDismissal(scope.row)">审批记录</span>
       </template>
-      <template slot-scope="scope" slot="historyPrice">
+      <template v-slot:historyPrice="scope">
         <span class="handle" @click="toDetail(scope.row.goodsName)">历史价</span>
         <span v-if="$Utils.getPageElement($Consts.PERMISSION.editPurchaseList.code)" class="handle" @click="editPrice(scope.row)">修改价格</span>
       </template>
@@ -55,10 +55,10 @@
     <div class="title" style="margin-top: 10px;">其他资料</div>
     <table-list :data-header="dataImgHeader" :url="imgTableUrl" :params="page" @get-table-data="getImgTableData"
                 :refs="tablePerformanceImg">
-      <template slot-scope="scope" slot="fileOldName">
+      <template v-slot:fileOldName="scope">
         <div>{{scope.row.fileOldName}}</div>
       </template>
-      <template slot-scope="scope" slot="btnDownLoad">
+      <template v-slot:btnDownLoad="scope">
         <el-button size="mini" type="text" @click="getShowImgPath(scope.row)">下载</el-button>
       </template>
     </table-list>

@@ -8,7 +8,7 @@
       <table-list :data-header="dataHeader" :static=true :dataStatic="voList" v-show="!isEdit">
       </table-list>
       <table-list :data-header="dataHeaderEdit" :static=true :dataStatic="voList" v-show="isEdit">
-        <template slot-scope="scope" slot="collectionQuantity">
+        <template v-slot:collectionQuantity="scope">
           <el-input type="number"  :placeholder="scope.row.collectionQuantity" v-model="scope.row.collectionQuantity"
                     @change="collectionQuantityChange(scope.row.id, scope.row.collectionQuantity)"></el-input>
         </template>
@@ -21,7 +21,7 @@
     </div>
     <v-dialog :dialog="checkDialog">
       <form-group :data="checkForm" @on-cancel="checkCancel" :custom=true>
-        <template slot-scope="scope" slot="btnGruop">
+        <template v-slot:btnGruop="scope">
             <div class="clearfix">
               <div class="pull-left" style="margin-right:20px;">
                 <v-upload :data="uploadData" :customBeforeUpload="customBeforeUpload" @on-success="uploadSuccess">
@@ -33,10 +33,10 @@
               </div>
           </div>
         </template>
-        <template slot-scope="scope" slot="tableBox">
+        <template v-slot:tableBox="scope">
           <table-list :data-header="dataHeaderFile" :url="tabFileUrl" :refs="tablePurAndDeliveryFile"
                       :params="page" @get-table-data="getTableData" @selection-change="selectionChange">
-            <template slot-scope="scope" slot="fileOldName">
+            <template v-slot:fileOldName="scope">
               <div class="item_img" @click="getShowImgPath(scope.row.filePath)">{{scope.row.fileOldName}}</div>
             </template>
           </table-list>

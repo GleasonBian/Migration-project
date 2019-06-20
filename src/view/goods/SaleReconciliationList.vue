@@ -9,10 +9,10 @@
     </div>
     <table-list :dataHeader="tableHeader" @get-table-data="getTableData" :url="tableUrl" :refs="tablePerformance"
                 :params="page" @selection-change="selectionChange">
-      <template slot-scope="scope" slot="number">
+      <template v-slot:number="scope">
         <div>{{scope.index + 1}}</div>
       </template>
-      <template slot-scope="scope" slot="purchaseNumber">
+      <template v-slot:purchaseNumber="scope">
         <a class="handle" @click="toSalesDetails(scope.row)">{{scope.row.purchaseNumber}}</a>
       </template>
     </table-list>

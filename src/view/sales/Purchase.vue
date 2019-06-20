@@ -3,7 +3,7 @@
     <v-search :data="searchData" @on-click="search"></v-search>
     <tab-but :data="btnData" @on-add="addPurchase"></tab-but>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData" :refs="tableSalesPurchase">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <tab-but :data="getOperationBtn(scope.row.state)"
                  @on-detail="toPurchaseDetails(scope.row)"
                  @on-deliver-detail="toPurchaseAndDeliveryDetails(scope.row)"

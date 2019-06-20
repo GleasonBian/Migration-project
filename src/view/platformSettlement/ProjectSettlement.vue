@@ -18,10 +18,10 @@
                 @get-table-data="getTableData"
                 :params="page"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="number">
+      <template v-slot:number="scope">
         {{scope.index + 1}}
       </template>
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <span class="handle" @click="onView(scope.row)">查看</span>
       </template>
     </table-list>

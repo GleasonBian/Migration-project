@@ -4,10 +4,10 @@
     <tab-but :data="btnData" @on-add="addData" @cancel-data="cancelData"></tab-but>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" :refs="tableDemandSceneList"
                 @get-table-data="getTableData" @selection-change="selectionChange">
-      <template slot-scope="scope" slot="stateStr">
+      <template v-slot:stateStr="scope">
         <span :class="[scope.row.stateStr === '已驳回' ? 'txtRed' : '']">{{scope.row.stateStr}}</span>
       </template>
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <el-select v-model="scope.row.value" placeholder="请选择" @change="changeSelectOperation(scope.row)">
           <el-option key="btn1" label="查看" value="btn1" v-show="scope.row.stateCode !== -1"></el-option>
           <el-option key="btn2" label="询价" value="btn2" v-show="scope.row.stateCode === 1 || scope.row.stateCode === 2 || scope.row.stateCode === 3"></el-option>

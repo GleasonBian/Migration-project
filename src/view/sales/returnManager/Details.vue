@@ -15,7 +15,7 @@
     </table>
     <div class="contract_title">商品明细</div>
     <table-list :data-header="dataHeader" :dataStatic="goodsDetailList" :static="true">
-      <template slot-scope="scope" slot="picturePath">
+      <template v-slot:picturePath="scope">
         <img :src="scope.row.picturePath" style="max-height:40px;"/>
       </template>
     </table-list>

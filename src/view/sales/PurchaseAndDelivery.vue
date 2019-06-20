@@ -2,10 +2,10 @@
   <div class="box_purchase">
     <v-search :data="searchData" @on-click="search"></v-search>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData" :refs="tableSalesPurchaseAndDelivery">
-      <template slot-scope="scope" slot="numberIndex">
+      <template v-slot:numberIndex="scope">
         {{scope.index+1}}
       </template>
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <tab-but :data="operationBtn"
                  @on-detail="toPurchaseDetails(scope.row)"
                  @on-look="toUploadAdd(scope.row.id)"
@@ -16,7 +16,7 @@
     <v-page :data="page" :dataArr="[dataSearch]"></v-page>
     <v-dialog :dialog="checkDialog">
       <form-group :data="checkForm" @on-cancel="checkCancel" :custom=true>
-        <template slot-scope="scope" slot="btnGruop">
+        <template v-slot:btnGruop="scope">
           <div class="clearfix">
             <div class="pull-left" style="margin-right:20px;">
               <v-upload :data="uploadData" :customBeforeUpload=true @on-success="uploadSuccess">
@@ -28,10 +28,10 @@
             </div>
           </div>
         </template>
-        <template slot-scope="scope" slot="tableBox">
+        <template v-slot:tableBox="scope">
           <table-list :data-header="dataHeaderFile" :url="tabFileUrl" :refs="tablePurAndDeliveryFile"
                       :params="pageFile" @get-table-data="getTableDataFile" @selection-change="selectionChange">
-            <template slot-scope="scope" slot="fileOldName">
+            <template v-slot:fileOldName="scope">
               <a :href="getShowImgPath(scope.row.filePath)"
                  class="item_img" target="_blank">{{scope.row.fileOldName}}</a>
             </template>

@@ -43,7 +43,7 @@
           <div class="board_box">
             <table-list :data-header="profitDetailsHeader" :refs="profitDetailsRefs" :url="urlProfitDetails"
                         :params="pageProfitDetails" @get-table-data="getTableDataProfitDetails">
-              <template slot-scope="scope" slot="grossProfitRate">
+              <template v-slot:grossProfitRate="scope">
                 {{scope.row.grossProfitRate}}%
               </template>
             </table-list>

@@ -3,11 +3,11 @@
     <v-search :data="searchData" @on-click="search"></v-search>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="typeStr">
+      <template v-slot:typeStr="scope">
         <div v-if="scope.row.type == 0">物资采购</div>
         <div v-else>设备采购</div>
       </template>
-      <template slot-scope="scope" slot="handle">
+      <template v-slot:handle="scope">
         <div v-if="scope.row.state == 6">
           <span class="handle" @click="viewDetail(scope.row.id)">查看</span>
         </div>

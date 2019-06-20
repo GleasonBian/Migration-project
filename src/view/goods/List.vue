@@ -28,7 +28,7 @@
     </div>
     <table-list :dataHeader="tableHeader" @get-table-data="getTableData" :url="tableUrl" :refs="goodsMealListTable"
                 :params="params">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <div class="mCen1">
           <TabBut v-if='scope.row.state === 1' :data="upTabButData" @on-edit="edit(scope.row)" @on-view="onview(scope.row)" @on-up="onup(scope.row)" @on-del="ondel(scope.row)"></TabBut>
           <TabBut v-if="scope.row.state === 0" :data="dowmTabButData" @on-down="ondown(scope.row)" @on-view="onview(scope.row)"></TabBut>

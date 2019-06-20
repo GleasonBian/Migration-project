@@ -3,7 +3,7 @@
     <v-search :data="searchData" @on-click="search"></v-search>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="handle">
+      <template v-slot:handle="scope">
         <!--<div v-if="scope.row.state == 0">-->
           <!--<span class="handle" @click="purchaseSearch(scope.row.id)">询价</span>-->
           <router-link class="handle" :to="{name: 'purchaseSearch', params:{id: scope.row.id}}" tag="a" target="_blank">询价</router-link>

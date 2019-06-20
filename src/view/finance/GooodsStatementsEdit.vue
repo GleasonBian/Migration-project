@@ -20,10 +20,10 @@
     </div>
     <table-list :data-header="dataHeaderGoods" :url="tabUrl" :params="page" @get-table-data="getTableData"
                 :refs="tablePerformance" @selection-change="tbSelectionChange">
-      <template slot-scope="scope" slot="indexCode">
+      <template v-slot:indexCode="scope">
         {{scope.index + 1}}
       </template>
-      <template slot-scope="scope" slot="number">
+      <template v-slot:number="scope">
         <el-button type="text" @click="toDetails(scope.row)">{{scope.row.purchasePlanNumber}}</el-button>
       </template>
     </table-list>
@@ -39,22 +39,22 @@
     <v-dialog :dialog="dialogDataInvoice">
       <form-group :data="dialogFormInvoice" @on-ok="dialogOkInvoice" :custom=true :clear=true
                   :data-but="dialogBut">
-        <template slot-scope="scope" slot="invoiceMoney">
+        <template v-slot:invoiceMoney="scope">
           <el-input type="number" v-model="invoiceMoney"  @wheel.native.prevent  size="small" :min="0" placeholder="请输入发票金额"
                     @change="getTotalPrice"></el-input>
         </template>
-        <template slot-scope="scope" slot="rate">
+        <template v-slot:rate="scope">
           <el-input type="number" v-model="rate" @wheel.native.prevent  size="small" :min="0" placeholder="请输入税额"
                     @change="getTotalPrice"></el-input>
         </template>
-        <template slot-scope="scope" slot="totalPrice">
+        <template v-slot:totalPrice="scope">
           <el-input type="number" v-model="totalPrice" @wheel.native.prevent  size="small" :min="0" placeholder="发票金额+税额" disabled></el-input>
         </template>
       </form-group>
     </v-dialog>
     <v-dialog :dialog="dialogDataPayment">
       <form-group :data="dialogFormPayment" @on-ok="dialogOkPayment" :custom=true :clear=true :data-but="dialogBut">
-        <template slot-scope="scope" slot="payMoney">
+        <template v-slot:payMoney="scope">
           <el-input type="number" v-model="payMoney"  @wheel.native.prevent size="small" :min="0" placeholder="请填写付款金额"></el-input>
         </template>
       </form-group>

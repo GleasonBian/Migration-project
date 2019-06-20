@@ -2,9 +2,9 @@
   <div class="">
     <v-list :data="demandDetaildData" :data-list="demandDetailList" :list-style="listStyle"></v-list>
     <v-list :data="demandRemarkData" :data-list="demandDetailList" :list-style="listStyleRemark">
-      <template slot-scope="scope" slot="enclosure">
+      <template v-slot:enclosure="scope">
         <table-list :data-header="dataHeaderEnclosure" :static="true" :dataStatic="dataTableEnclosure" :refs="tableDemandEnclosure">
-          <template slot-scope="scope" slot="downFile">
+          <template v-slot:downFile="scope">
             <a :href="getHrefFile(scope.row.filePath)">下载</a>
           </template>
         </table-list>
@@ -12,7 +12,7 @@
     </v-list>
     <div style="margin: 10px 0">商品明细</div>
     <table-list :data-header="dataHeaderGoods" :tabStyle="TabStyle" :static=true :dataStatic="dataTableGoodsAll" :refs="tableDemandGoodsDetail">
-      <template slot-scope="scope" slot="goodsCode">
+      <template v-slot:goodsCode="scope">
         <div v-if="scope.row.type === 1">{{scope.row.goodsId}}</div>
         <div v-else-if="demandDetailList.stateStr === '待接单'">
           <div v-if="scope.row.goodsProviderVO">
@@ -25,16 +25,16 @@
           <div v-else>未关联商品</div>
         </div>
       </template>
-      <template slot-scope="scope" slot="expand">
+      <template v-slot:expand="scope">
         <table-list :data-header="dataHeaderGoods1" :tabStyle="TabStyle1" :static=true :dataStatic="getDataGoodsRelation(scope.row)" :refs="tableDemandGoodsDetail">
 
         </table-list>
       </template>
-      <template slot-scope="scope" slot="totalGoodsPrice">
+      <template v-slot:totalGoodsPrice="scope">
         <div v-if="scope.row.type === 1">{{scope.row.unitPrice * scope.row.goodsCount}}</div>
         <div v-else>-</div>
       </template>
-      <template slot-scope="scope" slot="unitPrice">
+      <template v-slot:unitPrice="scope">
         <el-input v-if="demandDetailList.stateStr === '待接单'" v-model="scope.row.unitPrice" type="number" @blur="changePrice(scope.row)"></el-input>
         <div v-else>{{scope.row.unitPrice}}</div>
       </template>
@@ -49,10 +49,10 @@
     <v-dialog :dialog="dialogGoods">
       <form-group :data="goodsDialogData" :dataBut="dataGoodsBut" :custom=true
                   @on-ok="saveGoodsData" @on-cancel="cancelGoods" @close-dialog="closeDialogGoods">
-        <template slot-scope="scope" slot="searchGoodsData">
+        <template v-slot:searchGoodsData="scope">
           <v-search :data="searchGoodsData" @on-click="searchGoods"></v-search>
         </template>
-        <template slot-scope="scope" slot="selectedGoods">
+        <template v-slot:selectedGoods="scope">
           <table-list :data-header="DialogdataHeaderGoods" :url="tabGoodsUrl" :params="pageGoods"
                        @get-table-data="getTableGoodsData" :refs="tableContractGoods">
             <template slot="goodsRadio1" slot-scope="scope">

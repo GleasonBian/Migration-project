@@ -9,7 +9,7 @@
     <table-list :data-header="invoiceHeader" :static="true" :dataStatic="invoiceData" :refs="invoiceResf"></table-list>
     <br>
     <table-list :data-header="invoiceHeaderLess" :static="true" :dataStatic="invoiceDataLess" :refs="invoiceResfLess">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <a class="handle" @click="toEditInvoice(scope.row)">编辑</a>
         <a class="handle" @click="deleteInvoice(scope.row)">删除</a>
       </template>
@@ -17,7 +17,7 @@
     <br><br>
     <h5>付货款记录</h5>
     <table-list :data-header="recordHeader" :static="true" :dataStatic="recordData" :refs="recordResf">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <a class="handle" @click="toEditRecord(scope.row)">编辑</a>
         <a class="handle" @click="deleteRecord(scope.row)">删除</a>
       </template>
@@ -25,10 +25,10 @@
     <h5>商品明细</h5>
     <table-list :data-header="dataHeaderGoods" :url="tabUrl" :params="page" @get-table-data="getTableData"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="indexCode">
+      <template v-slot:indexCode="scope">
         {{scope.index + 1}}
       </template>
-      <template slot-scope="scope" slot="number">
+      <template v-slot:number="scope">
         <el-button type="text" @click="toDetails(scope.row)">{{scope.row.purchasePlanNumber}}</el-button>
       </template>
     </table-list>
@@ -44,17 +44,17 @@
     <v-dialog :dialog="dialogDataInvoice">
       <form-group :data="dialogFormInvoice" @on-ok="dialogOkInvoice" :custom=true :clear=true
                   :data-but="dialogBut">
-        <template slot-scope="scope" slot="invoiceMoney">
+        <template v-slot:invoiceMoney="scope">
           <el-input type="number" v-model="invoiceMoney"  @wheel.native.prevent size="small" :min="0" placeholder="发票金额" disabled></el-input>
         </template>
-        <template slot-scope="scope" slot="rate">
+        <template v-slot:rate="scope">
           <el-input type="number" v-model="rate"  @wheel.native.prevent size="small" :min="0" placeholder="税额" disabled></el-input>
         </template>
-        <template slot-scope="scope" slot="totalPrice">
+        <template v-slot:totalPrice="scope">
           <el-input type="number" v-model="totalPrice"  @wheel.native.prevent size="small" :min="0" placeholder="请输入价税合计"
                     @change="getRateAndMoney"></el-input>
         </template>
-        <template slot-scope="scope" slot="taxPoint">
+        <template v-slot:taxPoint="scope">
           <el-select v-model="taxPoint" placeholder="请选择税率" @change="getRateAndMoney">
             <el-option
               v-for="item in optionsTaxPoint"
@@ -70,17 +70,17 @@
     <v-dialog :dialog="dialogDataInvoiceEdit">
       <form-group :data="dialogFormInvoiceEdit" @on-ok="dialogOkInvoiceEdit" :custom=true
                   :data-but="dialogButEdit">
-        <template slot-scope="scope" slot="invoiceMoney">
+        <template v-slot:invoiceMoney="scope">
           <el-input type="number" v-model="invoiceMoney"  @wheel.native.prevent size="small" :min="0" placeholder="发票金额" disabled></el-input>
         </template>
-        <template slot-scope="scope" slot="rate">
+        <template v-slot:rate="scope">
           <el-input type="number" v-model="rate"  @wheel.native.prevent size="small" :min="0" placeholder="税额" disabled></el-input>
         </template>
-        <template slot-scope="scope" slot="totalPrice">
+        <template v-slot:totalPrice="scope">
           <el-input type="number" v-model="totalPrice"  @wheel.native.prevent size="small" :min="0" placeholder="请输入价税合计"
                     @change="getRateAndMoney"></el-input>
         </template>
-        <template slot-scope="scope" slot="taxPoint">
+        <template v-slot:taxPoint="scope">
           <el-select v-model="taxPoint" placeholder="请选择税率" @change="getRateAndMoney">
             <el-option
               v-for="item in optionsTaxPointEdit"
@@ -95,7 +95,7 @@
     <!--新增付货款记录-->
     <v-dialog :dialog="dialogDataPayment">
       <form-group :data="dialogFormPayment" @on-ok="dialogOkPayment" :custom=true :clear=true :data-but="dialogBut">
-        <template slot-scope="scope" slot="payMoney">
+        <template v-slot:payMoney="scope">
           <el-input type="number" v-model="payMoney"  @wheel.native.prevent size="small" :min="0" placeholder="请填写付款金额"></el-input>
         </template>
       </form-group>
@@ -104,7 +104,7 @@
     <v-dialog :dialog="dialogDataPaymentEdit">
       <form-group :data="dialogFormPaymentEdit" @on-ok="dialogOkPaymentEdit" :custom=true
                   :data-but="dialogButEdit">
-        <template slot-scope="scope" slot="payMoney">
+        <template v-slot:payMoney="scope">
           <el-input type="number" v-model="payMoney"  @wheel.native.prevent size="small" :min="0" placeholder="请填写付款金额"></el-input>
         </template>
       </form-group>

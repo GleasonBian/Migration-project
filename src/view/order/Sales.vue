@@ -7,7 +7,7 @@
     <!--<tab-but :data="tabBut" @add-inside="addInside" @add-external="addExternal"></tab-but>-->
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData"  @selection-change="selectionChange"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="stateStr">
+      <template v-slot:stateStr="scope">
         <span :class="[scope.row.state === 0 ? 'txtRed' : '']">{{scope.row.stateStr}}</span>
       </template>
       <template slot-scope="scope"   slot="handle">

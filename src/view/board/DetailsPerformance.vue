@@ -22,10 +22,10 @@
     <v-search :data="searchData" @on-click="search"></v-search>
     <table-list :data-header="profitDetailsHeader" :refs="profitDetailsRefs" :url="urlGoods"
                 :params="pageProfitDetails" @get-table-data="getTableData">
-      <template slot-scope="scope" slot="number">
+      <template v-slot:number="scope">
         {{scope.index + 1}}
       </template>
-      <template slot-scope="scope" slot="code">
+      <template v-slot:code="scope">
         <a class="handle" @click="toGoodsDetails(scope.row)">{{scope.row.code}}</a>
       </template>
     </table-list>

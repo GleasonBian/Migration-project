@@ -6,13 +6,13 @@
         <el-button type="primary" size="mini" @click="onAdd(item, index)">添加商品</el-button>
       </div>
       <table-list :data-header="dataHeader" :dataStatic="item.mealGoodsVOList" :static="true">
-        <template slot-scope="scope" slot="recommendGoodsCount">
+        <template v-slot:recommendGoodsCount="scope">
           <el-input type="number" min="0" v-model="scope.row.recommendGoodsCount" @blur="changeRecommendGoodsCount(scope.row)"></el-input>
         </template>
-        <template slot-scope="scope" slot="operation">
+        <template v-slot:operation="scope">
           <tab-but :data="tabButTable" @on-del="ondel(scope.rows, scope.row, scope.index)"></tab-but>
         </template>
-        <template slot-scope="scope" slot="goodsState">
+        <template v-slot:goodsState="scope">
           <span>上架</span>
         </template>
       </table-list>

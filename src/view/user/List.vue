@@ -8,7 +8,7 @@
                 @get-table-data="getTableData"
                 :params="page"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <div>
           <span class="handle" @click="toSet(scope.row)">设置职位</span>
           <span class="handle" @click="onDetails(scope.row)">查看</span>
@@ -51,40 +51,40 @@
     <!--用户查看模态框-->
     <v-dialog :dialog="dialogDataDetailsUser">
       <form-group :data="dataFormDetailsUser" style="width: 100%" :custom=true @on-cancel="cancelDialogUserDetails">
-        <template slot-scope="scope" slot="userId">
+        <template v-slot:userId="scope">
             <span>{{userDataDetails.userId}}</span>
           </template>
-          <template slot-scope="scope" slot="userName">
+          <template v-slot:userName="scope">
             <span>{{userDataDetails.userName}}</span>
           </template>
-          <template slot-scope="scope" slot="projectName">
+          <template v-slot:projectName="scope">
             <span>{{userDataDetails.projectName}}</span>
           </template>
-          <template slot-scope="scope" slot="positionName">
+          <template v-slot:positionName="scope">
             <span>{{userDataDetails.positionName}}</span>
           </template>
-          <template slot-scope="scope" slot="organizationName">
+          <template v-slot:organizationName="scope">
             <span>{{userDataDetails.organizationName}}</span>
           </template>
-          <template slot-scope="scope" slot="sysRoleName">
+          <template v-slot:sysRoleName="scope">
             <span>{{userDataDetails.sysRoleName}}</span>
           </template>
-          <template slot-scope="scope" slot="userTypeDisplay">
+          <template v-slot:userTypeDisplay="scope">
             <span>{{userDataDetails.userTypeDisplay}}</span>
           </template>
-          <template slot-scope="scope" slot="lubanNumber">
+          <template v-slot:lubanNumber="scope">
             <span>{{userDataDetails.lubanNumber}}</span>
           </template>
-          <template slot-scope="scope" slot="lubanName">
+          <template v-slot:lubanName="scope">
                 <span>{{userDataDetails.lubanName}}</span>
           </template>
-          <template slot-scope="scope" slot="createTimeStr">
+          <template v-slot:createTimeStr="scope">
             <span>{{userDataDetails.createTimeStr}}</span>
           </template>
-          <template slot-scope="scope" slot="createPerson">
+          <template v-slot:createPerson="scope">
             <span>{{userDataDetails.createPerson}}</span>
           </template>
-          <template slot-scope="scope" slot="remark">
+          <template v-slot:remark="scope">
             <span>{{userDataDetails.remark}}</span>
           </template>
       </form-group>

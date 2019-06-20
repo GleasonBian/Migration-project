@@ -6,7 +6,7 @@
     <table-list :data-header="dataHeader" :data-static="dataStatic"
                 :refs="tablePerformance" :static="tableStatic"
                 @select="select" @select-all="selectall">
-      <template slot-scope="scope" slot="dismissal">
+      <template v-slot:dismissal="scope">
         <a class="handle" style="margin-left: 10px;" @click="toDismissal(scope.row)">审批记录</a>
       </template>
     </table-list>

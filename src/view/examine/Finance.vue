@@ -29,16 +29,16 @@
              @to-pass="toPass"></tab-but>
     <table-list :data-header="dataHeaderData" :url="tabUrl" :params="page" @get-table-data="getTableData"
                 :refs="tablePerformance" @selection-change="selectionChange">
-      <template slot-scope="scope" slot="returnTypeDisplay">
+      <template v-slot:returnTypeDisplay="scope">
         <span :title="scope.row.returnChangeReason">{{scope.row.returnTypeDisplay}}</span>
       </template>
-      <template slot-scope="scope" slot="code">
+      <template v-slot:code="scope">
         <a class="handle" @click="toSalesDetails(scope.row)">{{scope.row.code}}</a>
       </template>
-      <template slot-scope="scope" slot="grossMarginRatio">
+      <template v-slot:grossMarginRatio="scope">
         <span :class="scope.row.grossMarginRatio >= 0.5 ? 'color_red' : ''">{{scope.row.grossMarginRatio}}</span>
       </template>
-      <template slot-scope="scope" slot="examine">
+      <template v-slot:examine="scope">
         <a v-if="indexCode !== '1'" class="handle" :class="[!scope.row.rejectFlag ? '' : 'text_red']"
            @click="toDismissal(scope.row)">审批记录</a>
         <div v-else>
@@ -46,7 +46,7 @@
           <a class="handle" :class="[!scope.row.rejectFlag ? '' : 'text_red']" @click="toDismissal(scope.row, '2')">销售审批记录</a>
         </div>
       </template>
-      <template slot-scope="scope" slot="handle">
+      <template v-slot:handle="scope">
         <a v-if="indexCode === '0' || indexCode === '1' || indexCode === '2'" class="handle"
            @click="toDetail(scope.row.goodsName, '1')">销售价</a>
         <a v-if="indexCode === '0' || indexCode === '1' || indexCode === '2'" class="handle"
@@ -80,7 +80,7 @@
       <br/>
       <form-group :data="dataForm" style="width: 100%" :custom=true @on-cancel="cancelDialog" @on-ok="okReject"
                   :data-but="dataBut">
-        <template slot-scope="scope" slot="reject">
+        <template v-slot:reject="scope">
           <textarea name="" id="" rows="5" style="width: 100%" v-model="rejectInfo"></textarea>
         </template>
       </form-group>

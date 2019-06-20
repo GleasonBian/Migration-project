@@ -17,7 +17,7 @@
       <span>共{{goodsDetailList.length}}类物资，合计金额:￥{{priceAll}}</span>
     </div>
     <table-list   :data-header="TableDataHeader"  :dataStatic="goodsDetailList" :static="true" >
-        <template slot-scope="scope" slot="unitPrice" @get-table-data="goodsMealListTable" >
+        <template v-slot:unitPrice="scope" @get-table-data="goodsMealListTable" >
             <td rowspan="1"  v-if="scope.row.unitPric" colspan="1" ><div class="cell">{{scope.row.unitPrice}}</div></td>
             <el-input type="number" v-else  v-model="scope.row.unitPrice"></el-input>
         </template>
@@ -29,7 +29,7 @@
     </div>
     <div class="contract_title">供应验收单列表</div>
     <table-list  :dataHeader="tableHeader" @get-table-data="getTableData" :url="tableUrl" :refs="goodsMealListTable" :params="page">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <div>
           <router-link class="handle" :to="{name: 'demandLibraryView', params:{id: scope.row.id}}" tag="a" target="_blank">查看</router-link>&nbsp;&nbsp;&nbsp;&nbsp;
         </div>

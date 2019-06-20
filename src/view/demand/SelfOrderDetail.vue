@@ -15,10 +15,10 @@
     </table>
     <div class="contract_title">商品明细</div>
     <table-list :data-header="dataHeader" :dataStatic="goodsDetailList" :static="true">
-      <template slot-scope="scope" slot="picturePath">
+      <template v-slot:picturePath="scope">
         <img :src="scope.row.picturePath" style="max-height:40px;"/>
       </template>
-      <template slot-scope="scope" slot="replenishStockNum">
+      <template v-slot:replenishStockNum="scope">
         <div>{{scope.row.goodsCount - scope.row.alreadyStockNum}}</div>
       </template>
     </table-list>

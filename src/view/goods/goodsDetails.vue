@@ -1,12 +1,12 @@
 <template>
   <div class="box_det">
     <v-list :data="dataType" :data-list="datalist">
-      <template slot-scope="scope" slot="picture">
+      <template v-slot:picture="scope">
         <img :src="pictureUrl" v-show="pictureUrl === '' ? false : true" />
       </template>
-      <template slot-scope="scope" slot="mealGoodsClassifyVOList">
+      <template v-slot:mealGoodsClassifyVOList="scope">
         <table-list :data-header="dataHeader" :dataStatic="datalist.mealGoodsClassifyVOList" :static="true">
-          <template slot-scope="scope" slot="operation">
+          <template v-slot:operation="scope">
             <tab-but :data="tabButTable" @on-del="tabTbDel(scope.row)" @on-edit="tabTbEdit(scope.row)"></tab-but>
           </template>
         </table-list>
@@ -15,7 +15,7 @@
             <div style="display: inline-block;margin-right: 100px">{{item.classifyName}}</div>
           </div>
           <table-list :data-header="ClassdataHeader" :dataStatic="item.mealGoodsVOList" :static="true">
-            <template slot-scope="scope" slot="goodsState">
+            <template v-slot:goodsState="scope">
               <span>上架</span>
             </template>
           </table-list>

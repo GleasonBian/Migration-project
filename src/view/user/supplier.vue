@@ -10,7 +10,7 @@
                 @get-table-data="getTableData"
                 :params="page"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="handle">
+      <template v-slot:handle="scope">
         <span class="handle" @click="tableView(scope.row)">查看</span>
         <span class="handle" @click="setCompany(scope.row)">设置企业</span>
       </template>
@@ -30,7 +30,7 @@
         </div>
         <table-list :dataHeader="DialogtableHeader" @get-table-data="dialogGetTableData" :url="DialogtableUrl" :refs="SupplierDialogTable"
                     :params="dialogPage" style="margin-top: 10px" >
-          <template slot-scope="scope" slot="radioSelect">
+          <template v-slot:radioSelect="scope">
             <el-radio v-model="radioChoose" :label="scope.row">&nbsp;</el-radio>
           </template>
         </table-list>

@@ -4,11 +4,11 @@
     <tab-but :data="tabBut" @add-receipt="addReceipt"  v-if="$Utils.getPageElement($Consts.PERMISSION.batchAcceptance.code)"></tab-but>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="purchasePlanNumber">
+      <template v-slot:purchasePlanNumber="scope">
         <span class="handle font_14" v-if="scope.row.purchasePlanNumbers && scope.row.purchasePlanNumbers.indexOf(',') != -1" @click="codeDetails(scope.row.purchasePlanNumbers)">详情</span>
         <span v-else>{{scope.row.purchasePlanNumber}}</span>
       </template>
-      <template slot-scope="scope" slot="handle">
+      <template v-slot:handle="scope">
         <a class="handle" style="margin-left: 10px;" @click="toDetails(scope.row)">查看</a>
         <a class="handle" style="margin-left: 10px;" @click="toExport(scope.row.id)">导出</a>
       </template>

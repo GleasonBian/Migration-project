@@ -25,35 +25,35 @@
     </div>
     <table-list :data-header="dataGoodsHeader" :url="goodsTableUrl" :params="pageGoods" @get-table-data="goodsTableData"
                 :refs="refGoods" @selection-change="selectionChange">
-      <template slot-scope="scope" slot="returnTypeDisplay">
+      <template v-slot:returnTypeDisplay="scope">
         <span :title="scope.row.returnChangeReason">{{scope.row.returnTypeDisplay}}</span>
       </template>
-      <template slot-scope="scope" slot="matchDegree">
+      <template v-slot:matchDegree="scope">
         <div v-if="scope.row.matchDegree">{{scope.row.matchDegree}}%</div>
         <div v-else>0%</div>
       </template>
-      <template slot-scope="scope" slot="remark">
+      <template v-slot:remark="scope">
         <el-input v-model="scope.row.remark"
                   @change="remarkChange(scope.row.id, scope.row.remark)"></el-input>
       </template>
-      <template slot-scope="scope" slot="purchaseRemark">
+      <template v-slot:purchaseRemark="scope">
         <el-input v-model="scope.row.purchaseRemark"
                   @change="purchaseRemarkChange(scope.row.id, scope.row.purchaseRemark)"></el-input>
       </template>
-      <template slot-scope="scope" slot="stateDisplay">
+      <template v-slot:stateDisplay="scope">
         <span :class="[scope.row.stateCode == 60 ? 'color_red' : '']">{{scope.row.stateDisplay}}</span>
       </template>
-      <template slot-scope="scope" slot="purchaseGuidancePrice">
+      <template v-slot:purchaseGuidancePrice="scope">
         <el-input type="number" v-model="scope.row.purchaseGuidancePrice" @wheel.native.prevent
                   @change="recommendPriceChange(scope.row.id, scope.row.purchaseGuidancePrice)"></el-input>
       </template>
-      <template slot-scope="scope" slot="historyPrice">
+      <template v-slot:historyPrice="scope">
         <span class="handle" @click="toDetail(scope.row.goodsName)">历史价</span>
       </template>
-      <template slot-scope="scope" slot="examine">
+      <template v-slot:examine="scope">
         <a class="handle" :class="[!scope.row.rejectFlag ? '' : 'text_red']" @click="toDismissal(scope.row)">审批记录</a>
       </template>
-      <template slot-scope="scope" slot="handle">
+      <template v-slot:handle="scope">
         <span class="handle" @click="toEdit(scope.row)">编辑物资</span>
       </template>
     </table-list>
@@ -73,10 +73,10 @@
     <!--</template>-->
     <!--<div>-->
     <!--<table-list :data-header="dataHeader" :data-static="item.quotationGoodsVOList"  :static="tableStatic">-->
-    <!--<template slot-scope="scope" slot="unitGoodsPrice">-->
+    <!--<template v-slot:unitGoodsPrice="scope">-->
     <!--<el-input type="number" v-model="scope.row.unitGoodsPrice"></el-input>-->
     <!--</template>-->
-    <!--<template slot-scope="scope" slot="totalGoodsPrice">-->
+    <!--<template v-slot:totalGoodsPrice="scope">-->
     <!--<span>{{scope.row | itemTotal($Utils)}}</span>-->
     <!--</template>-->
     <!--</table-list>-->
@@ -98,7 +98,7 @@
       <v-search :data="searchData" @on-click="search"></v-search>
       <table-list :data-header="pDataHeader" :url="pTabUrl" :params="page" @get-table-data="getTableData"
                   :refs="tablePerformance">
-        <template slot-scope="scope" slot="handle">
+        <template v-slot:handle="scope">
           <a class="add_item" @click="addPurchaseItem(scope.row.id)"
              v-loading.fullscreen.lock="fullscreenLoading">添加</a>
         </template>
@@ -128,10 +128,10 @@
     <div class="title" style="margin-top: 10px;">其他资料</div>
     <table-list :data-header="dataImgHeader" :url="imgTableUrl" :params="pageInfo" @get-table-data="getImgTableData"
                 :refs="tablePerformanceImg">
-      <template slot-scope="scope" slot="fileOldName">
+      <template v-slot:fileOldName="scope">
         <div>{{scope.row.fileOldName}}</div>
       </template>
-      <template slot-scope="scope" slot="btnDownLoad">
+      <template v-slot:btnDownLoad="scope">
         <el-button size="mini" type="text" @click="getShowImgPath(scope.row)">下载</el-button>
       </template>
     </table-list>

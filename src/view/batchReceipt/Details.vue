@@ -5,10 +5,10 @@
     <div class="contract_title">商品明细</div>
     <table-list :data-header="dataHeader" :static="true" :dataStatic="dataTableGoods" :refs="tableBatchReceiptGoods"
                 :params="pageGoods">
-      <template slot-scope="scope" slot="number">
+      <template v-slot:number="scope">
         {{scope.index + 1}}
       </template>
-      <template slot-scope="scope" slot="signCount">
+      <template v-slot:signCount="scope">
         <div v-if="dataDetails.stateCode === 10">
           <el-input v-model="scope.row.signCount" type="number" @wheel.native.prevent></el-input>
         </div>
@@ -31,11 +31,11 @@
     </div>
     <table-list :data-header="dataHeaderFile" :url="tabFileUrl" :refs="tableBatchReceiptFile"
                 :params="pageFile">
-      <template slot-scope="scope" slot="fileOldName">
+      <template v-slot:fileOldName="scope">
         <a :href="getShowImgPath(scope.row.filePath)"
            class="item_img" target="_blank">{{scope.row.fileOldName}}</a>
       </template>
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <a class="handle" @click="toDeleteFile(scope.row.id)">删除</a>
       </template>
     </table-list>

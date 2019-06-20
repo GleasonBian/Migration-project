@@ -2,7 +2,7 @@
   <div>
     <tab-but :data="tabData" @on-add="tabAdd"></tab-but>
     <table-list :data-header="dataHeader" :tabStyle="tabStyle" :url="tabUrl" :params="tabParams">
-      <template slot-scope="scope" slot="template">
+      <template v-slot:template="scope">
         <tab-but :data="tabData11" @on-del="tabDels(scope.row)" @on-edit="tabEdit(scope.row)"></tab-but>
       </template>
     </table-list>

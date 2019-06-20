@@ -9,7 +9,7 @@
     </div>
     <table-list :dataHeader="tableHeader" @get-table-data="getTableData" :url="tableUrl" :refs="tablePerformance"
                 :params="page" @selection-change="selectionChange">
-      <template slot-scope="scope" slot="number">
+      <template v-slot:number="scope">
         <div>{{scope.index + 1}}</div>
       </template>
     </table-list>
@@ -18,7 +18,7 @@
     <v-dialog :dialog="dialogDataAdd">
       <form-group :data="dataFormAdd" @on-cancel="cancelAdd" @on-ok="okAdd" :clear=true :custom=true
                   :data-but="dataButAdd" class="box_form">
-        <template slot-scope="scope" slot="price">
+        <template v-slot:price="scope">
           <el-input type="number" v-model="price" @wheel.native.prevent size="small" :min="0" placeholder="请输入销售"
                     @change="priceChange" @blur="priceChange"></el-input>
         </template>

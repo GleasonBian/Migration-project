@@ -1,11 +1,11 @@
 <template>
   <div style="width: 50%">
     <form-group :data="dataForm" class="box_pool" :dataBut="dataBut" @on-cancel="cancel" :custom=true @on-ok="save">
-      <template slot-scope="scope" slot="picture">
+      <template v-slot:picture="scope">
         <div class="box_nowrap">图片要求：宽高比300x300，小于等于1M，格式为JPG/PNG/GIF</div>
         <v-upload :data="logoData" @on-success-header="logoDataSuccess"></v-upload>
       </template>
-      <template slot-scope="scope" slot="pictureSelect">
+      <template v-slot:pictureSelect="scope">
         <div class="box_nowrap">图片要求：宽高比300x300，小于等于1M，格式为JPG/PNG/GIF</div>
         <v-upload :data="logoDataSelect" @on-success-header="SlogoDataSuccess"></v-upload>
       </template>

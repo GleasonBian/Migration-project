@@ -4,10 +4,10 @@
     <tab-but :data="btnData" @bulk-purchase="bulkPurchase"></tab-but>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData"
                 :refs="tableSalesPurchase" @selection-change="selectionChange">
-      <template slot-scope="scope" slot="purchasePlanNumber">
+      <template v-slot:purchasePlanNumber="scope">
         <a class="handle" @click="toSalesDetails(scope.row)">{{scope.row.purchasePlanNumber}}</a>
       </template>
-      <template slot-scope="scope" slot="handle">
+      <template v-slot:handle="scope">
         <a class="handle" @click="toPurchase(scope.row)">进货</a>
       </template>
     </table-list>

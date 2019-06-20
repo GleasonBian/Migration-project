@@ -8,10 +8,10 @@
     <div class="title">商品明细</div>
     <table-list :data-header="dataHeader" :url="tabUrlGoods" :params="pageGoods"
                 :refs="tablePerformance" @get-table-data="getTableDataGoods">
-      <template slot-scope="scope" slot="dismissal">
+      <template v-slot:dismissal="scope">
         <a class="handle" style="margin-left: 10px;" @click="toDismissal(scope.row)">审批记录</a>
       </template>
-      <template slot-scope="scope" slot="historyPrice">
+      <template v-slot:historyPrice="scope">
         <span class="handle" @click="toDetail(scope.row.goodsName)">历史价</span>
       </template>
     </table-list>

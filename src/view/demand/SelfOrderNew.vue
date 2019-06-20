@@ -12,7 +12,7 @@
     </div>
     <div class="contract_title">商品明细</div>
     <table-list :data-header="dataHeader" :dataStatic="goodsDetailList" :static="true" @selection-change="selectionChange">
-      <template slot-scope="scope" slot="outgoingNum">
+      <template v-slot:outgoingNum="scope">
         <el-input v-model="scope.row.outgoingNum" type="number"></el-input>
         <!--<input type="number" v-model="scope.row.outgoingNum"  min="0.0" max="5" step="0.1">-->
       </template>

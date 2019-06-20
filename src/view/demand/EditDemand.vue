@@ -2,53 +2,53 @@
   <div>
     <div class="box_form_purchase">
       <form-group :data="dataForm" :data-but="dataBut" @on-ok="saveAll" @return-page="returnListPage" :custom=true>
-        <template slot-scope="scope" slot="buyUserName">
+        <template v-slot:buyUserName="scope">
           <span ref="buyer">{{buyUserName ? buyUserName : ''}}</span>
           <el-button type="text" @click="choiceBuyer"><i class="el-icon-plus"></i>选择采购员</el-button>
         </template>
-        <template slot-scope="scope" slot="areaExpressIds">
+        <template v-slot:areaExpressIds="scope">
           <v-cites @on-change="citesChange" :value="citesValues"></v-cites>
         </template>
-        <template slot-scope="scope" slot="uploadFile">
+        <template v-slot:uploadFile="scope">
           <div class="uploadBox">
             <v-upload :data="uploadData" :customBeforeUpload=true @on-success="uploadSuccess" @on-remove="onRemove">
               <div><el-button size="small" type="" icon="el-icon-upload2">选择文件</el-button></div>
             </v-upload>
           </div>
         </template>
-        <template slot-scope="scope" slot="boxTable">
+        <template v-slot:boxTable="scope">
           <tab-but :data="btnAddGoodsData" @on-add="addGoods" @del-goods="delGoods"></tab-but>
           <table-list :data-header="dataHeaderGoodsAll" :static=true :dataStatic="dataTableGoodsAll"
                       @selection-change="selectionChangeGoodsAll" :refs="tableDemandGoodsAll" >
-            <template slot-scope="scope" slot="goodsCode">
+            <template v-slot:goodsCode="scope">
               <div v-if="scope.row.type !== 2">{{scope.row.goodsId}}</div>
             </template>
-            <template slot-scope="scope" slot="goodsName">
+            <template v-slot:goodsName="scope">
               <div>
                 <el-input v-model="scope.row.goodsName" placeholder="商品名称" style="width:150px"></el-input>
               </div>
             </template>
-            <template slot-scope="scope" slot="typeModel">
+            <template v-slot:typeModel="scope">
               <div>
                 <el-input v-model="scope.row.typeModel" placeholder="规格型号" style="width:150px"></el-input>
               </div>
             </template>
-            <template slot-scope="scope" slot="brandName">
+            <template v-slot:brandName="scope">
               <div>
                 <el-input v-model="scope.row.brandName" placeholder="品牌名称" style="width:150px"></el-input>
               </div>
             </template>
-            <template slot-scope="scope" slot="unit">
+            <template v-slot:unit="scope">
               <div>
                 <el-input v-model="scope.row.unit" placeholder="单位" style="width:150px"></el-input>
               </div>
             </template>
-            <template slot-scope="scope" slot="goodsCount">
+            <template v-slot:goodsCount="scope">
               <el-input v-model="scope.row.goodsCount" type="number" size="small" placeholder="0"
                         min="0" style="width:150px"></el-input>
             </template>
-            <template slot-scope="scope" slot="totalGoodsPrice"><div>{{scope.row | getSubtotal}}</div></template>
-            <template slot-scope="scope" slot="remark">
+            <template v-slot:totalGoodsPrice="scope"><div>{{scope.row | getSubtotal}}</div></template>
+            <template v-slot:remark="scope">
               <el-input v-model="scope.row.remark" size="small" placeholder="备注"
                         style="width:150px"></el-input>
             </template>
@@ -61,10 +61,10 @@
       <v-dialog :dialog="dialogGoods">
         <form-group :data="goodsDialogData" :dataBut="dataGoodsBut" :custom=true
                     @on-ok="saveGoodsData" @on-cancel="cancelGoods" @close-dialog="closeDialogGoods">
-          <template slot-scope="scope" slot="searchGoodsData">
+          <template v-slot:searchGoodsData="scope">
             <v-search :data="searchGoodsData" @on-click="searchGoods"></v-search>
           </template>
-          <template slot-scope="scope" slot="selectedGoods">
+          <template v-slot:selectedGoods="scope">
             <table-list :data-header="dataHeaderGoods" :url="tabGoodsUrl" :params="pageGoods"
                         @selection-change="selectionChange" @get-table-data="getTableGoodsData" :refs="tableDemandGoods">
             </table-list>
@@ -75,13 +75,13 @@
       <v-dialog :dialog="dialogBuyer">
         <form-group :data="buyerDialogData" :dataBut="dataBuyerBut" :custom=true
                     @on-ok="saveBuyerData" @on-cancel="cancelBuyer" @close-dialog="closeDialogBuyer">
-          <template slot-scope="scope" slot="searchBuyerData">
+          <template v-slot:searchBuyerData="scope">
             <v-search :data="searchBuyerData" @on-click="searchBuyer"></v-search>
           </template>
-          <template slot-scope="scope" slot="selectedBuyer">
+          <template v-slot:selectedBuyer="scope">
             <table-list :data-header="dataHeaderBuyer" :url="tabBuyerUrl" :params="pageBuyer"
                         @get-table-data="getTableBuyerData" :refs="tableDemandBuyer">
-              <template slot-scope="scope" slot="radioSelect">
+              <template v-slot:radioSelect="scope">
                 <el-radio v-model="radioChooseBuyer" :label="scope.row">&nbsp;</el-radio>
               </template>
             </table-list>

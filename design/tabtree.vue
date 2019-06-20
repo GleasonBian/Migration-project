@@ -4,7 +4,7 @@
         <tab-but :data="tabButData" @on-add="add"></tab-but>
         <tab-tree :header-data="headerData" :url="url" :sub-url="subUrl" :params="page" :refs="page.refs"
                   :no-expand="noExpand" :slot-arr="slotArr" @get-table-data="getTableData">
-            <template slot-scope="scope" slot="useFlagValue">
+            <template v-slot:useFlagValue="scope">
                 <template v-if="scope.row.level === 1">
                     <span @click="fn1(scope.row)">我是小一</span>
                 </template>
@@ -18,7 +18,7 @@
                     <span  @click="fn1(scope.row)">我是其他</span>
                 </template>
             </template>
-            <template slot-scope="scope" slot="operate">
+            <template v-slot:operate="scope">
                 <template v-if="scope.row.level === 1">
                     <span>000000000</span>
                 </template>

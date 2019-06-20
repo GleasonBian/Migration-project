@@ -4,10 +4,10 @@
     <tab-but :data="tabBut" @on-export="toExportDeliver" v-if="$Utils.getPageElement($Consts.PERMISSION.exportReceipt.code)"></tab-but>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData"
                 :refs="tableSalesPurchaseAndDelivery" @selection-change="tbSelectionChange">
-      <template slot-scope="scope" slot="numberIndex">
+      <template v-slot:numberIndex="scope">
         {{scope.index + 1}}
       </template>
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <a class="handle" @click="toPurchaseDetails(scope.row)">查看</a>
         <a class="handle" @click="toUploadAdd(scope.row.id)">上传/查看验收单据</a>
         <a class="handle" @click="exportDeliverElse(scope.row)" v-show="$Utils.getPageElement($Consts.PERMISSION.exportReceipt.code)">导出</a>
@@ -16,7 +16,7 @@
     <v-page :data="page" :dataArr="[dataSearch]"></v-page>
     <v-dialog :dialog="checkDialog">
       <form-group :data="checkForm" @on-cancel="checkCancel" :custom=true>
-        <template slot-scope="scope" slot="btnGruop">
+        <template v-slot:btnGruop="scope">
           <div class="clearfix">
             <div class="pull-left" style="margin-right:20px;">
               <v-upload :data="uploadData" :customBeforeUpload=true @on-success="uploadSuccess">
@@ -30,10 +30,10 @@
             </div>
           </div>
         </template>
-        <template slot-scope="scope" slot="tableBox">
+        <template v-slot:tableBox="scope">
           <table-list :data-header="dataHeaderFile" :url="tabFileUrl" :refs="tablePurAndDeliveryFile"
                       :params="pageFile" @get-table-data="getTableDataFile" @selection-change="selectionChange">
-            <template slot-scope="scope" slot="fileOldName">
+            <template v-slot:fileOldName="scope">
               <a :href="getShowImgPath(scope.row.filePath)"
                  class="item_img" target="_blank">{{scope.row.fileOldName}}</a>
             </template>

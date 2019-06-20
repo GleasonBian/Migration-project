@@ -13,7 +13,7 @@
                 @get-table-data="getTableData"
                 :params="page"
                 :refs="tablePerformance">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <el-button type="text" @click="toView(scope.row)">查看详情</el-button>
       </template>
     </table-list>

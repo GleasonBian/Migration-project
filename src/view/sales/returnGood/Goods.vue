@@ -23,7 +23,7 @@
           <div class="contract_title">{{vo.supplierName}}</div>
           <table-list :index="j" :data-header="dataHeader" :dataStatic="vo.stockDeliverGoodsVOList" :static="true"
                       @selection-change="tableSelection">
-            <template slot-scope="scope" slot="afterNumber">
+            <template v-slot:afterNumber="scope">
               <el-input type="number" @keyup.native="voInputs(scope.row, scope.index)" placeholder="售后数量" v-model="scope.row.inputs"
                         clearable></el-input>
             </template>

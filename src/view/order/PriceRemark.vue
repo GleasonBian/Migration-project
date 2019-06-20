@@ -5,16 +5,16 @@
     <!--分割线-->
     <div class="title" style="margin-top: 15px;">商品明细</div>
     <table-list :data-header="dataHeader" :data-static="dataStatic"  :static="tableStatic">
-      <template slot-scope="scope" slot="relatedFileVOList">
+      <template v-slot:relatedFileVOList="scope">
         <cell-upload :data-list1="scope.row.relatedFileVOList"  :goods-id="scope.row.id" @on-success="cellOnSuccess" @on-show="onShowImg"></cell-upload>
       </template>
-      <template slot-scope="scope" slot="pricingAnalysis">
+      <template v-slot:pricingAnalysis="scope">
         <el-input v-model="scope.row.pricingAnalysis" @change="pricingAnalysisChange(scope.row.id, scope.row.pricingAnalysis)"></el-input>
       </template>
-      <template slot-scope="scope" slot="remarkForPrice">
+      <template v-slot:remarkForPrice="scope">
         <el-input v-model="scope.row.remarkForPrice" @change="remarkForPriceChange(scope.row.id, scope.row.remarkForPrice)"></el-input>
       </template>
-      <template slot-scope="scope" slot="handle">
+      <template v-slot:handle="scope">
         <!--<span class="handle" @click="delItem1(scope.row.id)">删除</span>-->
       </template>
     </table-list>
@@ -26,10 +26,10 @@
       <!--<el-button size="mini" type="primary" icon="el-icon-delete" v-on:click.stop="delRecord">删除所选</el-button>-->
     <!--</v-upload>-->
     <table-list :data-header="dataImgHeader" :url="imgTableUrl" :params="page" @get-table-data="getImgTableData" :refs="tablePerformance">
-      <template slot-scope="scope" slot="fileOldName">
+      <template v-slot:fileOldName="scope">
         <div>{{scope.row.fileOldName}}</div>
       </template>
-      <template slot-scope="scope" slot="btnDownLoad">
+      <template v-slot:btnDownLoad="scope">
         <el-button size="mini" type="text" @click="getShowImgPath(scope.row)">下载</el-button>
       </template>
     </table-list>

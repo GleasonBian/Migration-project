@@ -4,10 +4,10 @@
       <v-search :data="searchData" @on-click="search" :width="widthLabel"></v-search>
       <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData"
                   :refs="tableRef">
-        <template slot-scope="scope" slot="examinePlan">
+        <template v-slot:examinePlan="scope">
           <a class="handle" @click="toDismissal(scope.row, '1')">审批记录</a>
         </template>
-        <template slot-scope="scope" slot="examineList">
+        <template v-slot:examineList="scope">
           <a class="handle" @click="toDismissal(scope.row, '2')">审批记录</a>
         </template>
       </table-list>

@@ -14,10 +14,10 @@
     </div>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData"
                 :refs="tablePerformance" @selection-change="tbSelectionChange">
-      <template slot-scope="scope" slot="indexCode">
+      <template v-slot:indexCode="scope">
         {{scope.index + 1}}
       </template>
-      <template slot-scope="scope" slot="purchasePlanNumber">
+      <template v-slot:purchasePlanNumber="scope">
         <el-button type="text" @click="toDetails(scope.row)">{{scope.row.purchasePlanNumber}}</el-button>
       </template>
     </table-list>
@@ -30,7 +30,7 @@
     </div>
     <v-dialog :dialog="dialogCycle">
       <v-search :data="searchDataPur" @on-click="searchPur">
-        <template slot-scope="scope" slot="settlementType">
+        <template v-slot:settlementType="scope">
           <el-radio-group v-model="radioType">
             <el-radio :label="2">现结付款</el-radio>
             <el-radio :label="1">账期付款</el-radio>
@@ -40,7 +40,7 @@
       <br>
       <table-list :data-header="pDataHeader" :url="pTabUrl" :params="pagePur" @get-table-data="getTableDataPur"
                   :refs="refsPur" :tabStyle="tabStylePur">
-        <template slot-scope="scope" slot="handle">
+        <template v-slot:handle="scope">
           <el-button type="text" size="mini" @click="addPurchaseItem(scope.row)">选择</el-button>
         </template>
       </table-list>

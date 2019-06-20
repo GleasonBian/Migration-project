@@ -5,7 +5,7 @@
     </div>
     <table-list :dataHeader="tableHeader" @get-table-data="getTableData" :url="tableUrl" :refs="goodsMealListTable"
                 :params="params">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <div class="mCen1">
           <TabBut v-if='scope.row.state === 1' :data="noTabButData" @on-edit="edit(scope.row)" @on-view="onview(scope.row)" @on-enable="onenable(scope.row)" @on-del="ondel(scope.row)"></TabBut>
           <TabBut v-if="scope.row.state === 0" :data="okTabButData" @on-disable="ondisable(scope.row)" @on-view="onview(scope.row)"></TabBut>

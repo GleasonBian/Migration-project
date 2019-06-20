@@ -3,7 +3,7 @@
     <v-search :data="SearchData" @on-click="searchDataClick"></v-search>
     <!--<tab-but :data="tabBut" @on-add="tabAdd"></tab-but>-->
     <table-list :dataHeader="tableHeader" @get-table-data="getTableData" :url="tableUrl" :refs="goodsMealListTable" :params="page">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <div class="mCen1">
           <TabBut :data="upTabButData" @on-view="onView(scope.row)"></TabBut>
         </div>

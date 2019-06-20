@@ -1,10 +1,10 @@
 <template>
   <div class="box_det">
     <v-list :data="dataType" :data-list="datalist">
-      <template slot-scope="scope" slot="picture">
+      <template v-slot:picture="scope">
         <img :src="pictureUrl" v-show="pictureUrl === '' ? false : true" />
       </template>
-      <template slot-scope="scope" slot="pictureSelect">
+      <template v-slot:pictureSelect="scope">
         <img :src="pictureSelectUrl" v-show="pictureSelectUrl === '' ? false : true" />
       </template>
     </v-list>

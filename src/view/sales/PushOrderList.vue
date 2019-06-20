@@ -3,10 +3,10 @@
     <v-search :data="searchData" @on-click="search"></v-search>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" :refs="tableDemandSceneList"
                 @get-table-data="getTableData" @selection-change="selectionChange">
-      <template slot-scope="scope" slot="code">
+      <template v-slot:code="scope">
         <el-button type="text" @click="toDetails(scope.row)">{{scope.row.code}}</el-button>
       </template>
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <el-button type="text" @click="pushGood(scope.row)">单个推送</el-button>
       </template>
     </table-list>

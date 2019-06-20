@@ -1,14 +1,14 @@
 <template>
   <div class="">
     <v-list :data="demandDetaildData" :data-list="demandDetailList" :list-style="listStyle">
-      <template slot-scope="scope" slot="pushState">
+      <template v-slot:pushState="scope">
         <span v-show="!demandDetailList.pushState">失败</span>
         <span v-show="demandDetailList.pushState === 1">成功</span>
         <span v-show="demandDetailList.pushState === 2">推送中</span>
       </template>
     </v-list>
     <table-list :data-header="dataHeader" :dataStatic="goodsDetailList" :static="true" @selection-change="selectionChange">
-      <!--<template slot-scope="scope" slot="operation">-->
+      <!--<template v-slot:operation="scope">-->
         <!--<span class="handle" @click="editGoods(scope.row)">编辑</span>-->
       <!--</template>-->
     </table-list>

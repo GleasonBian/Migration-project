@@ -12,10 +12,10 @@
     </div>
     <table-list :data-header="dataHeader" :url="tabUrl" :params="page" @get-table-data="getTableData"
                 :refs="tablePerformance" @selection-change="tbSelectionChange">
-      <template slot-scope="scope" slot="indexCode">
+      <template v-slot:indexCode="scope">
         {{scope.index + 1}}
       </template>
-      <template slot-scope="scope" slot="purchasePlanNumber">
+      <template v-slot:purchasePlanNumber="scope">
         <el-button type="text" @click="toDetails(scope.row)">{{scope.row.purchasePlanNumber}}</el-button>
       </template>
     </table-list>

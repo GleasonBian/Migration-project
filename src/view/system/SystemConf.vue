@@ -1,7 +1,7 @@
 <template>
   <div>
     <table-list :data-header="dataHeader" :static="static" :dataStatic="dataStatic" :refs="tablePerformance">
-      <template slot-scope="scope" slot="operation">
+      <template v-slot:operation="scope">
         <tab-but :data="tabBut" @onRole="tabRole(scope.row)" @onPermissions="tabPermissions(scope.row)"></tab-but>
       </template>
     </table-list>

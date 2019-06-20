@@ -23,16 +23,16 @@
                 :refs="tablePerformance">
       <!--<table-list :data-header="dataHeader" :params="page"-->
       <!--:refs="tablePerformance" :static="true" :dataStatic="dataExternal">-->
-      <template slot-scope="scope" slot="returnTypeDisplay">
+      <template v-slot:returnTypeDisplay="scope">
         <span :title="scope.row.returnChangeReason">{{scope.row.returnTypeDisplay}}</span>
       </template>
-      <template slot-scope="scope" slot="code">
+      <template v-slot:code="scope">
         <a class="handle" @click="toSalesDetails(scope.row)">{{scope.row.code}}</a>
       </template>
-      <template slot-scope="scope" slot="examine">
+      <template v-slot:examine="scope">
         <a class="handle" :class="[!scope.row.rejectFlag ? '' : 'text_red']" @click="toDismissal(scope.row)">审批记录</a>
       </template>
-      <template slot-scope="scope" slot="handle">
+      <template v-slot:handle="scope">
         <a class="handle" @click="toDetail(scope.row.goodsName)">历史价</a>
         <a v-if="(page.materialState === 10 || page.materialState === 50 || page.materialState === 20) && (page.businessType !== 2)" class="handle" style="margin-left: 10px;"
            @click="writePriceMark(scope.row.listPurchaseId)">报价</a>

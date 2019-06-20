@@ -23,10 +23,10 @@
             </div>
           </template>
           <table-list :data-header="dataHeader" :data-static="item.quotationGoodsVOList"  :static="tableStatic">
-            <template slot-scope="scope" slot="unitGoodsPrice">
+            <template v-slot:unitGoodsPrice="scope">
               <el-input v-model.lazy="scope.row.unitGoodsPrice" type="number" @blur="savePrice(scope.row)"></el-input>
             </template>
-            <template slot-scope="scope" slot="reason">
+            <template v-slot:reason="scope">
               <el-input v-model="scope.row.reason" :disabled="scope.row.quotationStateCode == 0"></el-input>
             </template>
           </table-list>
