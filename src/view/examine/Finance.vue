@@ -41,12 +41,12 @@
       <template v-slot:examine="scope">
         <a v-if="indexCode !== '1'" class="handle" :class="[!scope.row.rejectFlag ? '' : 'text_red']"
            @click="toDismissal(scope.row)">审批记录</a>
-        <div v-else>
-          <a class="handle" :class="[!scope.row.rejectFlag ? '' : 'text_red']" @click="toDismissal(scope.row, '1')">采购审批记录</a>
+        <div v-else class='button-class' style="width:74px">
+          <a class="handle" :class="[!scope.row.rejectFlag ? '' : 'text_red']" @click="toDismissal(scope.row, '1')">采购审批记录</a><br/>
           <a class="handle" :class="[!scope.row.rejectFlag ? '' : 'text_red']" @click="toDismissal(scope.row, '2')">销售审批记录</a>
         </div>
       </template>
-      <template v-slot:handle="scope">
+      <template v-slot:handle="scope" class='button-class' >
         <a v-if="indexCode === '0' || indexCode === '1' || indexCode === '2'" class="handle"
            @click="toDetail(scope.row.goodsName, '1')">销售价</a>
         <a v-if="indexCode === '0' || indexCode === '1' || indexCode === '2'" class="handle"
@@ -648,6 +648,7 @@
     color: #008aff;
     cursor: pointer;
     text-decoration: none;
+    display: block;
   }
 
   .handle:hover {
@@ -656,5 +657,12 @@
 
   .handle.text_red {
     color: #ff0000
+  }
+  .button-class{
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center
   }
 </style>
