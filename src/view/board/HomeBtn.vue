@@ -771,34 +771,35 @@
           },
           legend: {
             itemGap: 6,
-            x: '110px',
+            x: '30px',
             y: '25px',
+            top:'1%',
             data: [{
-              name: '供应',
+              name: '已供应',
+              textStyle: {
+                color: '#fff',
+              }
+            },
+            {
+              name: '对账中',
               textStyle: {
                 color: '#fff'
               }
             },
             {
-              name: '对账',
+              name: '已开票',
               textStyle: {
                 color: '#fff'
               }
             },
             {
-              name: '开票',
+              name: '应收账款',
               textStyle: {
                 color: '#fff'
               }
             },
             {
-              name: '结算',
-              textStyle: {
-                color: '#fff'
-              }
-            },
-            {
-              name: '回款',
+              name: '已回款',
               textStyle: {
                 color: '#fff'
               }
@@ -836,8 +837,7 @@
             type: 'value',
             name: '金额/万',
             nameTextStyle: {
-              color: '#49a3ff',
-              fontSize: 12
+              color: '#49a3ff'
             },
             splitLine: {
               lineStyle: {
@@ -863,35 +863,35 @@
             }
           }],
           series: [{
-            name: '结算',
+            name: '应收账款',
             type: 'line',
               // stack: '广告',
             color: '#00AEFF',
             data: dataValue === undefined ? '' : dataValue.settment
           },
           {
-            name: '对账',
+            name: '对账中',
             type: 'line',
               // stack: '广告',
             color: '#FF8800',
             data: dataValue === undefined ? '' : dataValue.reconciliation
           },
           {
-            name: '开票',
+            name: '已开票',
             type: 'line',
               // stack: '广告',
             color: '#79E62B',
             data: dataValue === undefined ? '' : dataValue.invoice
           },
           {
-            name: '回款',
+            name: '已回款',
             type: 'line',
               // stack: '广告',
             color: '#7000DD',
             data: dataValue === undefined ? '' : dataValue.back
           },
           {
-            name: '供应',
+            name: '已供应',
             type: 'line',
               // stack: '广告',
             color: '#FF0C3E',
@@ -912,34 +912,35 @@
           },
           legend: {
             itemGap: 6,
-            x: '110px',
+            x: '25px',
             y: '25px',
+            top:'1%',
             data: [{
-              name: '采购',
+              name: '已采购',
               textStyle: {
                 color: '#fff'
               }
             },
             {
-              name: '对账',
+              name: '对账中',
               textStyle: {
                 color: '#fff'
               }
             },
             {
-              name: '开票',
+              name: '已开票',
               textStyle: {
                 color: '#fff'
               }
             },
             {
-              name: '结算',
+              name: '应付金额',
               textStyle: {
                 color: '#fff'
               }
             },
             {
-              name: '付款',
+              name: '已付款',
               textStyle: {
                 color: '#fff'
               }
@@ -1004,35 +1005,35 @@
             }
           }],
           series: [{
-            name: '结算',
+            name: '应付金额',
             type: 'line',
               // stack: '广告',
             color: '#00AEFF',
             data: dataValue === undefined ? '' : dataValue.settment
           },
           {
-            name: '对账',
+            name: '对账中',
             type: 'line',
               // stack: '广告',
             color: '#FF8800',
             data: dataValue === undefined ? '' : dataValue.reconciliation
           },
           {
-            name: '开票',
+            name: '已开票',
             type: 'line',
               // stack: '广告',
             color: '#79E62B',
             data: dataValue === undefined ? '' : dataValue.invoice
           },
           {
-            name: '付款',
+            name: '已付款',
             type: 'line',
               // stack: '广告',
             color: '#7000DD',
             data: dataValue === undefined ? '' : dataValue.back
           },
           {
-            name: '采购',
+            name: '已采购',
             type: 'line',
               // stack: '广告',
             color: '#FF0C3E',
