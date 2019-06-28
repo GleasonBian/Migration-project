@@ -11,12 +11,12 @@
             <ul class="pull-right pie_text">
               <li class="clearfix">
                 <span class="icon_point color_e3e5e9"></span>
-                <span class="icon_text">采购总额</span>
+                <span class="icon_text">已供应金额</span>
                 <span class="icon_price">¥ {{profitDetailsData.totalMoney}}</span>
               </li>
               <li class="clearfix">
                 <span class="icon_point color_3aa1fe"></span>
-                <span class="icon_text">采购成本</span>
+                <span class="icon_text">已采购金额</span>
                 <span class="icon_price">¥ {{profitDetailsData.totalCost}}</span>
               </li>
               <li class="clearfix">
@@ -157,8 +157,8 @@
         // 经营利润明细
         profitDetailsHeader: [
           {prop: 'reportDate', label: '月份'},
-          {prop: 'totalMoney', label: '采购金额'},
-          {prop: 'totalCost', label: '采购成本'},
+          {prop: 'totalMoney', label: '已供应金额'},
+          {prop: 'totalCost', label: '已采购金额'},
           {prop: 'grossProfit', label: '毛利润'},
           {prop: 'grossProfitRate', label: '毛利率（%）'}
         ],
@@ -176,14 +176,15 @@
         // 梁场结算
         settlementHeader: [
           {prop: 'reportDate', label: '月份'},
-          {prop: 'totalMoney', label: '采购金额'},
+          {prop: 'totalMoney', label: '已供应金额'},
           {prop: 'totalNoInvoiceMoney', label: '未开票'},
-          {prop: 'totalInvoiceMoney', label: '未回款'},
-          {prop: 'totalSettlementMoney', label: '已结算'}
+          {prop: 'totalNosettMoney', label: '未回款'},
+          {prop: 'totalSettlementMoney', label: '已回款'}
         ],
         urlSettlement: this.$Api.board.pfindProjectSettlement,
         settlementRefs: 'settlement_table',
         pageProject: {
+          dataSource:1,
           totalNum: 0,
           currentPage: 1,
           offset: 0,
@@ -194,14 +195,15 @@
         // 供应商结算
         supplierHeader: [
           {prop: 'supplierName', label: '企业名称'},
-          {prop: 'totalMoney', label: '采购金额'},
+          {prop: 'totalMoney', label: '已采购金额'},
           {prop: 'totalNoInvoiceMoney', label: '未开票'},
-          {prop: 'totalInvoiceMoney', label: '未付款'},
-          {prop: 'totalSettlementMoney', label: '已结算'}
+          {prop: 'totalNosettMoney', label: '未付款'},
+          {prop: 'totalSettlementMoney', label: '已付款'}
         ],
         supplierRefs: 'supplier_tb_refs',
         supplierUrl: this.$Api.board.findProjectSettlement,
         supplierPage: {
+          dataSource:2,
           totalNum: 0,
           currentPage: 1,
           offset: 0,
@@ -213,7 +215,7 @@
         supplyChainHeader: [
           {prop: 'userName', label: '姓名'},
           {prop: 'currentProfit', label: '当月利润'},
-          {prop: 'currentMoney', label: '采购金额'},
+          {prop: 'currentMoney', label: '已供应金额'},
           {prop: 'totalProfit', label: '总利润'},
           {prop: 'totalMoney', label: '采购总金额'}
         ],
@@ -232,7 +234,7 @@
         purchasingPerformanceHeader: [
           {prop: 'userName', label: '姓名'},
           {prop: 'currentProfit', label: '当月利润'},
-          {prop: 'currentMoney', label: '采购金额'},
+          {prop: 'currentMoney', label: '已供应金额'},
           {prop: 'totalProfit', label: '总利润'},
           {prop: 'totalMoney', label: '采购总金额'}
         ],
@@ -251,7 +253,7 @@
         supplyPerformanceHeader: [
           {prop: 'userName', label: '姓名'},
           {prop: 'currentProfit', label: '当月利润'},
-          {prop: 'currentMoney', label: '采购金额'},
+          {prop: 'currentMoney', label: '已供应金额'},
           {prop: 'totalProfit', label: '总利润'},
           {prop: 'totalMoney', label: '采购总金额'}
         ],

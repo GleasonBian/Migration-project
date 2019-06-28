@@ -41,14 +41,6 @@
                   <div>{{dataSupplierPie.noSettTotalCost ? dataSupplierPie.noSettTotalCost : 0}}</div>
                 </div>
               </div>
-              <!--<div class="clearfix">-->
-                <!--<div class="pull-left legend_icon pie_color1"></div>-->
-                <!--<div class="pull-left legend_text">已结算金额&占比</div>-->
-              <!--</div>-->
-              <!--<div class="clearfix">-->
-                <!--<div class="pull-left legend_icon pie_color2"></div>-->
-                <!--<div class="pull-left legend_text"></div>-->
-              <!--</div>-->
             </div>
           </div>
           <div class="box_boadr_home">
@@ -61,7 +53,7 @@
             <div class="board_box">
               <table-list :data-header="dataSupplier" :refs="dataSupplierRefs" :url="urlSupplier"
                           :params="pageSupplier">
-                <template v-slot:number="scope">
+                <template slot-scope="scope" slot="number">
                   {{scope.index + 1}}
                 </template>
               </table-list>
@@ -100,7 +92,7 @@
             <div class="board_box">
               <table-list :data-header="dataProject" :refs="dataProjectRefs" :url="urlSupplier"
                           :params="pageProject">
-                <template v-slot:number="scope">
+                <template slot-scope="scope" slot="number">
                   {{scope.index + 1}}
                 </template>
               </table-list>
@@ -169,6 +161,28 @@
     mounted () {
     },
     methods: {
+      /**
+       * 本季度开始时间
+       */
+      getQuarterStartDate(){
+        let now = new Date();
+        let nowMonth = now.getMonth()+1;
+        let quarter = {}
+        if(nowMonth<=3){
+          quarter.startTime = now.getFullYear()+'-01-01' 
+          quarter.endTime = now.getFullYear()+'-03-31'
+        } else if (nowMonth >= 4 && nowMonth <= 6){
+          quarter.startTime = now.getFullYear()+'-04-01' 
+          quarter.endTime = now.getFullYear()+'-06-30'
+        } else if(nowMonth>=7 && mowMonth <= 9){
+          quarter.startTime = now.getFullYear()+'-07-01' 
+          quarter.endTime = now.getFullYear()+'-09-30'
+        }else if(mowMonth>=10){
+          quarter.startTime = now.getFullYear()+'-10-01' 
+          quarter.endTime = now.getFullYear()+'-12-31'
+        }
+        return quarter
+      },
       pageUpdateTableSupplier () {
         this.$Utils.pageUpdateTable([[], this.pageSupplier], this.dataSupplierRefs, this)
       },
@@ -207,11 +221,10 @@
             this.pageProject.startTime = dateCurrentMonth
             break
           case '本季度':
-            this.pageSupplier.startTime = dateQuarterNow
-            this.pageProject.startTime = dateCurrentMonth
+            this.pageSupplier.startTime = this.getQuarterStartDate().startTime
+            this.pageProject.startTime = this.getQuarterStartDate().startTime
             break
         }
-        this.submit()
       },
       // 获取本季度开始日期
       getQuarterNow (date) {

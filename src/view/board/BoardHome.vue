@@ -1,26 +1,6 @@
 <template>
   <div>
     <h4>经营概述</h4>
-    <!-- <el-row style="" class="box_board">
-      <el-col class="box_icon_bodrd_border" :span="8">
-        <div class="">
-          <div class="box_icon_bodrd_text">{{formatData(profitDetailsData.totalMoney)}}</div>
-        </div>
-        <div class="box_icon_bodrd_text text_other">销售金额</div>
-      </el-col>
-      <el-col class="box_icon_bodrd_border" :span="8">
-        <div class="">
-          <div class="box_icon_bodrd_text">{{formatData(profitDetailsData.totalCost)}}</div>
-        </div>
-        <div class="box_icon_bodrd_text text_other">采购成本</div>
-      </el-col>
-      <el-col class="box_icon_bodrd_border" :span="8">
-        <div class="">
-          <div class="box_icon_bodrd_text">{{formatData(profitDetailsData.grossProfit)}}</div>
-        </div>
-        <div class="box_icon_bodrd_text text_other">毛利润</div>
-      </el-col>
-    </el-row> -->
     <div class="contract_title">经营明细</div>
     <div class="clearfix">
       <div class="btn_search_time pull-left">
@@ -56,7 +36,7 @@
         {{formatData(scope.row.grossProfit)}}
       </template>
       <template v-slot:handle="scope">
-        <a class="handle" @click="toProfitDetails(scope.row)">月份排名</a>
+        <a class="handle" @click="toProfitDetails(scope.row)" style="margin-right:10px">月份排名</a>
         <a class="handle" @click="toGoodsDetails(scope.row)">物资明细</a>
       </template>
     </table-list>

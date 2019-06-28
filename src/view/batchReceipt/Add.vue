@@ -137,7 +137,7 @@
             idArr.push(item.id)
           })
           let json = {
-            projectId: this.dataSearch.projectId,
+            projectId: this.dataSearch.projectId === undefined ? this.selectionData[0].projectId : this.dataSearch.projectId,
             ids: idArr.join(',')
           }
           this.$Ajax.post({

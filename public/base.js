@@ -53,5 +53,5 @@ switch (process.env.NODE_ENV) {
     break;
 }
 
-
+// console.log(defaultConfig)
 module.exports = defaultConfig;
