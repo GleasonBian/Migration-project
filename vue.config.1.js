@@ -2,9 +2,7 @@ const path = require('path');
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
-
 const baseConfig = require('./public/base.js')
-const CompressionPlugin = require('compression-webpack-plugin'); //Gzip
 module.exports = {
   // 基本路径
   publicPath: './',
@@ -29,28 +27,9 @@ module.exports = {
       .set('components', resolve('src/components'))
       .set('base', resolve('public/base.js'));
   },
-  	//调整 webpack 配置 https://cli.vuejs.org/zh/guide/webpack.html#%E7%AE%80%E5%8D%95%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F
-  configureWebpack: config => {
-    // 入口文件
-    config.entry = './src/view/index/main.js';
-		// 生产 & 测试环境
-		let pluginsPro = [
-			new CompressionPlugin({ //文件开启Gzip，也可以通过服务端(如：nginx)(https://github.com/webpack-contrib/compression-webpack-plugin)
-				filename: '[path].gz[query]',
-				algorithm: 'gzip',
-				test: new RegExp('\\.(' + ['js', 'css'].join('|') + ')$', ),
-				threshold: 8192,
-				minRatio: 0.8,
-			}),
-    ];
-    // 为生产环境修改配置...process.env.NODE_ENV !== 'development'
-    if (process.env.NODE_ENV !== 'development') {
-      config.plugins = [...config.plugins, ...pluginsPro];
-    }
-	},
-  // configureWebpack: {
-  //   entry: './src/view/index/main.js',
-  // },
+  configureWebpack: {
+    entry: './src/view/index/main.js',
+  },
   // 生产环境是否生成 sourceMap 文件，一般情况不建议打开
   productionSourceMap: false,
   // css相关配置

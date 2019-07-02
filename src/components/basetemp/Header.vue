@@ -1,17 +1,20 @@
 <template>
-    <div ref="header" class="header clearfix">
-        <img class="header_log pull-left " src="static/img/header_logo.png" alt="" height="38"/>
-        <div class="header_title pull-left">中台</div>
-        <div class="bizHeader pull-left">
+    <div ref="header" class="header">
+      <div class="pull-left">
+        <img class="header_log" src="../static/img/header_logo.png"/>
+        <span class="header_title">中台</span>
+      </div>
+        <!-- <div class="bizHeader pull-left">
             <biz-header></biz-header>
+        </div> -->
+        <div class="othterMenu">
+            <em v-for="(meun, index) in othterMenu" :key="index" @click="menus(meun, index)" :class="activeFn(index)">{{meun.name}}</em>
         </div>
-        <div class="othterMenu  pull-right clearfix">
-            <em v-for="(meun, index) in othterMenu" @click="menus(meun, index)"
-                :class="activeFn(index)">{{meun.name}}</em>
-            <span class="user_info clearfix" @click="editUser">
+        <div class="user-opation">
+           <div class="user_info " @click="editUser">
               <img class="pull-left user_icon" src="../static/img/user_icon.png"/>
               <span class="pull-left">{{name}}</span>
-            </span>
+            </div>
             <span class="logout" @click="logout">退出</span>
         </div>
         <v-dialog :dialog="editUserData">
@@ -205,8 +208,91 @@
     }
   }
 </script>
-<style>
-    .pull-left, .logout {
-        cursor: pointer;
-    }
+<style scoped>
+.pull-left{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pull-left, .logout {
+  cursor: pointer;
+}
+.header_log{
+  height: 38px;
+  margin-left: 10px;
+}
+.header{
+  width: 100%;
+  color: #000;
+  font-size: 14px;
+  height: 70px;
+  line-height: 70px;
+  -webkit-box-shadow: 0px 1px 11px -4px #000;
+  -moz-box-shadow: 0px 1px 11px -4px #000;
+  box-shadow: 0px 1px 11px -4px #000;
+  box-shadow: 0px 1px 11px -4px #000;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.othterMenu{
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  width: 50%;
+}
+.othterMenu em {
+  text-decoration: none;
+  font-style: normal;
+  cursor: pointer;
+  border-top: 2px solid transparent;
+}
+.othterMenu em, .othterMenu span {
+  height: 100%;
+  font-size: 14px;
+  color: #000;
+}
+.othterMenu em:hover, .othterMenu .active {
+  color: #1577fe;
+  border-color:#1577fe;
+}
+.othterMenu span {
+  /* margin: 0 6px; */
+}
+.header_title{
+  display: inline-block;
+  height: 100%;
+  line-height: 1;
+  font-size: 28px;
+  font-weight: bold;
+  color: #555;
+  margin-left: 20px;
+}
+.user-opation{
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+.user_info {
+  display: flex;
+  justify-content: space-between;
+}
+.user_info .user_icon {
+  width: 25px;
+  height: 25px;
+  margin-top: 23px;
+}
+.logout {
+  cursor: pointer;
+  margin-right: 10px;
+}
+.logout:hover{
+  color: #1577fe;
+}
 </style>
