@@ -5,16 +5,42 @@
       <img class="board_logo" src="../../static/img/wisdomBeam/logo.png" width="199" alt="" />
       <div class="board_time">{{timeNow}}</div>
       <!--经营概括-->
-      <div class="box_management">
+      <div class="box_management" @mouseenter="enter()" @mouseleave="leave()">
         <div id="chart_management" class="chart_management" :style="{width: '430px', height: '250px'}"></div>
       </div>
 
       <div class='box_swiper'>
         <div class="Beam_all" @mouseenter="enter()" @mouseleave="leave()" @click='toInit'>总览</div>
+        <div class="imgall">
+          <div>
+            <div>
+              <img src="../../static/img/lc.png" alt="">
+            </div>
+            <div>梁场</div>
+          </div>
+          <div>
+            <div>
+              <img src="../../static/img/gys.png" alt="">
+            </div>
+            <div>供应商</div>
+          </div>
+          <div>
+            <div>
+              <img src="../../static/img/gyz.png" alt="">
+            </div>
+            <div>供应中</div>
+          </div>
+        </div>
         <div class="lcimgStyle">
           <div class="lcimgStyle_bczlq">
             <img v-show="ok" src="../../static/img/wisdomBeam/bczlq.png" alt="" />
             <img src="../../static/img/icon_place.png" alt="">
+            <!-- <img src="../../static/img/wisdomBeam/zlqGif.gif" class="zlqGif" alt="" /> -->
+            <div v-show="index==0?true:false" class="zlqgifClass">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+            </div>
           </div>
         </div>
 
@@ -22,13 +48,25 @@
           <div class="lcimgStyle_bczlq">
             <img v-show="ok" src="../../static/img/wisdomBeam/bczbq.png" alt="" />
             <img src="../../static/img/icon_place.png" alt="">
+            <!-- <img src="../../static/img/wisdomBeam/zbqGif.gif" class="zbqGif" alt="" /> -->
+            <div v-show="index==0?true:false" class="zbqgifClass">
+              <img src="../../static/img/icon_place2.png" alt="">
+              <img src="../../static/img/icon_place2.png" alt="">
+              <img src="../../static/img/icon_place2.png" alt="">
+            </div>
           </div>
         </div>
 
         <div class="lcimgStyle sys">
+
           <div class="lcimgStyle_bczlq">
             <img v-show="ok" src="../../static/img/wisdomBeam/syszlc.png" alt="" />
             <img src="../../static/img/icon_place.png" alt="">
+            <!-- <img src="../../static/img/wisdomBeam/sysGif.gif" class="sysGif" alt="" /> -->
+            <div v-show="index==0?true:false" class="sysgifClass">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+            </div>
           </div>
         </div>
 
@@ -36,6 +74,12 @@
           <div class="lcimgStyle_bczlq">
             <img v-show="ok" src="../../static/img/wisdomBeam/wszlc.png" alt="" />
             <img src="../../static/img/icon_place.png" alt="">
+            <!-- <img src="../../static/img/wisdomBeam/wsGif.gif" class="wsGif" alt="" /> -->
+            <div v-show="index==0?true:false" class="wsgifClass">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" alt="">
+            </div>
           </div>
         </div>
 
@@ -43,6 +87,13 @@
           <div class="lcimgStyle_bczlq">
             <img v-show="ok" src="../../static/img/wisdomBeam/qjzlc.png" alt="" />
             <img src="../../static/img/icon_place.png" alt="">
+            <!-- <img src="../../static/img/wisdomBeam/qjGif.gif" class="qjGif" alt="" /> -->
+            <div v-show="index==0?true:false" class="qjgifClass">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+            </div>
           </div>
         </div>
 
@@ -50,6 +101,13 @@
           <div class="lcimgStyle_bczlq">
             <img v-show="ok" src="../../static/img/wisdomBeam/jbzlc.png" alt="" />
             <img src="../../static/img/icon_place.png" alt="">
+            <!-- <img src="../../static/img/wisdomBeam/jbGif.gif" class="jbGif" alt="" /> -->
+            <div v-show="index==0?true:false" class="jbgifClass">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" alt="">
+            </div>
           </div>
         </div>
 
@@ -57,6 +115,12 @@
           <div class="lcimgStyle_bczlq">
             <img v-show="ok" src="../../static/img/wisdomBeam/xyzlc.png" alt="" />
             <img src="../../static/img/icon_place.png" alt="">
+            <!-- <img src="../../static/img/wisdomBeam/xyGif.gif" class="xyGif" alt="" /> -->
+            <div v-show="index==0?true:false" class="xygifClass">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" alt="">
+              <img src="../../static/img/icon_place2.png" alt="">
+            </div>
           </div>
         </div>
 
@@ -64,6 +128,12 @@
           <div class="lcimgStyle_bczlq">
             <img v-show="ok" src="../../static/img/wisdomBeam/jnbzlc.png" alt="" />
             <img src="../../static/img/icon_place.png" alt="">
+            <!-- <img src="../../static/img/wisdomBeam/jnbGif.gif" class="jnbGif" alt="" /> -->
+            <div v-show="index==0?true:false" class="jnbgifClass">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+            </div>
           </div>
         </div>
 
@@ -71,6 +141,13 @@
           <div class="lcimgStyle_bczlq">
             <img v-show="ok" src="../../static/img/wisdomBeam/jnzlc.png" alt="" />
             <img src="../../static/img/icon_place.png" alt="">
+            <!-- <img src="../../static/img/wisdomBeam/jnGif.gif" class="jnGif" alt="" /> -->
+            <div v-show="index==0?true:false" class="jngifClass">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+            </div>
           </div>
         </div>
 
@@ -78,6 +155,13 @@
           <div class="lcimgStyle_bczlq">
             <img v-show="ok" src="../../static/img/wisdomBeam/cynzlc.png" alt="" />
             <img src="../../static/img/icon_place.png" alt="">
+            <!-- <img src="../../static/img/wisdomBeam/cynGif.gif" class="cynGif" alt="" /> -->
+            <div v-show="index==0?true:false" class="cyngifClass">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" alt="">
+            </div>
           </div>
         </div>
 
@@ -85,12 +169,26 @@
           <div class="lcimgStyle_bczlq">
             <img v-show="ok" src="../../static/img/wisdomBeam/ttzlc.png" alt="" />
             <img src="../../static/img/icon_place.png" alt="">
+            <!-- <img src="../../static/img/wisdomBeam/ttGif.gif" class="ttGif" alt="" /> -->
+            <div v-show="index==0?true:false" class="ttgifClass">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+            </div>
           </div>
         </div>
+
         <div class="lcimgStyle lh">
           <div class="lcimgStyle_bczlq">
             <img v-show="ok" src="../../static/img/wisdomBeam/lhzlc.png" alt="" />
             <img src="../../static/img/icon_place.png" alt="">
+            <!-- <img src="../../static/img/wisdomBeam/lhGif.gif" class="lhGif" alt="" /> -->
+            <div v-show="index==0?true:false" class="lhgifClass">
+              <img src="../../static/img/icon_place2.png" style="display:none;" alt="">
+              <img src="../../static/img/icon_place2.png" alt="">
+              <img src="../../static/img/icon_place2.png" alt="">
+              <img src="../../static/img/icon_place2.png" alt="">
+            </div>
           </div>
         </div>
 
@@ -100,6 +198,25 @@
               <div class="lcimgStyle_bczlq" v-show="!(projectId == 0)&&(projectId == slide.id)">
                 <img :src="slide.src" alt="">
                 <img src="../../static/img/icon_place.png" alt="">
+                <img :src="slide.gifSrc" :class="slide.classGifName" alt="" />
+                <div :class="slide.gifClass" v-if="!(slide.gifClass == 'jngifClass')&&!(slide.gifClass == 'qjgifClass')&&!(slide.gifClass == 'lhgifClass')&&!(slide.gifClass == 'cyngifClass')&&!(slide.gifClass == 'jbgifClass')&&!(slide.gifClass == 'sysgifClass')">
+                  <img src="../../static/img/icon_place2.png" alt="">
+                  <img src="../../static/img/icon_place2.png" alt="">
+                  <img src="../../static/img/icon_place2.png" alt="">
+                </div>
+
+                <div :class="slide.gifClass" v-else-if="!(slide.gifClass == 'sysgifClass')">
+                  <img src="../../static/img/icon_place2.png" alt="">
+                  <img src="../../static/img/icon_place2.png" alt="">
+                  <img src="../../static/img/icon_place2.png" alt="">
+                  <img src="../../static/img/icon_place2.png" alt="">
+                </div>
+
+                <div :class="slide.gifClass" v-else>
+                  <img src="../../static/img/icon_place2.png" alt="">
+                  <img src="../../static/img/icon_place2.png" alt="">
+                </div>
+
               </div>
             </div>
           </div>
@@ -126,27 +243,27 @@
       </div>
 
       <!--供应商概括-->
-      <div class="box_supplier">
+      <div class="box_supplier" @mouseenter="enter()" @mouseleave="leave()">
         <div id="chart_supplier" class="chart_supplier" :style="{width: '430px', height: '250px'}"></div>
       </div>
 
       <!--厂商占比-->
-      <div class="box_Vendors">
+      <div class="box_Vendors" @mouseenter="enter()" @mouseleave="leave()">
         <div id="chart_Vendors" class="chart_Vendors" :style="{width: '416px', height: '238px'}"></div>
       </div>
 
       <!--采购概括-->
-      <div class="box_Purchase">
+      <div class="box_Purchase" @mouseenter="enter()" @mouseleave="leave()">
         <div id="chart_Purchase" class="chart_Purchase" :style="{width: '418px', height: '204px'}"></div>
       </div>
 
       <!--销售概括-->
-      <div class="box_Sales">
+      <div class="box_Sales" @mouseenter="enter()" @mouseleave="leave()">
         <div id="chart_Sales" class="chart_Sales" :style="{width: '418px', height: '204px'}"></div>
       </div>
 
       <!--梁场概括-->
-      <div class="box_Project">
+      <div class="box_Project" @mouseenter="enter()" @mouseleave="leave()">
         <div id="chart_Project" class="chart_Project" :style="{width: '413px', height: '194px'}"></div>
         <div class="project_total clearfix">
           <div class="text_left pull-left">物资总数量：{{totalGoodsCount}}</div>
@@ -155,7 +272,7 @@
       </div>
 
       <!--利润率排名-->
-      <div class="box_profit">
+      <div class="box_profit" @mouseenter="enter()" @mouseleave="leave()">
         <div id="chart_Profit" class="chart_Profit" :style="{width: '430px', height: '580px'}"></div>
       </div>
     </div>
@@ -164,7 +281,7 @@
 
 <script>
   export default {
-    data () {
+    data() {
       return {
         code: null,
         totalGoodsCount: '',
@@ -212,7 +329,7 @@
       }
     },
     components: {},
-    created () {
+    created() {
       this.getBeamField()
       this.getMonthAndYear()
       this.getDateAndMonth()
@@ -223,8 +340,8 @@
       this.pageChangeHandle()
     },
     computed: {},
-    updated () {},
-    mounted () {
+    updated() {},
+    mounted() {
       this.getData()
     },
     destroyed: function () {
@@ -233,13 +350,13 @@
       this.timer = null
     },
     methods: {
-      enter () {
+      enter() {
         clearInterval(this.pageTimer)
       },
-      leave () {
+      leave() {
         this.pageChangeHandle()
       },
-      isFiveMultiply (num) {
+      isFiveMultiply(num) {
         // 当前第几页
         if (num % 5 === 0) {
           this.currentPage++
@@ -255,7 +372,7 @@
       /**
        * 定时器  60000
        */
-      pageChangeHandle () {
+      pageChangeHandle() {
         this.pageTimer = setInterval(() => {
           // 记录当前选中项
           this.index++
@@ -274,19 +391,26 @@
 
           // 选项卡 翻页
           this.isFiveMultiply(this.index)
-        }, 60000)
+        }, 3000)
       },
       /**
        * 上一页
        */
-      prev () {
+      prev() {
         // 当前页 小于等于 总页数
         if (this.currentPage <= (this.arrBeamData.length % 5)) {
-          this.currentPage -= 1 // 进入上一页 (进入上一页)
-          this.$refs.pageAll.style.marginLeft = '-' + (630 * (this.currentPage - 1)) + 'px' // 计算上一个宽度
-          this.index = (this.currentPage * 5) - 5 // 索定当前下标
-          this.projectId = this.arrBeamData[this.index].id // 加载当前下标的 id
-          this.refreshData(this.projectId) // 根据id 加载数据
+          // this.currentPage -= 1 // 进入上一页 (进入上一页)
+          if (this.index != 0) {
+            this.currentPage -= 1 // 进入上一页 (进入上一页)
+            this.$refs.pageAll.style.marginLeft = '-' + (630 * (this.currentPage - 1)) + 'px' // 计算上一个宽度
+            this.index = (this.currentPage * 5) - 5 // 索定当前下标
+            this.projectId = this.arrBeamData[this.index].id // 加载当前下标的 id
+            this.refreshData(this.projectId) // 根据id 加载数据
+          } else {
+            return
+          }
+
+
         } else if (this.currentPage >= (this.arrBeamData.length % 5)) {
           this.$refs.pageAll.style.marginLeft = 0 + 'px'
           this.currentPage = 0
@@ -298,7 +422,7 @@
       /**
        * 下一页
        */
-      next () {
+      next() {
         // 当前页 小于 总页数
         if (this.currentPage < (this.arrBeamData.length % 5)) {
           this.currentPage += 1 // 进入下一页 (进入下一页)
@@ -317,7 +441,7 @@
       /**
        * 当前选中项
        */
-      getInfo (val, i) {
+      getInfo(val, i) {
         this.index = i
         this.projectId = val.id
         this.refreshData(this.projectId)
@@ -325,7 +449,7 @@
       /**
        * 总览
        */
-      toInit () {
+      toInit() {
         this.getData()
         this.flag = false
         this.projectId = 0
@@ -347,7 +471,7 @@
       /**
        * 获取对应梁场的全部数据
        */
-      refreshData (id) {
+      refreshData(id) {
         this.projectId = id
         this.managementData = (this.dataManagementAll[this.projectId])
         this.supplierData = (this.dataSupplierAll[this.projectId])
@@ -372,11 +496,14 @@
       /**
        * 获取图片
        */
-      getPathImg (name) {
+      getPathImg(name) {
         return require('../../static/img/wisdomBeam/' + name + '.png')
       },
+      getGifImg(name) {
+        return require('../../static/img/wisdomBeam/' + name + '.gif')
+      },
       // 获取梁场信息
-      getBeamField () {
+      getBeamField() {
         this.$Ajax.post({
           url: this.$Api.wisdomBeam.ProjectList,
           data: {},
@@ -407,6 +534,45 @@
               this.arrBeamData[10].src = this.getPathImg('bczlq')
               this.arrBeamData[11].src = this.getPathImg('cynzlc')
               this.arrBeamData[12].src = this.getPathImg('jbzlc')
+
+              this.arrBeamData[1].classGifName = 'ttGif'
+              this.arrBeamData[2].classGifName = 'jnGif'
+              this.arrBeamData[3].classGifName = 'jnbGif'
+              this.arrBeamData[4].classGifName = 'wsGif'
+              this.arrBeamData[5].classGifName = 'qjGif'
+              this.arrBeamData[6].classGifName = 'zbqGif'
+              this.arrBeamData[7].classGifName = 'xyGif'
+              this.arrBeamData[8].classGifName = 'sysGif'
+              this.arrBeamData[9].classGifName = 'lhGif'
+              this.arrBeamData[10].classGifName = 'zlqGif'
+              this.arrBeamData[11].classGifName = 'cynGif'
+              this.arrBeamData[12].classGifName = 'jbGif'
+
+              this.arrBeamData[1].gifSrc = this.getGifImg('ttGif')
+              this.arrBeamData[2].gifSrc = this.getGifImg('jnGif')
+              this.arrBeamData[3].gifSrc = this.getGifImg('jnbGif')
+              this.arrBeamData[4].gifSrc = this.getGifImg('wsGif')
+              this.arrBeamData[5].gifSrc = this.getGifImg('qjGif')
+              this.arrBeamData[6].gifSrc = this.getGifImg('zbqGif')
+              this.arrBeamData[7].gifSrc = this.getGifImg('xyGif')
+              this.arrBeamData[8].gifSrc = this.getGifImg('sysGif')
+              this.arrBeamData[9].gifSrc = this.getGifImg('lhGif')
+              this.arrBeamData[10].gifSrc = this.getGifImg('zlqGif')
+              this.arrBeamData[11].gifSrc = this.getGifImg('cynGif')
+              this.arrBeamData[12].gifSrc = this.getGifImg('jbGif')
+
+              this.arrBeamData[1].gifClass = 'ttgifClass'
+              this.arrBeamData[2].gifClass = 'jngifClass'
+              this.arrBeamData[3].gifClass = 'jnbgifClass'
+              this.arrBeamData[4].gifClass = 'wsgifClass'
+              this.arrBeamData[5].gifClass = 'qjgifClass'
+              this.arrBeamData[6].gifClass = 'zbqgifClass'
+              this.arrBeamData[7].gifClass = 'xygifClass'
+              this.arrBeamData[8].gifClass = 'sysgifClass'
+              this.arrBeamData[9].gifClass = 'lhgifClass'
+              this.arrBeamData[10].gifClass = 'zlqgifClass'
+              this.arrBeamData[11].gifClass = 'cyngifClass'
+              this.arrBeamData[12].gifClass = 'jbgifClass'
 
               // 本地顺序
               // this.BeamFieldListAll[1].className = 'ws'
@@ -440,7 +606,7 @@
       /**
        * 获取当前梁场 所有数据
        */
-      getData () {
+      getData() {
         this.getDataManagement() // 经营概括
         this.getDataSupplier() // 供应商概括
         this.getDataVendors() // 厂商占比
@@ -450,7 +616,7 @@
         this.getDataGrossPro() // 利润率排名
       },
       // 经营概括
-      getDataManagement () {
+      getDataManagement() {
         this.$Ajax.post({
           url: this.urlManagement,
           data: {
@@ -467,7 +633,7 @@
         })
       },
       // 供应商概括
-      getDataSupplier () {
+      getDataSupplier() {
         this.$Ajax.post({
           url: this.urlSupplier,
           data: {
@@ -485,7 +651,7 @@
         })
       },
       // 厂商占比
-      getDataVendors () {
+      getDataVendors() {
         this.$Ajax.post({
           url: this.urlSupplierType,
           data: {
@@ -504,7 +670,7 @@
               })
               res.data.data.supplierTypeMoney = iteme
               res.data.data.supplierTypeRate = itemm
-  
+
               this.dataVendorsAll = res.data.data
               this.vendorsData = this.dataVendorsAll
               this.VendorsBar('chart_Vendors', this.vendorsData)
@@ -513,7 +679,7 @@
         })
       },
       // 采购概览
-      getDataPurchase () {
+      getDataPurchase() {
         this.$Ajax.post({
           url: this.urlPurchaseOver,
           data: {
@@ -530,7 +696,7 @@
         })
       },
       // 销售概览
-      getDataSales () {
+      getDataSales() {
         this.$Ajax.post({
           url: this.urlSalesOver,
           data: {
@@ -547,7 +713,7 @@
         })
       },
       // 梁场概览
-      getDataProject () {
+      getDataProject() {
         this.$Ajax.post({
           url: this.urlProjectOver,
           data: {
@@ -566,7 +732,7 @@
         })
       },
       // 物资排名
-      getDataGrossPro () {
+      getDataGrossPro() {
         this.$Ajax.post({
           url: this.urlMaterialRank,
           data: {
@@ -592,7 +758,7 @@
         })
       },
       // 显示当前时间
-      getCurrentTime () {
+      getCurrentTime() {
         let now = new Date()
         let year = now.getFullYear()
         let month = now.getMonth() + 1
@@ -618,13 +784,13 @@
         this.timeNow = year + '/' + month + '/' + day + ' ' + hours + ':' + minutes
       },
       // 当前时间定时器
-      setTimer () {
+      setTimer() {
         if (this.timer == null) {
           this.timer = setInterval(this.getCurrentTime, 1000)
         }
       },
       // 获取当前时间最近12个月
-      getMonthAndYear () {
+      getMonthAndYear() {
         // 获取当前日期
         let dataNow = new Date()
         // 获取上月月份
@@ -656,7 +822,7 @@
         return result.reverse()
       },
       // 获取当前轴日期
-      getDateAndMonth () {
+      getDateAndMonth() {
         const temp = []
         let year
         for (let i = 0; i < 7; i++) {
@@ -673,7 +839,7 @@
       /**
        * 物资排名
        */
-      ProfitBar (id, dataValue) {
+      ProfitBar(id, dataValue) {
         let myChart = this.$echarts.init(document.getElementById(id))
         myChart.setOption({
           tooltip: {
@@ -754,7 +920,7 @@
             type: 'bar',
             barWidth: 10,
             color: '#28eefc',
-            data: dataValue[0].dataMoney
+            data: dataValue[0].dataMoney,
             // data: [100, 200, 300, 400, 1000, 300]
           }]
         })
@@ -762,7 +928,7 @@
       /**
        * 经营概括 折线图
        */
-      drawBar (id, dataValue) {
+      drawBar(id, dataValue) {
         let _this = this
         let myChart = this.$echarts.init(document.getElementById(id))
         myChart.setOption({
@@ -773,37 +939,37 @@
             itemGap: 6,
             x: '30px',
             y: '25px',
-            top:'1%',
+            top: '1%',
             data: [{
-              name: '已供应',
-              textStyle: {
-                color: '#fff',
+                name: '已供应',
+                textStyle: {
+                  color: '#fff',
+                }
+              },
+              {
+                name: '对账中',
+                textStyle: {
+                  color: '#fff'
+                }
+              },
+              {
+                name: '已开票',
+                textStyle: {
+                  color: '#fff'
+                }
+              },
+              {
+                name: '应收账款',
+                textStyle: {
+                  color: '#fff'
+                }
+              },
+              {
+                name: '已回款',
+                textStyle: {
+                  color: '#fff'
+                }
               }
-            },
-            {
-              name: '对账中',
-              textStyle: {
-                color: '#fff'
-              }
-            },
-            {
-              name: '已开票',
-              textStyle: {
-                color: '#fff'
-              }
-            },
-            {
-              name: '应收账款',
-              textStyle: {
-                color: '#fff'
-              }
-            },
-            {
-              name: '已回款',
-              textStyle: {
-                color: '#fff'
-              }
-            }
             ]
           },
           grid: {
@@ -863,47 +1029,47 @@
             }
           }],
           series: [{
-            name: '应收账款',
-            type: 'line',
+              name: '应收账款',
+              type: 'line',
               // stack: '广告',
-            color: '#00AEFF',
-            data: dataValue === undefined ? '' : dataValue.settment
-          },
-          {
-            name: '对账中',
-            type: 'line',
+              color: '#00AEFF',
+              data: dataValue === undefined ? '' : dataValue.settment
+            },
+            {
+              name: '对账中',
+              type: 'line',
               // stack: '广告',
-            color: '#FF8800',
-            data: dataValue === undefined ? '' : dataValue.reconciliation
-          },
-          {
-            name: '已开票',
-            type: 'line',
+              color: '#FF8800',
+              data: dataValue === undefined ? '' : dataValue.reconciliation
+            },
+            {
+              name: '已开票',
+              type: 'line',
               // stack: '广告',
-            color: '#79E62B',
-            data: dataValue === undefined ? '' : dataValue.invoice
-          },
-          {
-            name: '已回款',
-            type: 'line',
+              color: '#79E62B',
+              data: dataValue === undefined ? '' : dataValue.invoice
+            },
+            {
+              name: '已回款',
+              type: 'line',
               // stack: '广告',
-            color: '#7000DD',
-            data: dataValue === undefined ? '' : dataValue.back
-          },
-          {
-            name: '已供应',
-            type: 'line',
+              color: '#7000DD',
+              data: dataValue === undefined ? '' : dataValue.back
+            },
+            {
+              name: '已供应',
+              type: 'line',
               // stack: '广告',
-            color: '#FF0C3E',
-            data: dataValue === undefined ? '' : dataValue.supply
-          }
+              color: '#FF0C3E',
+              data: dataValue === undefined ? '' : dataValue.supply
+            }
           ]
         })
       },
       /**
        * 供应商概括 折线图
        */
-      drawBarTwo (id, dataValue) {
+      drawBarTwo(id, dataValue) {
         let _this = this
         let myChart = this.$echarts.init(document.getElementById(id))
         myChart.setOption({
@@ -914,37 +1080,37 @@
             itemGap: 6,
             x: '25px',
             y: '25px',
-            top:'1%',
+            top: '1%',
             data: [{
-              name: '已采购',
-              textStyle: {
-                color: '#fff'
+                name: '已采购',
+                textStyle: {
+                  color: '#fff'
+                }
+              },
+              {
+                name: '对账中',
+                textStyle: {
+                  color: '#fff'
+                }
+              },
+              {
+                name: '已开票',
+                textStyle: {
+                  color: '#fff'
+                }
+              },
+              {
+                name: '应付金额',
+                textStyle: {
+                  color: '#fff'
+                }
+              },
+              {
+                name: '已付款',
+                textStyle: {
+                  color: '#fff'
+                }
               }
-            },
-            {
-              name: '对账中',
-              textStyle: {
-                color: '#fff'
-              }
-            },
-            {
-              name: '已开票',
-              textStyle: {
-                color: '#fff'
-              }
-            },
-            {
-              name: '应付金额',
-              textStyle: {
-                color: '#fff'
-              }
-            },
-            {
-              name: '已付款',
-              textStyle: {
-                color: '#fff'
-              }
-            }
             ]
           },
           grid: {
@@ -1005,47 +1171,47 @@
             }
           }],
           series: [{
-            name: '应付金额',
-            type: 'line',
+              name: '应付金额',
+              type: 'line',
               // stack: '广告',
-            color: '#00AEFF',
-            data: dataValue === undefined ? '' : dataValue.settment
-          },
-          {
-            name: '对账中',
-            type: 'line',
+              color: '#00AEFF',
+              data: dataValue === undefined ? '' : dataValue.settment
+            },
+            {
+              name: '对账中',
+              type: 'line',
               // stack: '广告',
-            color: '#FF8800',
-            data: dataValue === undefined ? '' : dataValue.reconciliation
-          },
-          {
-            name: '已开票',
-            type: 'line',
+              color: '#FF8800',
+              data: dataValue === undefined ? '' : dataValue.reconciliation
+            },
+            {
+              name: '已开票',
+              type: 'line',
               // stack: '广告',
-            color: '#79E62B',
-            data: dataValue === undefined ? '' : dataValue.invoice
-          },
-          {
-            name: '已付款',
-            type: 'line',
+              color: '#79E62B',
+              data: dataValue === undefined ? '' : dataValue.invoice
+            },
+            {
+              name: '已付款',
+              type: 'line',
               // stack: '广告',
-            color: '#7000DD',
-            data: dataValue === undefined ? '' : dataValue.back
-          },
-          {
-            name: '已采购',
-            type: 'line',
+              color: '#7000DD',
+              data: dataValue === undefined ? '' : dataValue.back
+            },
+            {
+              name: '已采购',
+              type: 'line',
               // stack: '广告',
-            color: '#FF0C3E',
-            data: dataValue === undefined ? '' : dataValue.supply
-          }
+              color: '#FF0C3E',
+              data: dataValue === undefined ? '' : dataValue.supply
+            }
           ]
         })
       },
       /**
        * 厂商占比 柱状图
        */
-      VendorsBar (id, dataValue) {
+      VendorsBar(id, dataValue) {
         // let _this = this
         let myChart = this.$echarts.init(document.getElementById(id))
         myChart.setOption({
@@ -1062,17 +1228,17 @@
             x: '300px',
             y: '20px',
             data: [{
-              name: '数量',
-              textStyle: {
-                color: '#fff'
+                name: '数量',
+                textStyle: {
+                  color: '#fff'
+                }
+              },
+              {
+                name: '金额',
+                textStyle: {
+                  color: '#fff'
+                }
               }
-            },
-            {
-              name: '金额',
-              textStyle: {
-                color: '#fff'
-              }
-            }
             ]
           },
           grid: {
@@ -1128,26 +1294,26 @@
             }
           }],
           series: [{
-            name: '数量',
-            type: 'bar',
-            color: 'rgba(41, 73, 163, 0.56)',
-            barWidth: 20,
-            data: dataValue === undefined ? '' : dataValue.supplierTypeRate // 数量数据
-          },
-          {
-            name: '金额',
-            type: 'bar',
-            barWidth: 20,
-            color: 'rgba(110, 255, 104, 0.56)',
-            data: dataValue === undefined ? '' : dataValue.supplierTypeMoney // 全额数据
-          }
+              name: '数量',
+              type: 'bar',
+              color: 'rgba(41, 73, 163, 0.56)',
+              barWidth: 20,
+              data: dataValue === undefined ? '' : dataValue.supplierTypeRate, // 数量数据
+            },
+            {
+              name: '金额',
+              type: 'bar',
+              barWidth: 20,
+              color: 'rgba(110, 255, 104, 0.56)',
+              data: dataValue === undefined ? '' : dataValue.supplierTypeMoney, // 全额数据
+            }
           ]
         })
       },
       /**
        * 销售概览 采购概览 共用 柱状图
        */
-      PurchaseBar (id, dataValue) {
+      PurchaseBar(id, dataValue) {
         let _this = this
         let myChart = this.$echarts.init(document.getElementById(id))
         myChart.setOption({
@@ -1164,26 +1330,26 @@
             x: '230px',
             y: '20px',
             data: [{
-              name: '待报价',
-              textStyle: {
-                color: '#fff',
-                fontSize: 12 // 字体大小
+                name: '待报价',
+                textStyle: {
+                  color: '#fff',
+                  fontSize: 12 // 字体大小
+                }
+              },
+              {
+                name: '待审批',
+                textStyle: {
+                  color: '#fff',
+                  fontSize: 12 // 字体大小
+                }
+              },
+              {
+                name: '待验收',
+                textStyle: {
+                  color: '#fff',
+                  fontSize: 12 // 字体大小
+                }
               }
-            },
-            {
-              name: '待审批',
-              textStyle: {
-                color: '#fff',
-                fontSize: 12 // 字体大小
-              }
-            },
-            {
-              name: '待验收',
-              textStyle: {
-                color: '#fff',
-                fontSize: 12 // 字体大小
-              }
-            }
             ]
           },
           grid: {
@@ -1239,36 +1405,36 @@
             }
           }],
           series: [{
-            name: '待报价',
-            type: 'bar',
-            color: '#248cf9',
-            barWidth: 8,
-            data: dataValue === undefined ? '' : dataValue.nodeliveryCount // 数量数据
+              name: '待报价',
+              type: 'bar',
+              color: '#248cf9',
+              barWidth: 8,
+              data: dataValue === undefined ? '' : dataValue.nodeliveryCount // 数量数据
               // data: [500, 20, 10]
-          },
-          {
-            name: '待审批',
-            type: 'bar',
-            barWidth: 8,
-            color: '#fed601',
-            data: dataValue === undefined ? '' : dataValue.auditpassCount // 全额数据
+            },
+            {
+              name: '待审批',
+              type: 'bar',
+              barWidth: 8,
+              color: '#fed601',
+              data: dataValue === undefined ? '' : dataValue.auditpassCount // 全额数据
               // data: [20, 40, 30]
-          },
-          {
-            name: '待验收',
-            type: 'bar',
-            barWidth: 8,
-            color: '#eb6f49',
-            data: dataValue === undefined ? '' : dataValue.acceptanceCount // 全额数据
+            },
+            {
+              name: '待验收',
+              type: 'bar',
+              barWidth: 8,
+              color: '#eb6f49',
+              data: dataValue === undefined ? '' : dataValue.acceptanceCount // 全额数据
               // data: [20, 40, 30]
-          }
+            }
           ]
         })
       },
       /**
        * 梁场概览 折线图
        */
-      calMax (arr) {
+      calMax(arr) {
         let max = 1
         for (var i = 1; i < arr.length; i++) {
           if (max < arr[i]) {
@@ -1279,7 +1445,7 @@
         var maxval = maxint * 10
         return maxval
       },
-      calMin (arr) {
+      calMin(arr) {
         let min = 0
         for (var i = 1; i < arr.length; i++) {
           if (min > arr[i]) {
@@ -1290,7 +1456,7 @@
         var minval = minint * 10
         return minval
       },
-      projectLine (id, datavalue) {
+      projectLine(id, datavalue) {
         let _this = this
         let minGoods = _this.calMin(datavalue.goodsCount)
         let maxGoods = _this.calMax(datavalue.goodsCount)
@@ -1331,102 +1497,102 @@
             }
           },
           yAxis: [{
-            name: '单位/条',
-            type: 'value',
-            nameTextStyle: {
-              color: '#49a3ff',
-              fontSize: 12
-            },
-            splitLine: {
-              lineStyle: {
-                color: '#034673',
-                width: 1
-              }
-            },
-            axisLine: {
-              lineStyle: {
-                type: 'solid',
-                color: '#034673',
-                width: '0'
-              }
-            },
-            axisLabel: {
-              show: true,
-              textStyle: {
+              name: '单位/条',
+              type: 'value',
+              nameTextStyle: {
                 color: '#49a3ff',
-                fontSize: 9
-              }
+                fontSize: 12
+              },
+              splitLine: {
+                lineStyle: {
+                  color: '#034673',
+                  width: 1
+                }
+              },
+              axisLine: {
+                lineStyle: {
+                  type: 'solid',
+                  color: '#034673',
+                  width: '0'
+                }
+              },
+              axisLabel: {
+                show: true,
+                textStyle: {
+                  color: '#49a3ff',
+                  fontSize: 9
+                }
+              },
+              splitNumber: 5,
+              min: minGoods,
+              max: maxGoods,
+              interval: intervalLeft
             },
-            splitNumber: 5,
-            min: minGoods,
-            max: maxGoods,
-            interval: intervalLeft
-          },
-          {
-            name: '单位/条',
-            type: 'value',
-            nameTextStyle: {
-              color: '#49a3ff',
-              fontSize: 12
-            },
-            splitLine: {
-              lineStyle: {
-                color: '#034673',
-                width: 1
-              }
-            },
-            axisLine: {
-              lineStyle: {
-                type: 'solid',
-                color: '#034673',
-                width: '0'
-              }
-            },
-            axisLabel: {
-              show: true,
-              textStyle: {
+            {
+              name: '单位/条',
+              type: 'value',
+              nameTextStyle: {
                 color: '#49a3ff',
-                fontSize: 9
-              }
-            },
-            splitNumber: 5,
-            min: minOrder,
-            max: maxOrder,
-            interval: intervalRight
-          }
+                fontSize: 12
+              },
+              splitLine: {
+                lineStyle: {
+                  color: '#034673',
+                  width: 1
+                }
+              },
+              axisLine: {
+                lineStyle: {
+                  type: 'solid',
+                  color: '#034673',
+                  width: '0'
+                }
+              },
+              axisLabel: {
+                show: true,
+                textStyle: {
+                  color: '#49a3ff',
+                  fontSize: 9
+                }
+              },
+              splitNumber: 5,
+              min: minOrder,
+              max: maxOrder,
+              interval: intervalRight
+            }
           ],
           series: [{
-            name: '物资总数量',
-            type: 'line',
-            yAxisIndex: 0,
-            data: datavalue.goodsCount,
-            lineStyle: {
-              normal: {
-                color: '#28eefc'
+              name: '物资总数量',
+              type: 'line',
+              yAxisIndex: 0,
+              data: datavalue.goodsCount,
+              lineStyle: {
+                normal: {
+                  color: '#28eefc'
+                }
+              },
+              itemStyle: {
+                normal: {
+                  color: '#28eefc',
+                }
               }
             },
-            itemStyle: {
-              normal: {
-                color: '#28eefc'
+            {
+              name: '订单总数量',
+              type: 'line',
+              yAxisIndex: 1,
+              data: datavalue.listCount,
+              lineStyle: {
+                normal: {
+                  color: '#fff006'
+                }
+              },
+              itemStyle: {
+                normal: {
+                  color: '#fff006',
+                }
               }
             }
-          },
-          {
-            name: '订单总数量',
-            type: 'line',
-            yAxisIndex: 1,
-            data: datavalue.listCount,
-            lineStyle: {
-              normal: {
-                color: '#fff006'
-              }
-            },
-            itemStyle: {
-              normal: {
-                color: '#fff006'
-              }
-            }
-          }
           ]
         })
       }
@@ -1682,14 +1848,16 @@
     height: 100px;
   }
 
-  .lcimgStyle_bczlq img:nth-of-type(1) {
+  .lcimgStyle_bczlq img {
     position: absolute;
-    left: 15px;
-    top: 10px;
+  }
+
+  .lcimgStyle_bczlq img:nth-of-type(1) {
+    left: 12px;
+    top: 15px;
   }
 
   .lcimgStyle_bczlq img:nth-of-type(2) {
-    position: absolute;
     bottom: 0;
   }
 
@@ -1707,15 +1875,29 @@
     top: 340px;
     right: 360px;
   }
+  .ws>.lcimgStyle_bczlq>img:nth-of-type(1) {
+    left: -118px;
+    top: 30px;
+  }
+  
 
   .qj {
     top: 272px;
     right: 260px;
   }
+  .qj>.lcimgStyle_bczlq>img:nth-of-type(1) {
+    left: -116px;
+    top: 31px;
+  }
 
   .jb {
     top: 186px;
     right: 243px;
+  }
+
+  .jb>div>img:nth-of-type(1) {
+    left: -106px;
+    top: 15px;
   }
 
   .xy {
@@ -1733,9 +1915,19 @@
     right: 152px;
   }
 
+  .jn>div>img:nth-of-type(1) {
+    left: 12px;
+    top: 59px;
+  }
+
   .cyn {
     top: 193px;
     right: 130px;
+  }
+
+  .cyn>div>img:nth-of-type(1) {
+    left: 12px;
+    top: 59px;
   }
 
   .tt {
@@ -1747,6 +1939,328 @@
     top: 292px;
     right: 104px;
   }
+
+  .ttGif {
+    left: -71px;
+    top: 56px;
+  }
+
+  .ttgifClass {
+    /* border: 1px solid red; */
+  }
+
+  .ttgifClass img:nth-of-type(1) {
+    left: -84px;
+    top: 51px;
+  }
+
+  .ttgifClass img:nth-of-type(2) {
+    left: -32px;
+    top: 79px;
+  }
+
+  .ttgifClass img:nth-of-type(3) {
+    left: -28px;
+    top: 109px;
+  }
+
+  .jnGif {
+    left: -40px;
+    top: 64px;
+  }
+
+  .jngifClass {
+    /* border: 1px solid red; */
+  }
+
+  .jngifClass img:nth-of-type(1) {
+    left: 7px;
+    top: 51px;
+  }
+
+  .jngifClass img:nth-of-type(2) {
+    left: -42px;
+    top: 70px;
+
+  }
+
+  .jngifClass img:nth-of-type(3) {
+    left: -52px;
+    top: 103px;
+  }
+
+  .jngifClass img:nth-of-type(4) {
+    left: 17px;
+    top: 130px;
+  }
+
+  .jnbGif {
+    left: -37px;
+    top: 74px;
+  }
+
+  .jnbgifClass {
+    /* border: 1px solid red; */
+  }
+
+  .jnbgifClass img:nth-of-type(1) {
+    left: -25px;
+    top: 71px;
+  }
+
+  .jnbgifClass img:nth-of-type(2) {
+    left: -49px;
+    top: 121px;
+
+  }
+
+  .jnbgifClass img:nth-of-type(3) {
+    left: 21px;
+    top: 143px;
+  }
+
+  .wsGif {
+    left: 8px;
+    top: 36px;
+  }
+
+  .wsgifClass {
+    /* border: 1px solid red; */
+  }
+
+  .wsgifClass img:nth-of-type(1) {
+    left: 43px;
+    top: 29px;
+  }
+
+  .wsgifClass img:nth-of-type(2) {
+    left: 121px;
+    top: 44px;
+
+  }
+
+  .wsgifClass img:nth-of-type(3) {
+    left: 25px;
+    top: 102px;
+  }
+
+  .qjGif {
+    left: -54px;
+    top: 48px;
+  }
+
+  .qjgifClass {
+    /* border: 1px solid red; */
+  }
+
+  .qjgifClass img:nth-of-type(1) {
+    left: 61px;
+    top: 44px;
+  }
+
+  .qjgifClass img:nth-of-type(2) {
+    left: 135px;
+    top: 102px;
+
+  }
+
+  .qjgifClass img:nth-of-type(3) {
+    left: -64px;
+    top: 103px;
+  }
+
+  .qjgifClass img:nth-of-type(4) {
+    left: 22px;
+    top: 116px;
+  }
+
+  .zbqGif {
+    left: -26px;
+    top: 87px;
+  }
+
+  .zbqgifClass {
+    /* border: 1px solid red; */
+  }
+
+  .zbqgifClass img:nth-of-type(1) {
+    left: 16px;
+    top: 108px;
+  }
+
+  .zbqgifClass img:nth-of-type(2) {
+    left: -21px;
+    top: 107px;
+
+  }
+
+  .zbqgifClass img:nth-of-type(3) {
+    left: -31px;
+    top: 124px;
+  }
+
+  .xyGif {
+    left: -21px;
+    top: 66px;
+  }
+
+  .xygifClass {
+    /* border: 1px solid red; */
+  }
+
+  .xygifClass img:nth-of-type(1) {
+    left: 39px;
+    top: 60px;
+  }
+
+  .xygifClass img:nth-of-type(2) {
+    left: 30px;
+    top: 109px;
+
+  }
+
+  .xygifClass img:nth-of-type(3) {
+    left: -30px;
+    top: 99px;
+  }
+
+  .sysGif {
+    right: 146px;
+    top: 85px;
+  }
+
+  .sysgifClass {
+    /* border: 1px solid red; */
+  }
+
+  .sysgifClass img:nth-of-type(1) {
+    left: -116px;
+    top: 224px;
+  }
+
+  .sysgifClass img:nth-of-type(2) {
+    left: -146px;
+    top: 224px;
+
+  }
+
+  .lhGif {
+    left: -134px;
+    top: 55px;
+  }
+
+  .lhgifClass {
+    /* border: 1px solid red; */
+  }
+
+  .lhgifClass img:nth-of-type(1) {
+    left: -38px;
+    top: 48px;
+  }
+
+  .lhgifClass img:nth-of-type(2) {
+    left: -32px;
+    top: 78px;
+
+  }
+
+  .lhgifClass img:nth-of-type(3) {
+    left: -144px;
+    top: 91px;
+  }
+
+  .lhgifClass img:nth-of-type(4) {
+    left: -58px;
+    top: 143px;
+  }
+
+  .zlqGif {
+    left: -93px;
+    top: 87px;
+  }
+
+  .zlqgifClass {
+    /* border: 1px solid red; */
+  }
+
+  .zlqgifClass img:nth-of-type(1) {
+    left: -2px;
+    top: 127px;
+  }
+
+  .zlqgifClass img:nth-of-type(2) {
+    left: -38px;
+    top: 128px;
+
+  }
+
+  .zlqgifClass img:nth-of-type(3) {
+    left: -99px;
+    top: 158px;
+  }
+
+  .cynGif {
+    left: -69px;
+    top: 70px;
+  }
+
+  .cyngifClass {
+    /* border: 1px solid red; */
+  }
+
+  .cyngifClass img:nth-of-type(1) {
+    left: -54px;
+    top: 75px;
+  }
+
+  .cyngifClass img:nth-of-type(2) {
+    left: -17px;
+    top: 73px;
+
+  }
+
+  .cyngifClass img:nth-of-type(3) {
+    left: -81px;
+    top: 125px;
+  }
+
+  .cyngifClass img:nth-of-type(4) {
+    left: -7px;
+    top: 151px;
+  }
+
+  
+
+  .jbGif {
+    left: -71px;
+    top: 79px;
+  }
+
+  .jbgifClass {
+    /* border: 1px solid red; */
+  }
+
+  .jbgifClass img:nth-of-type(1) {
+    left: 62px;
+    top: 78px;
+  }
+
+  .jbgifClass img:nth-of-type(2) {
+    left: 4px;
+    top: 122px;
+
+  }
+
+  .jbgifClass img:nth-of-type(3) {
+    left: 36px;
+    top: 132px;
+  }
+
+  .jbgifClass img:nth-of-type(4) {
+    left: -79px;
+    top: 188px;
+  }
+
 
   .bgtiao {
     background: url('../../static/img/wisdomBeam/all.png');
@@ -1805,9 +2319,105 @@
   }
 
   .active {
-    background: url('../../static/img/wisdomBeam/action.png');
+    background: url('../../static/img/wisdomBeam/action11.png');
+    /* background: url('../../static/img/wisdomBeam/action1.png'); */
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
+  .imgall {
+    /* border: 1px solid red; */
+    /* width: 200px; */
+    /* margin: 112px 305px; */
+    position: absolute;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+  }
+
+  .imgall>div {
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 30px;
+  }
+
+  .imgall>div>div:nth-of-type(1) {
+    width: 56px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .imgall>div>div:nth-of-type(2) {
+    width: 56px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+  }
+
+  .lcimgStyle_bczlq>img:nth-of-type(2) {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    background: url('../../static/img/icon_place.png') no-repeat;
+    background-size: 100% 100%;
+    animation-timing-function: linear;
+    animation-name: shake;
+    /* 规定动画完成一个周期所花费的秒或毫秒 */
+    animation-duration: 1s;
+    /* 播放次数 */
+    animation-iteration-count: infinite;
+    border-radius: 50%;
+  }
+
+  .lcimgStyle_bczlq>div>img {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    background: url('../../static/img/icon_place2.png') no-repeat;
+    background-size: 100% 100%;
+    animation-timing-function: linear;
+    animation-name: shakegreen;
+    /* 规定动画完成一个周期所花费的秒或毫秒 */
+    animation-duration: 1s;
+    /* 播放次数 */
+    animation-iteration-count: infinite;
+    border-radius: 50%;
+  }
+
+  /* 定义动画 */
+
+  @keyframes shake {
+    from {
+      transform: scale(.9, .9);
+    }
+
+    to {
+      transform: scale(1.1, 1.1);
+      box-shadow: 0px 0px 5px #06d5fa;
+    }
+  }
+
+  /* 定义动画 */
+
+  @keyframes shakegreen {
+    from {
+      transform: scale(.9, .9);
+    }
+
+    to {
+      transform: scale(1.1, 1.1);
+      box-shadow: 0px 0px 5px #02ff77;
+    }
+  }
 </style>

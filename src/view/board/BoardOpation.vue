@@ -7,6 +7,28 @@
         <div @click="toZhang" class="business-item suspension">张吉怀TV看板</div>
       </div>
     </div>
+
+    <div class='main-main' style="margin-top: 30px;">
+      <div class='business-name'>绩效考核</div>
+      <div class="business" >
+        <router-link v-for="(item,index) in evaluation" :key="index" :to="item.to" v-show="item.code" class="business-item">{{item.name}}</router-link>
+      </div>
+    </div>
+
+    <!-- <div class='main-main' style="margin-top: 30px;">
+      <div class='business-name'>梁场指标</div>
+      <div class="business" >
+        <router-link v-for="(item,index) in otherview" :key="index" :to="item.to" v-show="item.code" class="business-item">
+          <div>
+            <div style="font-size:16px;">{{item.name}}</div>
+            <div style="font-size:18px;">本月7,888.00元</div>
+            <div style="font-size:14px;">(与上月)↑XXXX元</div>
+          </div>
+        </router-link>
+      </div>
+    </div> -->
+
+
     <v-dialog :dialog="goodsOffDialog" :dialogFooter="goodsOffFooterDialog" @on-ok="goodsOffOk">
       <p>
          <span>prId：</span><el-input v-model="projectId" style='width:180px' readonly></el-input>（projectId:项目ID）
@@ -50,6 +72,65 @@ export default {
           code: this.$Utils.getPageElement(this.$Consts.PERMISSION.SupplierStatement.code)
         }
       ],
+      // 绩效考核
+      evaluation: [
+        {
+          name: '采购部负责人',
+          to: '/visualizationBoard/principal',
+          code: this.$Utils.getPageElement(this.$Consts.PERMISSION.supplyChainKanBan.code)
+        },
+        {
+          name: '采购专员',
+          to: '/visualizationBoard/attache',
+          code: this.$Utils.getPageElement(this.$Consts.PERMISSION.BusinessOverview.code)
+        },
+        {
+          name: '现场实施',
+          to: '/visualizationBoard/fieldConduct',
+          code: this.$Utils.getPageElement(this.$Consts.PERMISSION.BeamFieldStatement.code)
+        },
+      ],
+      // 梁场指标
+      // otherview: [
+      //   {
+      //     name: '销售金额',
+      //     to: '/mainEmpty/HomeBtn',
+      //     code: this.$Utils.getPageElement(this.$Consts.PERMISSION.supplyChainKanBan.code)
+      //   },
+      //   {
+      //     name: '销售物资数量',
+      //     to: '/visualizationBoard/boardHome',
+      //     code: this.$Utils.getPageElement(this.$Consts.PERMISSION.BusinessOverview.code)
+      //   },
+      //   {
+      //     name: '采购单数量',
+      //     to: '/platformSettlement/projectSettlement',
+      //     code: this.$Utils.getPageElement(this.$Consts.PERMISSION.BeamFieldStatement.code)
+      //   },
+      //   {
+      //     name: '日均销售',
+      //     to: '/platformSettlement/supplierSettlement',
+      //     code: this.$Utils.getPageElement(this.$Consts.PERMISSION.SupplierStatement.code)
+      //   },
+      //   {
+      //     name: '采购节约金额',
+      //     to: '/platformSettlement/supplierSettlement',
+      //     code: this.$Utils.getPageElement(this.$Consts.PERMISSION.SupplierStatement.code)
+      //   },
+      //   {
+      //     name: '采购降低成本率',
+      //     to: '/platformSettlement/supplierSettlement',
+      //     code: this.$Utils.getPageElement(this.$Consts.PERMISSION.SupplierStatement.code)
+      //   },
+      //   {
+      //     name: '每单金额',
+      //     to: '/platformSettlement/supplierSettlement',
+      //     code: this.$Utils.getPageElement(this.$Consts.PERMISSION.SupplierStatement.code)
+      //   }
+      // ],
+      
+
+
       goodsOffDialog: {
         width: '430px',
         show: false,
@@ -127,7 +208,10 @@ export default {
   width: 250px;
   height: 110px;
   text-align: center;
-  line-height: 110px;
+  /* line-height: 110px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 18px;
   background: #f2f2f2;
   text-decoration: none;

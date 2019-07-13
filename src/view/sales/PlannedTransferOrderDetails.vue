@@ -57,7 +57,7 @@
             prop: 'projectName',
             label: '梁场名称'
           }, {
-            prop: 'goodsCode',
+            prop: 'goodsId',
             label: '商品编号'
           }, {
             prop: 'goodsName',
@@ -91,7 +91,7 @@
             prop: 'projectName',
             label: '梁场名称'
           }, {
-            prop: 'goodsCode',
+            prop: 'goodsId',
             label: '商品编号'
           }, {
             prop: 'goodsName',

@@ -2,7 +2,14 @@ const path = require('path');
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
-
+/**
+ *  Date: 1562573921043
+ *  author: \u535e \u5218 \u8457
+ *  不要 他娘的 随便 动老子的代码
+ *  代码 跑的 通 是 author 写的, 跑不通 就不知道了
+ *  小不点 你来 抓我啊~~~
+ *  qi - si - ni
+ */
 const baseConfig = require('./public/base.js')
 const CompressionPlugin = require('compression-webpack-plugin'); //Gzip
 module.exports = {

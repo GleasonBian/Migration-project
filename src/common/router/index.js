@@ -246,6 +246,14 @@ const ProjectSettlement = resolve =>
 const ProjectSettlementDetails = resolve =>
   require(['view/platformSettlement/ProjectSettlementDetails'], resolve) // 梁场结算详情
 
+// 经营工作台->绩效考核
+const principal = resolve =>
+  require(['view/board/evaluation/principal'], resolve) // 采购部负责人
+const attache = resolve =>
+  require(['view/board/evaluation/attache'], resolve) // 采购专员
+const fieldConduct = resolve =>
+  require(['view/board/evaluation/fieldConduct'], resolve) // 现场实施
+
 Vue.use(Router)
 
 let router = new Router({
@@ -396,6 +404,36 @@ let router = new Router({
                   meta: {
                     requirePath: true,
                     title: '123123'
+                  }
+                },
+                {
+                  path: 'principal',
+                  name: 'principal',
+                  code: '06110902',
+                  component: principal,
+                  meta: {
+                    requirePath: true,
+                    title: '绩效考核->采购负责人'
+                  }
+                },
+                {
+                  path: 'attache',
+                  name: 'attache',
+                  code: '06110902',
+                  component: attache,
+                  meta: {
+                    requirePath: true,
+                    title: '绩效考核->采购专员'
+                  }
+                },
+                {
+                  path: 'fieldConduct',
+                  name: 'fieldConduct',
+                  code: '06110902',
+                  component: fieldConduct,
+                  meta: {
+                    requirePath: true,
+                    title: '绩效考核->现场实施'
                   }
                 },
                 {

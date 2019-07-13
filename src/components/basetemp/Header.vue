@@ -275,13 +275,15 @@
   margin-left: 20px;
 }
 .user-opation{
-  width: 100px;
+  width: 200px;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
 }
 .user_info {
   display: flex;
   justify-content: space-between;
+  margin-right: 10px;
 }
 .user_info .user_icon {
   width: 25px;

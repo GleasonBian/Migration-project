@@ -144,8 +144,16 @@ export default {
       return ret;
     },
     toPageBoard() {
+      console.log('this.projectName',this.projectName)
+      console.log('this.projectName',this.pageProfitDetails.projectId)
+      let toPageBoardObj = {
+        projectName:this.projectName,
+        projectId:this.pageProfitDetails.projectId
+      }
+      this.$Utils.setSessionStorage('toPageBoardObj', JSON.stringify(toPageBoardObj))
+
       let routeData = this.$router.resolve({
-        name: "boardHomeElse"
+        name: "boardHomeElse",
       });
       window.open(routeData.href, "_blank");
     },
