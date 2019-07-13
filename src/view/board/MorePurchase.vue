@@ -60,7 +60,6 @@
             }
           },
           {label: '商品名称', value: '', key: 'goodsName'}
-//          {label: '进货单号', value: '', key: 'replenishStockCode'}
         ]
       }
     },

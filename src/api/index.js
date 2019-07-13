@@ -365,7 +365,8 @@ export default {
     totalPerformanceDetailPager: baseApi + '/kanban/totalPerformanceDetailPager', // 梁场=>绩效详情
     profitPager: baseApi + '/kanban/profitPager', // 中台经营看板经营概况
     exportGoodsDetail: baseApi + '/kanban/exportGoodsDetail', // 中台经营看板物资明细导出
-    projectGoodsDetailPage: baseApi + '/kanban/projectGoodsDetailPage' // 中台经营看板经营概况=>物资明细
+    projectGoodsDetailPage: baseApi + '/kanban/projectGoodsDetailPage', // 中台经营看板经营概况=>物资明细
+    PurchasingSpecialist: baseApi + '/performance/buyerResult', // 中台 -> 可视化看板 -> 经营工作台 -> 采购专员
   },
   procurement: {
     supplierTypes: baseApi + '/enterprise/supplierTypes', // 企业类型
@@ -491,6 +492,6 @@ export default {
     projectOverview: baseApi + '/visualization/projectOverview', // 可视化看板=>梁场概览柱状图
     grossProfitRate: baseApi + '/visualization/grossProfitRate', // 可视化看板=>毛利率排名柱状图
     supplierTypeRate: baseApi + '/visualization/supplierTypeRate', // 可视化看板=>毛利率排名柱状图
-    materialRank: baseApi + '/visualization/materialRank' // 中台经营看板经营概况=>物资明细
+    materialRank: baseApi + '/visualization/materialRank', // 中台经营看板经营概况=>物资明细
   }
 }
