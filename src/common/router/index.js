@@ -254,6 +254,12 @@ const attache = resolve =>
 const fieldConduct = resolve =>
   require(['view/board/evaluation/fieldConduct'], resolve) // 现场实施
 
+// 经营工作台->梁场指标
+const SalesAmount = resolve =>
+  require(['view/board/BeamYard/SalesAmount'], resolve) // 采购部负责人
+const PurchaseAmount = resolve =>
+  require(['view/board/BeamYard/PurchaseAmount'], resolve) // 采购部负责人
+
 Vue.use(Router)
 
 let router = new Router({
@@ -434,6 +440,26 @@ let router = new Router({
                   meta: {
                     requirePath: true,
                     title: '绩效考核->现场实施'
+                  }
+                },
+                {
+                  path: 'SalesAmount',
+                  name: 'SalesAmount',
+                  code: '06110902',
+                  component: SalesAmount,
+                  meta: {
+                    requirePath: true,
+                    title: '梁场指标->销售金额'
+                  }
+                },
+                {
+                  path: 'PurchaseAmount',
+                  name: 'PurchaseAmount',
+                  code: '06110902',
+                  component: PurchaseAmount,
+                  meta: {
+                    requirePath: true,
+                    title: '梁场指标->采购金额'
                   }
                 },
                 {

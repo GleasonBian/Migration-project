@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <!-- <div class='main-main' style="margin-top: 30px;">
+    <div class='main-main' style="margin-top: 30px;">
       <div class='business-name'>梁场指标</div>
       <div class="business" >
         <router-link v-for="(item,index) in otherview" :key="index" :to="item.to" v-show="item.code" class="business-item">
@@ -26,7 +26,7 @@
           </div>
         </router-link>
       </div>
-    </div> -->
+    </div>
 
 
     <v-dialog :dialog="goodsOffDialog" :dialogFooter="goodsOffFooterDialog" @on-ok="goodsOffOk">
@@ -91,12 +91,17 @@ export default {
         },
       ],
       // 梁场指标
-      // otherview: [
-      //   {
-      //     name: '销售金额',
-      //     to: '/mainEmpty/HomeBtn',
-      //     code: this.$Utils.getPageElement(this.$Consts.PERMISSION.supplyChainKanBan.code)
-      //   },
+      otherview: [
+        {
+          name: '销售金额',
+          to: '/visualizationBoard/SalesAmount',
+          code: this.$Utils.getPageElement(this.$Consts.PERMISSION.supplyChainKanBan.code)
+        },
+        {
+          name: '采购金额',
+          to: '/visualizationBoard/PurchaseAmount',
+          code: this.$Utils.getPageElement(this.$Consts.PERMISSION.supplyChainKanBan.code)
+        },
       //   {
       //     name: '销售物资数量',
       //     to: '/visualizationBoard/boardHome',
@@ -127,7 +132,7 @@ export default {
       //     to: '/platformSettlement/supplierSettlement',
       //     code: this.$Utils.getPageElement(this.$Consts.PERMISSION.SupplierStatement.code)
       //   }
-      // ],
+      ],
       
 
 

@@ -12,8 +12,8 @@
         placeholder="选择月">
       </el-date-picker>
       <el-button @click="getData" type="primary" style="margin-left:10px">查询</el-button>
-      <el-button @click="resetSearch" type="info">重置</el-button>
-      <el-button type="success">导出考核</el-button>
+      <el-button @click="resetSearch" >重置</el-button>
+      <el-button >导出考核</el-button>
     </div>
     <el-table :data="resData" :fit='true' :show-header="true" :highlight-current-row="true">
       <el-table-column type="index" label="序号"  align='center' header-align='center'></el-table-column>
@@ -21,9 +21,9 @@
       <el-table-column prop="saveAmount" label="采购节约金额"  align='center' header-align='center'></el-table-column>
       <el-table-column prop="userTotalCost" label="采购金额"  align='center' header-align='center'></el-table-column>
       <el-table-column prop="indexOneStr" label="采购金额指标"  align='center' header-align='center'></el-table-column>
-      <el-table-column prop="indexTwoStr" label="采购响应时间"  align='center' header-align='center'></el-table-column>
-      <el-table-column prop="date" label="响应时间指标(字段暂未指定)"></el-table-column>
-      <el-table-column prop="date" label="考核结果(字段暂未指定)"></el-table-column>
+      <el-table-column prop="avgUserDiffTime" label="采购响应时间"  align='center' header-align='center'></el-table-column>
+      <el-table-column prop="indexTwoStr" label="响应时间指标"></el-table-column>
+      <!-- <el-table-column prop="" label="考核结果(字段暂未指定)"></el-table-column> -->
       <el-table-column  label="操作" align='center' header-align='center'>
         <template slot-scope="scope">
           <el-button type="text" @click="exportDetail(scope.row)">导出明细</el-button>

@@ -325,7 +325,9 @@
         dataGoodsName: [], // 物資
         currentPage: 1, // 当前页
         pageWidth: 0, // 偏移量
-        pageTimer: null // 导航栏定时器
+        pageTimer: null, // 导航栏定时器
+
+        widthPage:632,
       }
     },
     components: {},
@@ -364,7 +366,7 @@
             this.currentPage = 1
             this.$refs.pageAll.style.marginLeft = 0 + 'px'
           } else {
-            this.$refs.pageAll.style.marginLeft = '-' + (630 * (this.currentPage - 1)) + 'px'
+            this.$refs.pageAll.style.marginLeft = '-' + (this.widthPage * (this.currentPage - 1)) + 'px'
           }
         }
         // 当前页是否为最后一页
@@ -402,7 +404,7 @@
           // this.currentPage -= 1 // 进入上一页 (进入上一页)
           if (this.index != 0) {
             this.currentPage -= 1 // 进入上一页 (进入上一页)
-            this.$refs.pageAll.style.marginLeft = '-' + (630 * (this.currentPage - 1)) + 'px' // 计算上一个宽度
+            this.$refs.pageAll.style.marginLeft = '-' + (this.widthPage * (this.currentPage - 1)) + 'px' // 计算上一个宽度
             this.index = (this.currentPage * 5) - 5 // 索定当前下标
             this.projectId = this.arrBeamData[this.index].id // 加载当前下标的 id
             this.refreshData(this.projectId) // 根据id 加载数据
@@ -426,7 +428,7 @@
         // 当前页 小于 总页数
         if (this.currentPage < (this.arrBeamData.length % 5)) {
           this.currentPage += 1 // 进入下一页 (进入下一页)
-          this.$refs.pageAll.style.marginLeft = '-' + (630 * (this.currentPage - 1)) + 'px' // 计算下一个宽度
+          this.$refs.pageAll.style.marginLeft = '-' + (this.widthPage * (this.currentPage - 1)) + 'px' // 计算下一个宽度
           this.index = (this.currentPage * 5) - 5 // 索定当前下标
           this.projectId = this.arrBeamData[this.index].id // 加载当前下标的 id
           this.refreshData(this.projectId) // 根据id 加载数据
@@ -456,7 +458,7 @@
         this.index = 0
         if (this.currentPage <= (this.arrBeamData.length % 5)) {
           this.currentPage = 1 // 进入上一页 (进入上一页)
-          this.$refs.pageAll.style.marginLeft = '-' + (630 * (this.currentPage - 1)) + 'px' // 计算上一个宽度
+          this.$refs.pageAll.style.marginLeft = '-' + (this.widthPage * (this.currentPage - 1)) + 'px' // 计算上一个宽度
           this.index = (this.currentPage * 5) - 5 // 索定当前下标
           this.projectId = this.arrBeamData[this.index].id // 加载当前下标的 id
           this.refreshData(this.projectId) // 根据id 加载数据
@@ -2267,8 +2269,8 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
     z-index: 0;
-    width: 877px;
-    height: 48px;
+    width: 876px;
+    height: 47.5px;
     bottom: 0px;
     display: flex;
     position: absolute;
@@ -2281,12 +2283,12 @@
     position: relative;
     bottom: 302px;
     top: 3%;
-    left: 121px;
+    left: 120.9px;
     overflow: hidden;
   }
 
   .pagesStyle {
-    width: 126.28px;
+    width: 126.569px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2319,10 +2321,11 @@
   }
 
   .active {
-    background: url('../../static/img/wisdomBeam/action11.png');
+    background: url('../../static/img/wisdomBeam/action111.png');
     /* background: url('../../static/img/wisdomBeam/action1.png'); */
-    background-size: 100% 100%;
+    background-size: 100% 91%;
     background-repeat: no-repeat;
+    /* width: 127px; */
   }
 
   .imgall {
@@ -2336,6 +2339,7 @@
     justify-content: center;
     flex-direction: column;
     color: #fff;
+    font-size: 14px;
   }
 
   .imgall>div {

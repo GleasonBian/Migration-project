@@ -367,6 +367,20 @@ export default {
     exportGoodsDetail: baseApi + '/kanban/exportGoodsDetail', // 中台经营看板物资明细导出
     projectGoodsDetailPage: baseApi + '/kanban/projectGoodsDetailPage', // 中台经营看板经营概况=>物资明细
     PurchasingSpecialist: baseApi + '/performance/buyerResult', // 中台 -> 可视化看板 -> 经营工作台 -> 采购专员
+    exportBuyer: baseApi + '/performance/exportBuyer', // 中台 -> 可视化看板 -> 经营工作台 -> 采购专员 -> 导出采购员绩效考核
+    exportBuyerDetail: baseApi + '/performance/exportBuyerDetail', // 中台 -> 可视化看板 -> 经营工作台 -> 采购专员 -> 导出采购员绩效考核明细
+    buyerLeaderResult: baseApi + '/performance/buyerLeaderResult', // 采购部负责人绩效考核
+    exportLeader: baseApi + '/performance/exportLeader', // 导出采购部负责人绩效考核
+    exportLeaderDetail: baseApi + '/performance/exportLeaderDetail', // 导出采购部负责人绩效考核明细
+    findPerformanceProjectDate: baseApi + '/performance/findPerformanceProjectDate', // 现场实施-项目部绩效考核
+    downloadTemplate: baseApi + '/performance/downloadTemplate', // 现场实施-项目部绩效考核-下载上传项目部绩效考核数据模板
+    importPerformanceProject: baseApi + '/performance/importPerformanceProject', // 现场实施-项目部绩效考核-上传项目部绩效考核数据EXCEL
+    exportPerformanceProjectList: baseApi + '/performance/exportPerformanceProjectList', // 现场实施-项目部绩效考核-导出项目部绩效考核数据
+    getProjectList: baseApi + '/orderManger/getProjectList', // 获取梁场列表
+
+    getProjectList: baseApi + '/orderManger/getProjectList', // 获取梁场列表
+    getProjectList: baseApi + '/orderManger/getProjectList', // 获取梁场列表
+
   },
   procurement: {
     supplierTypes: baseApi + '/enterprise/supplierTypes', // 企业类型
@@ -442,7 +456,8 @@ export default {
     routineBatchInternalAuditPass: baseApi + '/listPurchase/routineBatchInternalAuditPass', // 财务部--审批的常规物资-批量通过
     findSalesAndRejectedCount: baseApi + '/listPurchase/findSalesAndRejectedCount', // 总裁--审批事项消息条数
     findPendingMaterialByNode: baseApi + '/listPurchase/findPendingMaterialByNode', // 总裁--查询待审批的合同物资
-    getGrossMarginRatio: baseApi + '/listPurchase/getGrossMarginRatio' // 判断毛利率是否大于50%
+    getGrossMarginRatio: baseApi + '/listPurchase/getGrossMarginRatio', // 判断毛利率是否大于50%
+    fixedPrices: baseApi + '/listPurchase/fixedPrices' // 限价
   },
   statistics: {
     findMaterialsApprovalState: baseApi + '/statisticsReport/findMaterialsApprovalState', // 查询物资审批状态列表
@@ -492,6 +507,6 @@ export default {
     projectOverview: baseApi + '/visualization/projectOverview', // 可视化看板=>梁场概览柱状图
     grossProfitRate: baseApi + '/visualization/grossProfitRate', // 可视化看板=>毛利率排名柱状图
     supplierTypeRate: baseApi + '/visualization/supplierTypeRate', // 可视化看板=>毛利率排名柱状图
-    materialRank: baseApi + '/visualization/materialRank', // 中台经营看板经营概况=>物资明细
+    materialRank: baseApi + '/visualization/materialRank' // 中台经营看板经营概况=>物资明细
   }
 }

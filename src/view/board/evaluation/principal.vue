@@ -2,13 +2,21 @@
 <template>
   <div>
     <v-search :data="searchData" @on-click="search"></v-search>
-    <tab-but :data="btnData" @to-pass="toPass"></tab-but>
-    <table-list :data-header="dataHeaderData" :url="tabUrl" :params="page" @get-table-data="getTableData"
-                :refs="tablePerformance" @selection-change="selectionChange">
-      <template v-slot:handle="scope">
-        <a class="handle" @click="toDetail(scope.row.goodsName)">导出明细</a>
-      </template>
-    </table-list>
+    <tab-but :data="btnData" @to-pass="exportIns"></tab-but>
+    
+    <el-table :data="dataList" style="width: 100%">
+      <el-table-column prop="month" label="月份" align='center'></el-table-column>
+      <el-table-column prop="deptTotalCost" label="采购金额" align='center'></el-table-column>
+      <el-table-column prop="totalSaveAmount" label="采购节约金额" align='center'></el-table-column>
+      <el-table-column prop="totalSaveRate" label="降低成本率" align='center'></el-table-column>
+      <el-table-column prop="resultIndex" label="考核结果" align='center'></el-table-column>
+      <el-table-column label="操作" align="center">
+        <template slot-scope="scope">
+          <el-button @click="exportSub(scope.row)" type="text" size="small">导出明细</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+    
   </div>
 </template>
 
@@ -16,26 +24,20 @@
   export default {
     data() {
       return {
-        searchData: [{
-          label: '梁场名称：',
-          value: '',
-          placeholder: '请选择',
-          key: 'year',
-          select: [{
-            value: 2017,
-            label: '2017年'
-          }, {
-            value: 2018,
-            label: '2018年'
-          }, {
-            value: 2019,
-            label: '2019年'
-          }, {
-            value: 2020,
-            label: '2020年'
-          }]
-        }],
-        dataSearch:'',
+        searchData:[{
+            label: '选择年份：',
+            value: '',
+            key: 'year',
+            date: {
+              type: 'year',
+              valueFormat:'yyyy'
+            }
+          }],
+        dataSearch:{
+          year:'2009'
+        },
+        dataList:[],
+        
         btnData: [{
           text: '导出考核',
           key: 'to-pass',
@@ -43,25 +45,33 @@
         }],
       };
     },
-
-    created() {},
-    components: {
-
+    created() {
+      this.getData()
     },
-
-    computed: {
-
-    },
-
-    mounted: {
-
-    },
-
     methods: {
-      search(res) {
-        this.dataSearch = res
+      getData(){
+        this.$Ajax.post({
+          url: this.$Api.board.buyerLeaderResult,
+          data: this.dataSearch,
+          cb: res => {
+            res.data.map(item =>{
+              item.totalSaveRate = item.totalSaveRate + '%'
+            })
+            this.dataList = res.data
+          }
+        })
+      },
 
-        console.log(this.dataSearch)
+      search (res) {
+        console.log(res)
+        this.dataSearch = res
+        this.getData()
+      },
+      exportIns(){
+        console.log('导出考核')
+      },
+      exportSub(val){
+        console.log('导出明细',val)
       },
     },
   }

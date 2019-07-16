@@ -828,35 +828,84 @@
       },
       btnSubmit () {
         this.disabledSubmit = true
-        let json = {
-          operateType: 2,
-          listPurchaseGoodsList: this.dataStatic
-        }
+        let fixedPricesJson = []
+        this.dataStatic.map(item =>{
+          fixedPricesJson.push({
+            goodsName:item.goodsName,
+            attrValue:item.model,
+            unit:item.unit,
+            price:item.recommendGoodsPrice,
+          })
+        })
         this.$Ajax.post({
-          url: this.$Api.examine.getGrossMarginRatio,
-          data: {
-            json: JSON.stringify(json)
+          url: this.$Api.examine.fixedPrices,
+          data:{
+            goodsPriceQOJson:JSON.stringify(fixedPricesJson)
           },
           cb: res => {
-            if (!res.data.result) {
-              const h = this.$createElement
-              this.$confirm(h('span', { style: 'color: red' }, res.data.message), '操作提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消'
-              }).then(() => {
-                this.btnAjax(2)
-              }).catch(() => {
-                this.disabledSubmit = false
-              })
-            } else {
-              this.$confirm('确定要保存吗？', '操作提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消'
-              }).then(() => {
-                this.btnAjax(2)
-              }).catch(() => {
-                this.disabledSubmit = false
-              })
+            console.log("res",res)
+            if (!res.data.data) {
+                if (res.data.result) {
+                  let json = {
+                    operateType: 2,
+                    listPurchaseGoodsList: this.dataStatic
+                  }
+                  this.$Ajax.post({
+                    url: this.$Api.examine.getGrossMarginRatio,
+                    data: {
+                      json: JSON.stringify(json)
+                    },
+                    cb: res => {
+                      if (!res.data.result) {
+                        const h = this.$createElement
+                        this.$confirm(h('span', { style: 'color: red' }, res.data.message), '操作提示', {
+                          confirmButtonText: '确定',
+                          cancelButtonText: '取消'
+                        }).then(() => {
+                          this.btnAjax(2)
+                        }).catch(() => {
+                          this.disabledSubmit = false
+                        })
+                      } else {
+                        this.$confirm('确定要保存吗？', '操作提示', {
+                          confirmButtonText: '确定',
+                          cancelButtonText: '取消'
+                        }).then(() => {
+                          this.btnAjax(2)
+                        }).catch(() => {
+                          this.disabledSubmit = false
+                        })
+                      }
+                    }
+                  })
+                }else{
+                  let goodsNameList = []
+                  res.data.data.map(item =>{
+                    goodsNameList.push(item.goodsName)
+                  })
+                  if (goodsNameList.length == 1) {
+                    this.$confirm('提交的物资超过最高限报价，请重新报价', '操作提示', {
+                      confirmButtonText: '确定',
+                      cancelButtonText: '取消'
+                    }).then(() => {
+                      this.disabledSubmit = false
+                    }).catch(() => {
+                      this.disabledSubmit = false
+                    })
+                  }else{
+                    let allGoods = goodsNameList.join('、')
+                    this.$confirm(allGoods + '超过最高限报价，请重新报价', '操作提示', {
+                      confirmButtonText: '确定',
+                      cancelButtonText: '取消'
+                    }).then(() => {
+                      this.disabledSubmit = false
+                    }).catch(() => {
+                      this.disabledSubmit = false
+                    })
+                  }
+                }
+            }else{
+              this.$message('暂无数据')
             }
           }
         })
