@@ -134,6 +134,26 @@ const PERMISSION = {
   ZhangjhStatement: {
     code: '06110905',
     desc: '张吉怀TV看板'
+  },
+  principalStatement: {
+    code: '06110906',
+    desc: '采购部负责人'
+  },
+  attacheStatement: {
+    code: '06110907',
+    desc: '采购专员'
+  },
+  fieldConductStatement: {
+    code: '06110908',
+    desc: '现场实施'
+  },
+  SalesAmountStatement: {
+    code: '06110909',
+    desc: '销售金额'
+  },
+  PurchaseAmountStatement: {
+    code: '06110910',
+    desc: '采购金额'
   }
 }
 

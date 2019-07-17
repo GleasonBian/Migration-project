@@ -377,9 +377,10 @@ export default {
     importPerformanceProject: baseApi + '/performance/importPerformanceProject', // 现场实施-项目部绩效考核-上传项目部绩效考核数据EXCEL
     exportPerformanceProjectList: baseApi + '/performance/exportPerformanceProjectList', // 现场实施-项目部绩效考核-导出项目部绩效考核数据
     getProjectList: baseApi + '/orderManger/getProjectList', // 获取梁场列表
-
-    getProjectList: baseApi + '/orderManger/getProjectList', // 获取梁场列表
-    getProjectList: baseApi + '/orderManger/getProjectList', // 获取梁场列表
+    projectIndex: baseApi + '/projectIndex/projectIndex', // 获取梁场指标页采购金额/销售金额
+    salePrice: baseApi + '/projectIndex/salePrice', // 获取销售价格趋势
+    costPrice: baseApi + '/projectIndex/costPrice', // 获取销售价格趋势
+    
 
   },
   procurement: {

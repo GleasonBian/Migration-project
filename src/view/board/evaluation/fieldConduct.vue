@@ -27,7 +27,7 @@
     <v-dialog :dialog="initTabData" :dialog-footer="dialogEditFooter" @on-cancel="initWareouseCancel" @on-ok="initWareouseOk">
       <div style="margin-top: 20px; width: 100%">
         <el-row>
-          <el-col :span="12">
+          <el-col :span="25">
             <div class="monthClass">
               <div style="margin-top: 8px;">选择月份：</div>
               <el-date-picker
@@ -47,6 +47,9 @@
                     <el-button size="small" type="primary">点击上传</el-button>
                   </div>
                 </v-upload>
+                <ul>
+                      <li v-for="(i,index) in fileList" :key="index">{{i.name}}</li>
+                    </ul>
               </div>
             </div>
 
@@ -69,7 +72,8 @@
             key: 'month',
             date: {
               type: 'month',
-              valueFormat:'yyyyMM'
+              valueFormat:'yyyyMM',
+              placeholder:"请选择",
             }
           }],
         dataSearch:{},
@@ -109,12 +113,22 @@
           },
           custom: true
         },
+        fileList:[]
       };
     },
     created() {
+      this.searchBoxDefaultTime()
       this.getData()
+
     },
     methods: {
+      searchBoxDefaultTime(){
+      let date = new Date();
+      let year = date.getFullYear();
+      let month = date.getMonth()+1;
+      month < 10 ? month = '0' + month : month = month
+      this.dataSearch.month = year + month
+    },
       getData(){
         let json;
         if (JSON.stringify(this.dataSearch) == '{}') {
@@ -139,13 +153,11 @@
         this.getData()
       },
       handleSizeChange(val) {
-        console.log(`每页 ${val} 条`);
         this.page.limit = val
         this.page.pageNo = 1
         this.getData()
       },
       handleCurrentChange(val) {
-        console.log(`当前页: ${val}`);
         this.page.pageNo = val
         this.getData()
       },
@@ -154,7 +166,6 @@
 
 
       exportIns(){
-        console.log('导出考核')
         if (JSON.stringify(this.dataSearch) == '{}') {
           location.href = this.$Api.board.exportPerformanceProjectList
         }else{
@@ -182,8 +193,10 @@
         this.initTabData.show = false
         this.$bus.emit('clear-files')
       },
-      uploadSuccess (res) {
+      uploadSuccess (res, file, fileList) {
+        console.log(fileList)
         if (res.result) {
+          this.fileList = fileList
           this.$message('上传文件成功')
           this.getData();
         } else {

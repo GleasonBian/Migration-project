@@ -190,7 +190,6 @@
 
 
       exportSub(val) {
-        console.log('查看趋势图', val)
         this.initTabData.show = true
         this.$nextTick(()=>{
           this.drawLineSupplierA()

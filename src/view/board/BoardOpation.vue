@@ -4,7 +4,7 @@
       <div class='business-name'>经营业务</div>
       <div class="business" >
         <router-link v-for="(item,index) in overview" :key="index" :to="item.to" v-show="item.code" class="business-item">{{item.name}}</router-link>
-        <div @click="toZhang" class="business-item suspension">张吉怀TV看板</div>
+        <div @click="toZhang" class="business-item suspension" v-if="$Utils.getPageElement($Consts.PERMISSION.ZhangjhStatement.code)">张吉怀TV看板</div>
       </div>
     </div>
 
@@ -77,17 +77,17 @@ export default {
         {
           name: '采购部负责人',
           to: '/visualizationBoard/principal',
-          code: this.$Utils.getPageElement(this.$Consts.PERMISSION.supplyChainKanBan.code)
+          code: this.$Utils.getPageElement(this.$Consts.PERMISSION.principalStatement.code)
         },
         {
           name: '采购专员',
           to: '/visualizationBoard/attache',
-          code: this.$Utils.getPageElement(this.$Consts.PERMISSION.BusinessOverview.code)
+          code: this.$Utils.getPageElement(this.$Consts.PERMISSION.attacheStatement.code)
         },
         {
           name: '现场实施',
           to: '/visualizationBoard/fieldConduct',
-          code: this.$Utils.getPageElement(this.$Consts.PERMISSION.BeamFieldStatement.code)
+          code: this.$Utils.getPageElement(this.$Consts.PERMISSION.fieldConductStatement.code)
         },
       ],
       // 梁场指标
@@ -95,12 +95,12 @@ export default {
         {
           name: '销售金额',
           to: '/visualizationBoard/SalesAmount',
-          code: this.$Utils.getPageElement(this.$Consts.PERMISSION.supplyChainKanBan.code)
+          code: this.$Utils.getPageElement(this.$Consts.PERMISSION.SalesAmountStatement.code)
         },
         {
           name: '采购金额',
           to: '/visualizationBoard/PurchaseAmount',
-          code: this.$Utils.getPageElement(this.$Consts.PERMISSION.supplyChainKanBan.code)
+          code: this.$Utils.getPageElement(this.$Consts.PERMISSION.PurchaseAmountStatement.code)
         },
       //   {
       //     name: '销售物资数量',

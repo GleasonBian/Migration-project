@@ -7,9 +7,9 @@
         <div style="font-size:18px;">本月7,888.00元</div>
         <div style="font-size:14px;">(与上月)↑XXXX元</div>
       </div>
-      <div class="box_box">
-        <div id="myChart" style="height: 300px;width: 100%;"></div>
-      </div>
+      <!-- <div class="box_box">
+        <div id="myChart" style="height: 300px;width: 100%;"></div> 
+      </div>-->
     </div>
 
     <div class="titleStyle">每个物资销售价格明细</div>
@@ -17,18 +17,17 @@
     <tab-but :data="btnData" @to-export="exportIns"></tab-but>
     <el-table :data="dataList" style="width: 100%">
       <el-table-column type="index" label="序号" align='center'></el-table-column>
-      <el-table-column prop="month" label="月份" align='center'></el-table-column>
-      <el-table-column prop="projectName" label="梁场名称" align='center'></el-table-column>
-      <el-table-column prop="retainedProfit" label="净利润" align='center'></el-table-column>
-      <el-table-column prop="number" label="人数" align='center'></el-table-column>
-      <el-table-column prop="personPer" label="人均净利润" align='center'></el-table-column>
-      <el-table-column prop="grade" label="等级" align='center'></el-table-column>
-      <el-table-column prop="personnel" label="人员名单" align='center'></el-table-column>
-      <el-table-column label="操作" align="center">
+      <el-table-column prop="goodsName" label="物资名称" align='center'></el-table-column>
+      <el-table-column prop="typeModel" label="规格型号" align='center'></el-table-column>
+      <el-table-column prop="unit" label="单位" align='center'></el-table-column>
+      <el-table-column prop="unitPrice" label="最新销售价" align='center'></el-table-column>
+      <el-table-column prop="diff" label="浮动" align='center'></el-table-column>
+      <el-table-column prop="skuId" label="物资ID" align='center'></el-table-column>
+      <!-- <el-table-column label="操作" align="center">
         <template slot-scope="scope">
           <el-button @click="exportSub(scope.row)" type="text" size="small">查看趋势图</el-button>
         </template>
-      </el-table-column>
+      </el-table-column> -->
     </el-table>
     <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="page.pageNo"
       :page-sizes="[10, 20, 30, 40]" :page-size="page.limit" layout="total, sizes, prev, pager, next, jumper"
@@ -68,25 +67,13 @@
             placeholder: '请选择',
             key: 'projectId',
             select: []
-          },
-          {
-            label: '物资名称：',
-            value: '',
-            placeholder: '请输入',
-            key: 'goodsName'
-          },
-          {
-            label: '供应商名称：',
-            value: '',
-            placeholder: '请输入',
-            key: 'goodsNameA'
           }
         ],
         arrBeamData: [],
         dataSearch: {},
         dataList: [],
         btnData: [{
-          text: '导出考核',
+          text: '导出明细',
           key: 'to-export',
           disabled: false
         }],
@@ -149,7 +136,7 @@
           json = Object.assign(this.dataSearch, this.page)
         }
         this.$Ajax.post({
-          url: this.$Api.board.findPerformanceProjectDate,
+          url: this.$Api.board.salePrice,
           data: json,
           cb: res => {
             this.dataList = res.data.rows
@@ -163,7 +150,7 @@
       search(res) {
         this.dataSearch = res
         this.page.pageNo = 1
-        // this.getData()
+        this.getData()
       },
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`);
